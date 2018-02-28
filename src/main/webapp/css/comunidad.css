@@ -1,0 +1,68 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28-feb-2018, 10:51:42
+    Author     : Juan Béjar
+*/
+
+
+
+.fa {
+    padding:20px;
+    font-size:30px;
+    color:white;
+}
+.footer-a{
+    margin-top:150px;
+    background-color: black;
+    color:snow;
+}
+.col-foot{
+    margin-top:70px;
+    margin-block-start: 70px;
+}
+
+
+.navbar {
+    background-color: #222222 !important;
+    text-transform: uppercase;
+    font-family: 'Lato',Arial, sans-serif;
+    font-weight: 700; 
+
+
+}
+
+.navbar a {
+    color:rgba(223, 223, 223, 0.884);
+     opacity: 0.7;
+ }
+ 
+ .navbar a:hover{
+      opacity: 1;
+      background-color: #111111 !important;
+ }
+ 
+ .active{
+     color: #FFF;
+   background-color: #162443;
+ }
+ 
+
+
+.fila-buffer{
+    margin-top: 5rem;
+   
+}
+   
+.titulo{
+    font-family: 'Patua One', cursive;
+}
+
+
+.mi-perfil{
+    margin-left:6.3rem;
+}
+
