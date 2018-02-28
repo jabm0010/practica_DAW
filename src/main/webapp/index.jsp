@@ -1,4 +1,5 @@
- <%-- 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- 
     Document   : index
     Created on : 28-feb-2018, 10:11:35
     Author     : Juan Béjar
@@ -57,8 +58,8 @@
       </nav>
 
     </div>
-    
-    
+
+
     <!--Barra de navegación hasta aquí-->
 
     <div class="row">
@@ -70,19 +71,21 @@
 
               <h1 class="page-header">Identifícate</h1>
 
-              <form class="form-horizontal" role="form" action="#" method="POST">
+              <form class="form-horizontal" role="form" action="index.jsp" method="POST">
                 <div class="form-group">
                   <label class="control-label col-sm-2" for="log_usuario">Usuario:</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="log_usuario" placeholder="Introduce tu nombre">
                   </div>
                 </div>
+
                 <div class="form-group">
                   <label class="control-label col-sm-2" for="log_pwd">Contraseña:</label>
                   <div class="col-sm-10">
                     <input type="password" class="form-control" name="log_pwd" placeholder="Introduce tu contraseña">
                   </div>
                 </div>
+
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
                     <div class="checkbox">
@@ -98,6 +101,36 @@
                 </div>
               </form>
 
+              <!--Si el formulario se envía, mostrar posibles errores-->
+
+
+
+              <c:if test="${pageContext.request.method=='POST'}">
+                  <c:if test="${pageContext.request.getParameter('log_usuario')==''}">
+                      Introduce tu nombre de usuario </br>
+                  </c:if>
+              </c:if>
+
+              <c:if test="${pageContext.request.method=='POST'}">
+                  <c:if test="${pageContext.request.getParameter('log_pwd')==''}">
+                      Introduce tu contraseña
+                  </c:if>
+              </c:if>
+
+              <c:if test="${pageContext.request.method=='POST'}">
+                  <c:if test="${pageContext.request.getParameter('log_pwd')!=''}">
+                      <c:if test="${pageContext.request.getParameter('log_pwd')!=''}">
+                          <c:redirect url="comunidad.jsp?log_usuario=${param.log_usuario}"/>
+
+                      </c:if>
+                  </c:if>
+              </c:if>       
+
+
+
+
+
+
             </div>
           </div>
 
@@ -109,7 +142,7 @@
             <div class="columna-derecha">
               <h1 class="page-header">Regístrate</h1>
 
-              <form class="form-horizontal" role="form" action="#" method="POST">
+              <form class="form-horizontal" role="form" action="comunidad.jsp" method="POST">
                 <div class="form-group">
                   <label class="control-label col-sm-2" for="reg_email">Email:</label>
                   <div class="col-sm-10">
@@ -128,7 +161,7 @@
                     <input type="password" class="form-control" id="reg_pwd" placeholder="Introduce tu contraseña">
                   </div>
                 </div>
-               
+
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-default">Registrarme</button>

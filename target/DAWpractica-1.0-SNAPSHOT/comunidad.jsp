@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 
@@ -19,6 +21,9 @@
   </head>
 
   <body>
+
+
+
 
     <div class="barra-navegacion">
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -69,44 +74,63 @@
 
     <div class="container-fluid">
       <div class="row fila-buffer">
-        <div class="col-sm-8">
+        <div class="col-md-8">
           <div class="row">
             <h2 class="titulo">
               <center>MIS AMIGOS</center>
             </h2>
             <hr width="80%" style="background:rgb(231, 214, 54); border:0; height:7px" />
-            <div class="card-columns">
 
-              <div class="card">
-                <img class="round card-img-top img-fluid" src="https://www.ocf.berkeley.edu/~dblab/blog/wp-content/uploads/2012/01/icon-profile.png"
-                     width="150px" height="150px" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">user 1</h5>
-                  <button type="button" class="btn btn-primary">Enviar mensaje</button>
-                </div>
-                <div class="card-footer">
-                  <span class="badge badge-success">Online</span>
-                </div>
-              </div>
 
+            <div class="card-deck">
               <div class="card">
-                <img class="round card-img-top img-fluid" src="https://www.ocf.berkeley.edu/~dblab/blog/wp-content/uploads/2012/01/icon-profile.png"
-                     width="150px" height="150px" alt="Card image cap">
+                <img class="card-img-top" src="https://www.ocf.berkeley.edu/~dblab/blog/wp-content/uploads/2012/01/icon-profile.png" alt="Card image cap">
                 <div class="card-body">
-                  <h5 class="card-title">user 1</h5>
-                  <button type="button" class="btn btn-primary">Enviar mensaje</button>
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
                 <div class="card-footer">
                   <span class="badge badge-danger">Offline</span>
                 </div>
               </div>
-
-
-
-
-
-
+              <div class="card">
+                <img class="card-img-top" src="https://www.ocf.berkeley.edu/~dblab/blog/wp-content/uploads/2012/01/icon-profile.png" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+                <div class="card-footer">
+                  <span class="badge badge-danger">Offline</span>
+                </div>
+              </div>
+              <div class="card">
+                <img class="card-img-top" src="https://www.ocf.berkeley.edu/~dblab/blog/wp-content/uploads/2012/01/icon-profile.png" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+                <div class="card-footer">
+                  <span class="badge badge-danger">Offline</span>
+                </div>
+              </div>
+              <div class="card">
+                <img class="card-img-top" src="https://www.ocf.berkeley.edu/~dblab/blog/wp-content/uploads/2012/01/icon-profile.png" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+                <div class="card-footer">
+                  <span class="badge badge-danger">Offline</span>
+                </div>
+              </div>
             </div>
+
+
+
 
 
 
@@ -114,13 +138,17 @@
 
 
 
-
-
-
-
-
         </div>
-        <div class="col-sm-4">
+
+
+
+
+
+
+
+
+
+        <div class="col-md-4">
           <h2 class="titulo">
             <center>MI PERFIL</center>
           </h2>
@@ -129,28 +157,27 @@
             <img class="round card-img-top" src="https://www.ocf.berkeley.edu/~dblab/blog/wp-content/uploads/2012/01/icon-profile.png"
                  alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title"> ${param.log_usuario}</h5>
+              <p class="card-text">Biografía</p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
+              <li class="list-group-item">Número de juegos: </li>
+              <li class="list-group-item">Número de amigos: </li>
+
             </ul>
             <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+              <a href="#" class="card-link">Modificar mi biografía</a>
+
             </div>
           </div>
 
 
         </div>
 
-
       </div>
-
     </div>
 
+  </div>
 
 
 
@@ -160,11 +187,12 @@
 
 
 
-    <%@include file="/WEB-INF/layout/footer.jspf" %>
 
-    <!--Hasta aquí el footer-->
+  <%@include file="/WEB-INF/layout/footer.jspf" %>
+
+  <!--Hasta aquí el footer-->
 
 
-  </body>
+</body>
 
 </html>

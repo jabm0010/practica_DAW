@@ -50,7 +50,8 @@ and open the template in the editor.
     padding: 25px;
     box-sizing: border-box;
 
-    margin-top: 105px;
+    margin-top: 80px;
+    margin-bottom: 10px;
     
     background-color: rgb(65, 23, 122);
     color: white;
