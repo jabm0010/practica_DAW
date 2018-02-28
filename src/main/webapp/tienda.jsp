@@ -9,7 +9,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>JSP Page</title>
+    <title>Tienda</title>
   </head>
   <body>
   <html>
@@ -113,11 +113,11 @@
           <div class="col-xs-6 col-md-6">
 
 
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div id="carousel-destacados" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carousel-destacados" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-destacados" data-slide-to="1"></li>
+                <li data-target="#carousel-destacados" data-slide-to="2"></li>
               </ol>
               <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -130,11 +130,11 @@
                   <img class="d-block w-100" src="https://www.thinkcomputers.org/wp-content/uploads/2018/02/PUBG.jpg" alt="Third slide" class="rounded">
                 </div>
               </div>
-              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <a class="carousel-control-prev" href="#carousel-destacados" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
               </a>
-              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <a class="carousel-control-next" href="#carousel-destacados" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
               </a>
@@ -227,7 +227,14 @@
         <!--Hasta aquí las filas con los titulos y las ofertas destacadas y semanales-->
         <!--Intentar luego hacerlas en una sola fila para que no se descoloquen en tamaño movil-->
 
+        
+        
+        
+        
+
       </div>
+
+        </table>
 
 
 

@@ -19,29 +19,17 @@ and open the template in the editor.
 
 }
 
+
+
 html{
     height:85vh;
 }
 
 body{
     height:85vh;
+     background-color: rgb(224, 224, 224);
 }
 
-
-.navbar a {
-   color:rgba(223, 223, 223, 0.884);
-    opacity: 0.7;
-}
-
-.navbar a:hover{
-     opacity: 1;
-     background-color: #111111 !important;
-}
-
-.active{
-    color: #FFF;
-  background-color: #162443;
-}
 
 .lista-juegos{
     height:85vh;
@@ -69,3 +57,6 @@ body{
     height:90%;
 }
 
+.list-group-item active{
+    color: #66ff99;
+}

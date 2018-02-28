@@ -20,6 +20,12 @@ and open the template in the editor.
     
 
 }
+
+body{
+    background-color: rgb(224, 224, 224);
+}
+
+
 .titulo{
     color:rgb(65, 23, 122);
     font-family: 'Lato', sans-serif;
@@ -52,29 +58,6 @@ and open the template in the editor.
 }
 
 
-.navbar {
-    background-color: #222222 !important;
-    text-transform: uppercase;
-    font-family: 'Lato',Arial, sans-serif;
-    font-weight: 700; 
-
-
-}
-
-.navbar a {
-    color:rgba(223, 223, 223, 0.884);
-    opacity: 0.7;
-}
-
-.navbar a:hover{
-     opacity: 1;
-     background-color: #111111 !important;
-}
-
-.active{
-    color: #FFF;
-  background-color: #162443;
-}
 
 .mas-vendidos{
     border-radius: 9px; 
