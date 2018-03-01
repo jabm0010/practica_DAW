@@ -12,7 +12,7 @@
     <title>Biblioteca</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%@include file="/WEB-INF/layout/head_links.jspf" %>
+     <%@include file="/WEB-INF/layout/barra_navegacion.jspf" %>
 
     <link rel="stylesheet" href="css/biblioteca.css">
 
@@ -20,47 +20,7 @@
 
   <body>
 
-    <div class="barra-navegacion">
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <a class="navbar-brand">
-          <img src="imgs/3.png" height="40" widht="30">
-        </a>
-
-        <span class="navbar-text">
-          <h4>Steam</h4>
-        </span>
-
-
-        <div class="collapse navbar-collapse justify-content-end" id="collapse_target">
-
-
-
-
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="tienda.jsp">Tienda</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " href="comunidad.jsp">Comunidad</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Biblioteca</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#footer">Contacto</a>
-            </li>
-
-          </ul>
-        </div>
-
-      </nav>
-
-    </div>
+   
 
 
     <!--Hasta aquí barra de navegación-->
