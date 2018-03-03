@@ -13,8 +13,7 @@
     <title>Tienda</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <%@include file="/WEB-INF/layout/barra_navegacion.jspf" %>
+    <%@include file="/WEB-INF/layout/head_links.jspf" %>
 
     <link rel="stylesheet" href="css/tienda.css">
 
@@ -22,6 +21,7 @@
 
   <body>
 
+    <%@include file="/WEB-INF/layout/barra_navegacion.jspf" %>
 
     <div class="container-fluid">
       <div class="row">
@@ -46,13 +46,13 @@
             </ol>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img class="d-block w-100" src="https://www.thinkcomputers.org/wp-content/uploads/2018/02/PUBG.jpg" alt="First slide" class="rounded">
+                <img class="d-block w-100" src="http://placehold.it/800x600" alt="First slide" class="rounded">
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="https://www.thinkcomputers.org/wp-content/uploads/2018/02/PUBG.jpg" alt="Second slide" class="rounded">
+                <img class="d-block w-100" src="http://placehold.it/800x600" alt="Second slide" class="rounded">
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="https://www.thinkcomputers.org/wp-content/uploads/2018/02/PUBG.jpg" alt="Third slide" class="rounded">
+                <img class="d-block w-100" src="http://placehold.it/800x600" alt="Third slide" class="rounded">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carousel-destacados" role="button" data-slide="prev">
@@ -81,20 +81,9 @@
 
             <a href="#" class="list-group-item">
               <div class="media col-md-4">
-                <figure class="pull-left">
-                  <img class="media-object img-rounded img-responsive" src="http://placehold.it/350x150" alt="placehold.it/350x250">
-                </figure>
 
+                <img class="media-object img-rounded img-responsive" src="http://placehold.it/370x200" alt="placehold.it/350x250" >
 
-              </div>
-
-            </a>
-
-            <a href="#" class="list-group-item">
-              <div class="media col-md-4">
-                <figure class="pull-left">
-                  <img class="media-object img-rounded img-responsive" src="http://placehold.it/350x150" alt="placehold.it/350x250">
-                </figure>
 
 
               </div>
@@ -103,9 +92,9 @@
 
             <a href="#" class="list-group-item">
               <div class="media col-md-4">
-                <figure class="pull-left">
-                  <img class="media-object img-rounded img-responsive" src="http://placehold.it/350x150" alt="placehold.it/350x250">
-                </figure>
+
+                <img class="media-object img-rounded img-responsive " src="http://placehold.it/370x200" alt="placehold.it/350x250">
+
 
 
               </div>
@@ -113,15 +102,17 @@
             </a>
 
             <a href="#" class="list-group-item">
-              <div class="media col-md-4">
-                <figure class="pull-left">
-                  <img class="media-object img-rounded img-responsive" src="http://placehold.it/350x150" alt="placehold.it/350x250">
-                </figure>
+              <div class="media col-md-4 ">
+
+                <img class="media-object img-rounded img-responsive " src="http://placehold.it/370x200" alt="placehold.it/350x250">
+
 
 
               </div>
 
             </a>
+
+
 
 
           </div>
@@ -223,13 +214,11 @@
 
 
 
-            <img class="card-img-top" src="https://www.thinkcomputers.org/wp-content/uploads/2018/02/PUBG.jpg" alt="Card image cap">
+            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
             <div class="card-block">
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
                 molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-                vitae velit. Nullam rhoncus enim vitae nisi fringilla, sit amet congue erat iaculis. N am
-                fringilla leo commodo, consequat urna a, semper magna. Fusce non orci sed mi aliquet pellentesque.
-                Duis a nibh sit amet nulla interdum finibus. Praesent ve
+
               </p>
             </div>
           </div>
@@ -240,13 +229,11 @@
 
 
 
-            <img class="card-img-top" src="https://www.thinkcomputers.org/wp-content/uploads/2018/02/PUBG.jpg" alt="Card image cap">
+            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
             <div class="card-block">
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
                 molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-                vitae velit. Nullam rhoncus enim vitae nisi fringilla, sit amet congue erat iaculis. N am
-                fringilla leo commodo, consequat urna a, semper magna. Fusce non orci sed mi aliquet pellentesque.
-                Duis a nibh sit amet nulla interdum finibus. Praesent ve
+
               </p>
             </div>
           </div>
@@ -257,13 +244,11 @@
 
 
 
-            <img class="card-img-top" src="https://www.thinkcomputers.org/wp-content/uploads/2018/02/PUBG.jpg" alt="Card image cap">
+            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
             <div class="card-block">
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
                 molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-                vitae velit. Nullam rhoncus enim vitae nisi fringilla, sit amet congue erat iaculis. N am
-                fringilla leo commodo, consequat urna a, semper magna. Fusce non orci sed mi aliquet pellentesque.
-                Duis a nibh sit amet nulla interdum finibus. Praesent ve
+
               </p>
             </div>
           </div>
@@ -274,13 +259,11 @@
 
 
 
-            <img class="card-img-top" src="https://www.thinkcomputers.org/wp-content/uploads/2018/02/PUBG.jpg" alt="Card image cap">
+            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
             <div class="card-block">
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
                 molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-                vitae velit. Nullam rhoncus enim vitae nisi fringilla, sit amet congue erat iaculis. N am
-                fringilla leo commodo, consequat urna a, semper magna. Fusce non orci sed mi aliquet pellentesque.
-                Duis a nibh sit amet nulla interdum finibus. Praesent ve
+
               </p>
             </div>
           </div>
@@ -291,13 +274,11 @@
 
 
 
-            <img class="card-img-top" src="https://www.thinkcomputers.org/wp-content/uploads/2018/02/PUBG.jpg" alt="Card image cap">
+            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
             <div class="card-block">
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
                 molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-                vitae velit. Nullam rhoncus enim vitae nisi fringilla, sit amet congue erat iaculis. N am
-                fringilla leo commodo, consequat urna a, semper magna. Fusce non orci sed mi aliquet pellentesque.
-                Duis a nibh sit amet nulla interdum finibus. Praesent ve
+
               </p>
             </div>
           </div>
@@ -308,13 +289,11 @@
 
 
 
-            <img class="card-img-top" src="https://www.thinkcomputers.org/wp-content/uploads/2018/02/PUBG.jpg" alt="Card image cap">
+            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
             <div class="card-block">
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
                 molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-                vitae velit. Nullam rhoncus enim vitae nisi fringilla, sit amet congue erat iaculis. N am
-                fringilla leo commodo, consequat urna a, semper magna. Fusce non orci sed mi aliquet pellentesque.
-                Duis a nibh sit amet nulla interdum finibus. Praesent ve
+
               </p>
             </div>
           </div>
@@ -369,19 +348,16 @@
 
 
 
-
         <div class="col-xs-2 col-md-2">
           <div class="card card-outline-primary mb-3 text-center">
 
 
 
-            <img class="card-img-top" src="https://www.thinkcomputers.org/wp-content/uploads/2018/02/PUBG.jpg" alt="Card image cap">
+            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
             <div class="card-block">
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
                 molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-                vitae velit. Nullam rhoncus enim vitae nisi fringilla, sit amet congue erat iaculis. N am
-                fringilla leo commodo, consequat urna a, semper magna. Fusce non orci sed mi aliquet pellentesque.
-                Duis a nibh sit amet nulla interdum finibus. Praesent ve
+
               </p>
             </div>
           </div>
@@ -392,13 +368,11 @@
 
 
 
-            <img class="card-img-top" src="https://www.thinkcomputers.org/wp-content/uploads/2018/02/PUBG.jpg" alt="Card image cap">
+            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
             <div class="card-block">
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
                 molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-                vitae velit. Nullam rhoncus enim vitae nisi fringilla, sit amet congue erat iaculis. N am
-                fringilla leo commodo, consequat urna a, semper magna. Fusce non orci sed mi aliquet pellentesque.
-                Duis a nibh sit amet nulla interdum finibus. Praesent ve
+
               </p>
             </div>
           </div>
@@ -409,13 +383,11 @@
 
 
 
-            <img class="card-img-top" src="https://www.thinkcomputers.org/wp-content/uploads/2018/02/PUBG.jpg" alt="Card image cap">
+            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
             <div class="card-block">
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
                 molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-                vitae velit. Nullam rhoncus enim vitae nisi fringilla, sit amet congue erat iaculis. N am
-                fringilla leo commodo, consequat urna a, semper magna. Fusce non orci sed mi aliquet pellentesque.
-                Duis a nibh sit amet nulla interdum finibus. Praesent ve
+
               </p>
             </div>
           </div>
@@ -426,13 +398,11 @@
 
 
 
-            <img class="card-img-top" src="https://www.thinkcomputers.org/wp-content/uploads/2018/02/PUBG.jpg" alt="Card image cap">
+            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
             <div class="card-block">
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
                 molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-                vitae velit. Nullam rhoncus enim vitae nisi fringilla, sit amet congue erat iaculis. N am
-                fringilla leo commodo, consequat urna a, semper magna. Fusce non orci sed mi aliquet pellentesque.
-                Duis a nibh sit amet nulla interdum finibus. Praesent ve
+
               </p>
             </div>
           </div>
@@ -443,13 +413,11 @@
 
 
 
-            <img class="card-img-top" src="https://www.thinkcomputers.org/wp-content/uploads/2018/02/PUBG.jpg" alt="Card image cap">
+            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
             <div class="card-block">
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
                 molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-                vitae velit. Nullam rhoncus enim vitae nisi fringilla, sit amet congue erat iaculis. N am
-                fringilla leo commodo, consequat urna a, semper magna. Fusce non orci sed mi aliquet pellentesque.
-                Duis a nibh sit amet nulla interdum finibus. Praesent ve
+
               </p>
             </div>
           </div>
@@ -460,13 +428,11 @@
 
 
 
-            <img class="card-img-top" src="https://www.thinkcomputers.org/wp-content/uploads/2018/02/PUBG.jpg" alt="Card image cap">
+            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
             <div class="card-block">
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
                 molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-                vitae velit. Nullam rhoncus enim vitae nisi fringilla, sit amet congue erat iaculis. N am
-                fringilla leo commodo, consequat urna a, semper magna. Fusce non orci sed mi aliquet pellentesque.
-                Duis a nibh sit amet nulla interdum finibus. Praesent ve
+
               </p>
             </div>
           </div>
@@ -482,11 +448,11 @@
     </div>
   </div>
 
-  
-  
 
 
 
+
+  <%@include file="/WEB-INF/layout/footer.jspf" %>
 
 
 

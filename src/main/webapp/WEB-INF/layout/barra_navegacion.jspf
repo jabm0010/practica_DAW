@@ -22,7 +22,7 @@
 
     <div class="collapse navbar-collapse justify-content-end" id="collapse_target">
 
-      <form class="form-inline mt-4 mt-md-0 " role="form" action="barra_navegacion.jspf" method="POST">
+      <form class="form-inline mt-4 mt-md-0 " role="form" action="tienda.jsp" method="POST">
         <input class="form-control mr-sm-4" type="text" name="busca" placeholder="Busca..." aria-label="Busca...">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go!</button>
       </form>
@@ -30,7 +30,7 @@
       
         <%-- envío con la busqueda --%>
       <c:if test="${pageContext.request.method=='POST'}">
-        <c:redirect url="buscaJuegos.jsp?busca=${param.busca}"/>
+        <c:redirect url="busqueda.jsp?busca=${param.busca}"/>
       </c:if>
 
       <ul class="navbar-nav ">

@@ -21,9 +21,6 @@ and open the template in the editor.
 
 }
 
-body{
-    background-color: rgb(224, 224, 224);
-}
 
 
 .titulo{
@@ -57,7 +54,10 @@ body{
     color:black;
 }
 
-
+.list-group-item{
+            margin: 0 auto; 
+        float: none;
+}
 
 .mas-vendidos{
     border-radius: 9px; 

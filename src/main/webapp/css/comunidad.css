@@ -10,25 +10,22 @@ and open the template in the editor.
 
 
 
-body{
-    background-color: rgb(224, 224, 224);
-}
-
-
 
 
 
 .fila-buffer{
     margin-top: 5rem;
-   
+
 }
-   
+
 .titulo{
     font-family: 'Patua One', cursive;
+          margin: 0 auto; 
+        float: none;
 }
-
 
 .mi-perfil{
-    margin-left:6.3rem;
+        margin: 0 auto; 
+        float: none;
+     
 }
-

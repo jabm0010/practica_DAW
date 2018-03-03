@@ -4,28 +4,21 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 28-feb-2018, 10:51:42
+    Created on : 03-mar-2018, 10:32:09
     Author     : Juan Béjar
 */
 
-
-
-
-
+.titulo{
+    font-family: 'Patua One', cursive;
+    text-align: center;
+}
 
 .fila-buffer{
     margin-top: 5rem;
 
 }
 
-.titulo{
-    font-family: 'Patua One', cursive;
-          margin: 0 auto; 
-        float: none;
-}
-
-.mi-perfil{
-        margin: 0 auto; 
-        float: none;
-     
+.juego-compra{
+    margin: 0 auto; 
+    float: none;
 }

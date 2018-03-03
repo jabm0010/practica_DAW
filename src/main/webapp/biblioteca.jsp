@@ -12,7 +12,7 @@
     <title>Biblioteca</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <%@include file="/WEB-INF/layout/barra_navegacion.jspf" %>
+
 
     <link rel="stylesheet" href="css/biblioteca.css">
 
@@ -20,7 +20,7 @@
 
   <body>
 
-   
+    <%@include file="/WEB-INF/layout/barra_navegacion.jspf" %>
 
 
     <!--Hasta aquí barra de navegación-->
@@ -31,11 +31,11 @@
       <div class="row">
 
         <div class="col-sm-5 busqueda-juegos">
-          <input type="search" class="form-control ds-input btn-outline-primary" id="search-input" placeholder="Buscar..." autocomplete="off"
+          <input type="search" class="form-control ds-input btn-outline-primary" id="search-input" placeholder="Busca en tu biblioteca" autocomplete="off"
                  spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0"
                  dir="auto" style="position: relative; vertical-align: top;">
         </div>
-        ¡
+
 
 
       </div>
@@ -158,7 +158,7 @@
 
 
           <div class="card mb-3 border-primary">
-            <img class="card-img-top" src="https://www.thinkcomputers.org/wp-content/uploads/2018/02/PUBG.jpg" alt="Card image cap">
+            <img class="card-img-top" src="http://placehold.it/800x500" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <div class="btn-group mr-2" role="group" aria-label="First group">
