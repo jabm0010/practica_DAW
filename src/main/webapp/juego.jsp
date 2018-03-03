@@ -32,6 +32,7 @@
               <p class="card-text">Descripción:</p>
             </div>
             <ul class="list-group list-group-flush">
+              <li class="list-group-item">Precio: </li>
               <li class="list-group-item">Géneros a los que pertenece: </li>
               <li class="list-group-item">Amigos que tienen este juego: </li>
 
@@ -42,10 +43,57 @@
         </div>
 
         <div class="col-md-7">
+          <h1 class="titulo">Pago</h1>
+          <hr width="60%" style="background:rgb(72, 153, 219); border:0; height:7px" />
 
 
 
-     
+
+          <form class="formulario-pago">
+            <div class="form-row">
+              <div class="form-group col-md-3"></div>
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Titular de la tarjeta</label>
+                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+              </div>
+              <div class="form-group col-md-3"></div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-3"></div>
+              <div class="form-group col-md-6">
+                <div class="form-group">
+                  <label for="inputDirección">Número de tarjeta</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Número">
+                </div>
+              </div>
+              <div class="form-group col-md-3"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-3"></div>
+              <div class="form-group col-md-4">
+                <label for="inputTarjeta">Tarjeta Crédito</label>
+                <select id="inputTarjeta" class="form-control">
+                  <option selected>Visa</option>
+                  <option>Mastercard</option>
+                  <option>Paypal</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="CCV">CVV</label>
+                <input type="text" class="form-control" id="inputCCV">
+              </div>
+              <div class="form-group col-md-2"></div>
+            </div>
+
+
+            <div class="form-row">
+              <div class="form-group col-md-3"></div>
+              <button type="button" data-toggle="modal" data-target="#notificacion-compra" class="btn btn-success">Comprar</button>
+            </div>
+          </form>
+
+
 
         </div>
 
@@ -59,8 +107,37 @@
 
 
 
+    <!--Modal para mostrar confirmación de compra de juego-->     
+
+    <div class="modal fade" id="notificacion-compra" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Compra realizada</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            La compra se ha realizado correctamente. El juego será ahora añadido a tu biblioteca
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">OK!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
   </body>
 
-  <%@include file="/WEB-INF/layout/footer.jspf" %>
+
+
+
+
+
+
+</body>
+
+<%@include file="/WEB-INF/layout/footer.jspf" %>
 </html>
