@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <%@include file="/WEB-INF/layout/head_links.jspf" %>
 
     <link rel="stylesheet" href="css/biblioteca.css">
 

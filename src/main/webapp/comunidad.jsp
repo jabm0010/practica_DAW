@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-
+    <%@include file="/WEB-INF/layout/head_links.jspf" %>
     <link rel="stylesheet" href="css/comunidad.css">
 
   </head>
@@ -54,7 +54,7 @@
 
             </ul>
             <div class="card-body">
-              <a href="#" class="card-link">Modificar mi biografía</a>
+             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#configuracion-perfil">Configurar perfil</button>
 
             </div>
           </div>
@@ -159,7 +159,58 @@
 
 
 
-      <!--Hasta aquí el footer-->
+
+
+     <!--Modal para mostrar confiuración de perfil-->     
+
+
+
+      <div class="modal fade" id="configuracion-perfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Configuración del perfil</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" role="form" action="comunidad.jsp" method="POST">
+                <div class="form-group">
+                  <label for="user">Nombre de usuario:</label>
+                  <input type="text" class="form-control" name="user">
+                </div>
+
+                <div class="form-group">
+                  <label for="old-pwd">Antigua contraseña:</label>
+                  <input type="text" class="form-control" name="old-pwd">
+                </div>
+
+                <div class="form-group">
+                  <label for="new-pwd">Nueva contraseña:</label>
+                  <input type="text" class="form-control" name="new-pwd">
+                </div>
+
+                <div class="form-group">
+                  <label for="biografia">Biografía:</label>
+                  <input type="text" class="form-control" name="biografia">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
 
 
   </body>
