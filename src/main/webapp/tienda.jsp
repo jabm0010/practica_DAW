@@ -3,6 +3,9 @@
     Created on : 28-feb-2018, 10:40:03
     Author     : Juan Béjar
 --%>
+<%--
+    Página de la tienda, donde se mostrarán las principales ofertas y novedades de la página.
+--%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,6 +24,7 @@
 
   <body>
 
+    <!--Barra de navegación -->
     <%@include file="/WEB-INF/layout/barra_navegacion.jspf" %>
 
     <div class="container-fluid">
@@ -33,6 +37,8 @@
           <br/>
           <br/>
           <br/>
+
+          <!--Sección de destacados con carousel-->
           <h2 class="titulo pri">
             <center>DESTACADOS</center>
           </h2>
@@ -73,6 +79,7 @@
           <br/>
           <br/>
           <br/>
+          <!--Sección de ofertas semanales-->
           <h4 class="titulo sec">
             <center>OFERTAS SEMANALES</center>
           </h4>
@@ -126,192 +133,38 @@
 
 
       <!--Hasta aquí las filas con los titulos y las ofertas destacadas y semanales-->
-      <!--Intentar luego hacerlas en una sola fila para que no se descoloquen en tamaño movil-->
-
-
-
-
 
 
     </div>
 
-  </table>
 
 
-  <div class="features">
-    <h2 class="titulo-med"><center>TE ASEGURAMOS</center></h2>
-    <hr width="100%" style="background:rgb(72, 153, 219); border:0; height:7px" />
-    <div class="row">
-      <div class="col-lg-4">
-        <img class="rounded-circle" src="imgs/6.png" alt="Generic placeholder image" width="140" height="140">
-        <h3 class="titulo-med">MEJOR PRECIO</h3>
-
-
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <img class="rounded-circle" src="imgs/7.png" alt="Generic placeholder image" width="140" height="140">
-        <h3 class="titulo-med">SIN DRM</h3>
-
-
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <img class="rounded-circle" src="imgs/8.png" alt="Generic placeholder image" width="140" height="140">
-        <h3 class="titulo-med">SEGURIDAD</h3>
-
-
-      </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
-    <hr width="100%" style="background:rgb(72, 153, 219); border:0; height:7px" />
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="container-fluid">
-    <div class="mas-vendidos">
+    <!--Sección de información-->
+    <div class="features">
+      <h2 class="titulo-med"><center>TE ASEGURAMOS</center></h2>
+      <hr width="100%" style="background:rgb(72, 153, 219); border:0; height:7px" />
       <div class="row">
-        <div class="col-xs-12 col-md-12">
+        <div class="col-lg-4">
+          <img class="rounded-circle" src="imgs/6.png" alt="Generic placeholder image" width="140" height="140">
+          <h3 class="titulo-med">MEJOR PRECIO</h3>
 
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <h4 class="titulo ter">
-            <center>LOS MÁS VENDIDOS</center>
-          </h4>
-          <hr width="85%" style="background:rgb(255,255,255); border:0; height:7px" />
 
+        </div>
+        <div class="col-lg-4">
+          <img class="rounded-circle" src="imgs/7.png" alt="Generic placeholder image" width="140" height="140">
+          <h3 class="titulo-med">SIN DRM</h3>
+
+
+        </div>
+        <div class="col-lg-4">
+          <img class="rounded-circle" src="imgs/8.png" alt="Generic placeholder image" width="140" height="140">
+          <h3 class="titulo-med">SEGURIDAD</h3>
 
 
         </div>
       </div>
-
-      <!--Hast aqui titulo-->
-
-
-      <div class="row">
-
-
-
-
-        <div class="col-xs-2 col-md-2">
-          <div class="card card-outline-primary mb-3 text-center">
-
-
-
-            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
-            <div class="card-block">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
-                molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-
-              </p>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-xs-2 col-md-2">
-          <div class="card card-outline-primary mb-3 text-center">
-
-
-
-            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
-            <div class="card-block">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
-                molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-
-              </p>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-xs-2 col-md-2">
-          <div class="card card-outline-primary mb-3 text-center">
-
-
-
-            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
-            <div class="card-block">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
-                molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-
-              </p>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-xs-2 col-md-2">
-          <div class="card card-outline-primary mb-3 text-center">
-
-
-
-            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
-            <div class="card-block">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
-                molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-
-              </p>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-xs-2 col-md-2">
-          <div class="card card-outline-primary mb-3 text-center">
-
-
-
-            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
-            <div class="card-block">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
-                molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-
-              </p>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-xs-2 col-md-2">
-          <div class="card card-outline-primary mb-3 text-center">
-
-
-
-            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
-            <div class="card-block">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
-                molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-
-
-
-      </div>
-
-
+      <hr width="100%" style="background:rgb(72, 153, 219); border:0; height:7px" />
     </div>
-  </div>
-
-
-
-  <!--Hasta aquí sección de más vendidos-->
 
 
 
@@ -321,141 +174,293 @@
 
 
 
-  <div class="container-fluid">
-    <div class="proximos-lanzamientos">
-      <div class="row">
-        <div class="col-xs-12 col-md-12">
 
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <h4 class="titulo ter">
-            <center>PROXIMOS LANZAMIENTOS</center>
-          </h4>
-          <hr width="85%" style="background:rgb(255,255,255); border:0; height:7px" />
+
+
+
+
+
+
+
+
+    <div class="container-fluid">
+      <div class="mas-vendidos">
+        <div class="row">
+          <div class="col-xs-12 col-md-12">
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <!--Sección de más vendidos-->
+            <h4 class="titulo ter">
+              <center>LOS MÁS VENDIDOS</center>
+            </h4>
+            <hr width="85%" style="background:rgb(255,255,255); border:0; height:7px" />
+
+
+
+          </div>
+        </div>
+
+
+
+
+        <div class="row">
+
+
+
+
+          <div class="col-xs-2 col-md-2">
+            <div class="card card-outline-primary mb-3 text-center">
+
+
+
+              <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
+              <div class="card-block">
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
+                  molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
+
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-xs-2 col-md-2">
+            <div class="card card-outline-primary mb-3 text-center">
+
+
+
+              <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
+              <div class="card-block">
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
+                  molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
+
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-xs-2 col-md-2">
+            <div class="card card-outline-primary mb-3 text-center">
+
+
+
+              <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
+              <div class="card-block">
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
+                  molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
+
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-xs-2 col-md-2">
+            <div class="card card-outline-primary mb-3 text-center">
+
+
+
+              <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
+              <div class="card-block">
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
+                  molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
+
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-xs-2 col-md-2">
+            <div class="card card-outline-primary mb-3 text-center">
+
+
+
+              <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
+              <div class="card-block">
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
+                  molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
+
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-xs-2 col-md-2">
+            <div class="card card-outline-primary mb-3 text-center">
+
+
+
+              <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
+              <div class="card-block">
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
+                  molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
+
+                </p>
+              </div>
+            </div>
+
+          </div>
+
 
 
 
         </div>
+
+
       </div>
-
-      <!--Hast aqui titulo-->
-
-
-      <div class="row">
-
-
-
-        <div class="col-xs-2 col-md-2">
-          <div class="card card-outline-primary mb-3 text-center">
-
-
-
-            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
-            <div class="card-block">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
-                molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-
-              </p>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-xs-2 col-md-2">
-          <div class="card card-outline-primary mb-3 text-center">
-
-
-
-            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
-            <div class="card-block">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
-                molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-
-              </p>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-xs-2 col-md-2">
-          <div class="card card-outline-primary mb-3 text-center">
-
-
-
-            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
-            <div class="card-block">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
-                molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-
-              </p>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-xs-2 col-md-2">
-          <div class="card card-outline-primary mb-3 text-center">
-
-
-
-            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
-            <div class="card-block">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
-                molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-
-              </p>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-xs-2 col-md-2">
-          <div class="card card-outline-primary mb-3 text-center">
-
-
-
-            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
-            <div class="card-block">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
-                molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-
-              </p>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-xs-2 col-md-2">
-          <div class="card card-outline-primary mb-3 text-center">
-
-
-
-            <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
-            <div class="card-block">
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
-                molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
-
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-
-
-
-      </div>
-
-
     </div>
-  </div>
+
+
+
+    <!--Hasta aquí sección de más vendidos-->
 
 
 
 
+
+
+
+
+    <!--Sección de más vendidos-->
+    <div class="container-fluid">
+      <div class="proximos-lanzamientos">
+        <div class="row">
+          <div class="col-xs-12 col-md-12">
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <h4 class="titulo ter">
+              <center>PROXIMOS LANZAMIENTOS</center>
+            </h4>
+            <hr width="85%" style="background:rgb(255,255,255); border:0; height:7px" />
+
+
+
+          </div>
+        </div>
+
+        <!--Hast aqui titulo-->
+
+
+        <div class="row">
+
+
+
+          <div class="col-xs-2 col-md-2">
+            <div class="card card-outline-primary mb-3 text-center">
+
+
+
+              <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
+              <div class="card-block">
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
+                  molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
+
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-xs-2 col-md-2">
+            <div class="card card-outline-primary mb-3 text-center">
+
+
+
+              <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
+              <div class="card-block">
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
+                  molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
+
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-xs-2 col-md-2">
+            <div class="card card-outline-primary mb-3 text-center">
+
+
+
+              <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
+              <div class="card-block">
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
+                  molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
+
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-xs-2 col-md-2">
+            <div class="card card-outline-primary mb-3 text-center">
+
+
+
+              <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
+              <div class="card-block">
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
+                  molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
+
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-xs-2 col-md-2">
+            <div class="card card-outline-primary mb-3 text-center">
+
+
+
+              <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
+              <div class="card-block">
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
+                  molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
+
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-xs-2 col-md-2">
+            <div class="card card-outline-primary mb-3 text-center">
+
+
+
+              <img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap">
+              <div class="card-block">
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper interdum commodo. Morbi
+                  molestie, ligula ut max imus accumsan, arcu leo imperdiet nisl, vel imperdiet lorem mauris
+
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+
+
+
+
+
+
+  </body>
+
+  <!--footer-->
 
   <%@include file="/WEB-INF/layout/footer.jspf" %>
 
-
-
-</body>
 
 </html>

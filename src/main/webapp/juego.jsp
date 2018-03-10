@@ -4,6 +4,10 @@
     Author     : Juan Béjar
 --%>
 
+<%--
+    Página de juego, donde un usuario podrá procesar el pago de un juego que haya seleccionado en las otras vistas
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,12 +20,13 @@
   </head>
 
   <body>
+    <!--Barra de navegación -->
     <%@include file="/WEB-INF/layout/barra_navegacion.jspf" %>
 
     <div class="container-fluid">
       <div class="row fila-buffer">
         <div class="col-md-5">
-
+          <!--Información del juego -->
           <h1 class="titulo">Juego</h1>
           <hr width="60%" style="background:rgb(72, 153, 219); border:0; height:7px" />
           <div class="card  juego-compra " style="width: 25rem;">
@@ -43,6 +48,8 @@
         </div>
 
         <div class="col-md-7">
+
+          <!--Formulario de pago -->
           <h1 class="titulo">Pago</h1>
           <hr width="60%" style="background:rgb(72, 153, 219); border:0; height:7px" />
 
@@ -133,11 +140,6 @@
 
 
 
-
-
-
-
-</body>
-
-<%@include file="/WEB-INF/layout/footer.jspf" %>
+  <!--Footer -->
+  <%@include file="/WEB-INF/layout/footer.jspf" %>
 </html>

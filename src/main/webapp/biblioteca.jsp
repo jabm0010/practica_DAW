@@ -4,6 +4,11 @@
     Author     : Juan Béjar
 --%>
 
+<%--
+    Vista biblioteca donde un usuario podrá ver los juegos que posee.
+--%>
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,17 +25,17 @@
   </head>
 
   <body>
-
+    
+    <!--Barra de navegación -->
     <%@include file="/WEB-INF/layout/barra_navegacion.jspf" %>
 
 
-    <!--Hasta aquí barra de navegación-->
 
 
 
     <div class="container-fluid">
       <div class="row">
-
+          <!--Barra para buscar entre los juegos de tu biblioteca -->
         <div class="col-sm-5 busqueda-juegos">
           <input type="search" class="form-control ds-input btn-outline-primary" id="search-input" placeholder="Busca en tu biblioteca" autocomplete="off"
                  spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0"
@@ -156,7 +161,7 @@
         </div>
 
         <div class="col-sm-8 juego-elegido">
-
+            <!--Juego seleccionado de tu biblioteca -->
 
           <div class="card mb-3 border-primary">
             <img class="card-img-top" src="http://placehold.it/800x500" alt="Card image cap">
@@ -184,7 +189,7 @@
 
 
 
-
+    <!--Footer -->
     <%@include file="/WEB-INF/layout/footer.jspf" %>
 
 

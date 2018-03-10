@@ -4,6 +4,11 @@
     Author     : Juan Béjar
 --%>
 
+<%--
+    Página comunidad, donde un usuario podrá ver su perfil y sus amigos. Si se pulsa en el botón de Modificar Perfil aparecerá un modal 
+    para modificar los datos del usuario, aunque de momento solo es visual.
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -23,13 +28,11 @@
 
   <body>
 
-
+    <!--Barra de navegación -->
 
     <%@include file="/WEB-INF/layout/barra_navegacion.jspf" %>
 
 
-
-    <!--Hasta aquí barra de navegación-->
 
 
 
@@ -37,6 +40,7 @@
       <div class="row fila-buffer">
 
         <div class="col-md-4">
+          <!--Sección de perfil personal -->
           <h2 class="titulo">
             <center>MI PERFIL</center>
           </h2>
@@ -54,7 +58,7 @@
 
             </ul>
             <div class="card-body">
-             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#configuracion-perfil">Configurar perfil</button>
+              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#configuracion-perfil">Configurar perfil</button>
 
             </div>
           </div>
@@ -65,6 +69,8 @@
         </div>
 
         <div class="col-md-7">
+
+          <!--Sección de amigos -->
           <div class="row">
             <h2 class="titulo"> MIS AMIGOS
             </h2>
@@ -161,7 +167,7 @@
 
 
 
-     <!--Modal para mostrar confiuración de perfil-->     
+      <!--Modal para mostrar confiuración de perfil-->     
 
 
 
@@ -215,7 +221,7 @@
 
   </body>
 
-
+  <!--Foooter -->
   <%@include file="/WEB-INF/layout/footer.jspf" %>
 
 </html>

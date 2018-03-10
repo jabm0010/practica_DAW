@@ -1,10 +1,20 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%-- 
     Document   : index
     Created on : 28-feb-2018, 10:11:35
     Author     : Juan Béjar
 --%>
 
+
+<%--
+    Página principal de la aplicación, donde un usuario podrá introducir sus datos o registrarse.
+    Ahora mismo, el usuario puede rellenar ambos formularios y será rederigido a la vista de comunidad, 
+    en la cual aparecerá el nombre que ha introducido en su perfil.
+--%>
+
+
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,7 +32,7 @@
 
     <body>
 
-
+       <!--Barra de navegación -->
         <div class="barra-navegacion">
             <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 
@@ -56,7 +66,7 @@
         </div>
 
 
-        <!--Barra de navegación hasta aquí-->
+        <!--Login y registroo -->
 
         <div class="row">
             <div class="col-xs-2 col-md-2"></div>
@@ -239,7 +249,7 @@
 
 
 
-
+         <!--Sección de información -->
 
         <div class="row ">
 
@@ -267,16 +277,17 @@
 
 
 
-        <!--Fila de debajo con información adicional hasta aquí-->
 
 
-
-
-        <%@include file="/WEB-INF/layout/footer.jspf" %>
-
+          <!--Footer -->
 
 
 
     </body>
+
+    
+    
+        <%@include file="/WEB-INF/layout/footer.jspf" %>
+
 
 </html>
