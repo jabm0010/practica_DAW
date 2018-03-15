@@ -5,8 +5,11 @@
  */
 package com.daw.vj.controller;
 
+import com.daw.vj.dao.ClienteDAO;
+import com.daw.vj.dao.ClientesDAOList;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +20,21 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Juan Béjar
  */
-@WebServlet(name = "ClienteController", urlPatterns = {"/ClienteController"})
+@WebServlet(name = "ClienteController", urlPatterns = {"/"})
 public class ClienteController extends HttpServlet {
+
+    private ClienteDAO clientes;  //Lista con los clientes
+
+    //Iniciación
+    @Override
+    public void init()
+            throws ServletException {
+
+        super.init();
+        //Select DAO implementation
+        clientes = new ClientesDAOList();
+
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,25 +48,15 @@ public class ClienteController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ClienteController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ClienteController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
+     * // * @param request servlet request
+     *
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
@@ -59,6 +65,7 @@ public class ClienteController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
     }
 
     /**
@@ -73,6 +80,47 @@ public class ClienteController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
+        String log_usuario = request.getParameter("log_usuario"); //Nombre introducido en el formulario log_usuario
+        String log_pwd = request.getParameter("log_pwd"); //Contraseña introducida en el formulario log_pwd
+        boolean resultado = clientes.verificarCliente(log_usuario, log_pwd); //Llamada al método de comprobación de existencia del usuario
+
+        if (resultado) {
+            int id=clientes.obtenerID(log_usuario, log_pwd);
+            request.getSession().setAttribute("biografia", clientes.buscaId(id).getBiografia());
+            
+            request.getSession().setAttribute("log_usuario", log_usuario);
+            request.getSession().setAttribute("log_pwd", log_pwd);
+            response.sendRedirect("comunidad.jsp");
+        } else {
+            request.setAttribute("log_usuario", log_usuario);
+            request.setAttribute("log_pwd", log_pwd);
+            request.setAttribute("error", "Los datos introducidos son incorrectos");
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            rd.forward(request, response);
+        }
+        
+        
+      
+/*
+        String reg_usuario = request.getParameter("reg_usuario"); //Nombre introducido en el formulario log_usuario
+        String reg_pwd = request.getParameter("reg_pwd"); //Contraseña introducida en el formulario log_pwd
+        String reg_email=request.getParameter("reg_email");
+        clientes.registrar(reg_nombre, reg_email,reg_pwd);
+   
+
+        if (resultado) {
+            request.getSession().setAttribute("log_usuario", log_usuario);
+            request.getSession().setAttribute("log_pwd", log_pwd);
+            response.sendRedirect("comunidad.jsp");
+        } else {
+            request.setAttribute("log_usuario", log_usuario);
+            request.setAttribute("log_pwd", log_pwd);
+            request.setAttribute("error", "Los datos introducidos son incorrectos");
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            rd.forward(request, response);
+        }
+*/
     }
 
     /**

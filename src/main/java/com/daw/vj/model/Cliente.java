@@ -5,6 +5,9 @@
  */
 package com.daw.vj.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Juan Béjar
@@ -15,6 +18,8 @@ public class Cliente {
     private String nombre;
     private String correo;
     private String biografia;
+    private String pwd;
+    private List<Cliente> amigos;
 
     //Constructor por defecto
     public Cliente() {
@@ -22,14 +27,18 @@ public class Cliente {
         nombre = " ";
         correo = " ";
         biografia = " ";
-
+        pwd= " ";
+        amigos=new ArrayList<>();
     }
     
-    public Cliente(int id, String nombre, String correo, String biografia){
+    public Cliente(int id, String nombre, String correo, String biografia,String pwd, List<Cliente> amigos){
         this.id=id;
         this.nombre=nombre;
         this.correo=correo;
         this.biografia=biografia;
+        this.pwd=pwd;
+        this.amigos=amigos;
+        
     }
 
     //Constructorr de copia
@@ -38,6 +47,8 @@ public class Cliente {
         this.nombre = c.nombre;
         this.correo = c.correo;
         this.biografia = c.biografia;
+        this.pwd=c.pwd;
+        this.amigos=c.amigos;
     }
 
     /**
@@ -94,6 +105,34 @@ public class Cliente {
      */
     public void setBiografia(String biografia) {
         this.biografia = biografia;
+    }
+
+    /**
+     * @return the pwd
+     */
+    public String getPwd() {
+        return pwd;
+    }
+
+    /**
+     * @param pwd the pwd to set
+     */
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+    /**
+     * @return the amigos
+     */
+    public List<Cliente> getAmigos() {
+        return amigos;
+    }
+
+    /**
+     * @param amigos the amigos to set
+     */
+    public void setAmigos(List<Cliente> amigos) {
+        this.amigos = amigos;
     }
 
 }

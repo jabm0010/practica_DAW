@@ -49,8 +49,9 @@
             <img class="round card-img-top" src="https://www.ocf.berkeley.edu/~dblab/blog/wp-content/uploads/2012/01/icon-profile.png"
                  alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title"> ${param.log_usuario}</h5>
-              <p class="card-text">Biografía</p>
+              <h5 class="card-title"> ${log_usuario}</h5>
+              ${bienvenida}
+              <p class="card-text">${biografia}</p>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Número de juegos: </li>

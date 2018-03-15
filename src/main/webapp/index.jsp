@@ -77,18 +77,18 @@
 
                             <h1 class="page-header">Identifícate</h1>
 
-                            <form class="form-horizontal" role="form" action="index.jsp" method="POST">
+                            <form class="form-horizontal" role="form" action="ClienteController" method="POST">
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="log_usuario">Usuario:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="log_usuario" placeholder="Introduce tu nombre">
+                                        <input type="text" class="form-control" name="log_usuario" value="${log_usuario}" placeholder="Introduce tu nombre">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="log_pwd">Contraseña:</label>
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" name="log_pwd" placeholder="Introduce tu contraseña">
+                                        <input type="password" class="form-control" name="log_pwd" value="${log_pwd}" placeholder="Introduce tu contraseña">
                                     </div>
                                 </div>
 
@@ -105,6 +105,8 @@
                                         <button type="submit" name="acceder" class="btn btn-default">Acceder</button>
                                     </div>
                                 </div>
+                              
+                              ${error}
                             </form>
                             
                            
@@ -112,33 +114,6 @@
                             <!--Si el formulario se envía, mostrar posibles errores-->
 
 
-
-                            <c:if test="${pageContext.request.method=='POST'}">
-                                <c:if test="${pageContext.request.getParameter('acceder')!=null}">
-                                    <c:if test="${pageContext.request.getParameter('log_usuario')==''}">
-                                        Introduce tu nombre de usuario <br> 
-                                    </c:if>
-                                </c:if>
-                            </c:if>
-
-                            <c:if test="${pageContext.request.method=='POST'}">
-                                <c:if test="${pageContext.request.getParameter('acceder')!=null}">
-                                    <c:if test="${pageContext.request.getParameter('log_pwd')==''}">
-                                        Introduce tu contraseña
-                                    </c:if>
-                                </c:if>
-
-                            </c:if>
-
-                            <c:if test="${pageContext.request.method=='POST'}">
-                                <c:if test="${pageContext.request.getParameter('acceder')!=null}">
-                                    <c:if test="${pageContext.request.getParameter('log_usuario')!=''}">
-                                        <c:if test="${pageContext.request.getParameter('log_pwd')!=''}">
-                                            <c:redirect url="comunidad.jsp?log_usuario=${param.log_usuario}"/>
-                                        </c:if>
-                                    </c:if>
-                                </c:if>
-                            </c:if>       
 
 
 
@@ -156,24 +131,24 @@
                         <div class="columna-derecha">
                             <h1 class="page-header">Regístrate</h1>
 
-                            <form class="form-horizontal" role="form" action="index.jsp" method="POST">
+                            <form class="form-horizontal" role="form" action="ClienteController" method="POST">
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="reg_email">Email:</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" name="reg_email" placeholder="Introduce tu email">
+                                        <input type="email" class="form-control" name="reg_email"  value="${reg_email}" placeholder="Introduce tu email">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="reg_usuario">Usuario:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="reg_usuario" placeholder="Introduce tu nombre">
+                                        <input type="text" class="form-control" name="reg_usuario" value="${reg_usuario}" placeholder="Introduce tu nombre">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="reg_pwd">Contraseña:</label>
                                     <div class="col-sm-10">
                                         
-                                        <input type="password" class="form-control" name="reg_pwd" placeholder="Introduce tu contraseña">
+                                        <input type="password" class="form-control" name="reg_pwd" value="${reg_pwd}" placeholder="Introduce tu contraseña">
                                     </div>
                                 </div>
 
@@ -184,41 +159,7 @@
                                 </div>
                             </form>
 
-                            <c:if test="${pageContext.request.method=='POST'}">
-                                <c:if test="${pageContext.request.getParameter('registrarme')!=null}">
-                                    <c:if test="${pageContext.request.getParameter('reg_email')==''}">
-                                        Introduce tu email <br>
-                                    </c:if>
-                                </c:if>
-                            </c:if>
-
-                            <c:if test="${pageContext.request.method=='POST'}">
-                                <c:if test="${pageContext.request.getParameter('registrarme')!=null}">
-                                    <c:if test="${pageContext.request.getParameter('reg_usuario')==''}">
-                                        Introduce tu nombre de usuario <br>
-                                    </c:if>
-                                </c:if>
-                            </c:if>
-
-                            <c:if test="${pageContext.request.method=='POST'}">
-                                <c:if test="${pageContext.request.getParameter('registrarme')!=null}">
-                                    <c:if test="${pageContext.request.getParameter('reg_pwd')==''}">
-                                        Introduce tu contraseña
-                                    </c:if>
-                                </c:if>
-                            </c:if>
-
-                            <c:if test="${pageContext.request.method=='POST'}">
-                                <c:if test="${pageContext.request.getParameter('registrarme')!=null}">
-                                    <c:if test="${pageContext.request.getParameter('reg_pwd')!=''}">
-                                        <c:if test="${pageContext.request.getParameter('reg_usuario')!=''}">
-                                            <c:if test="${pageContext.request.getParameter('reg_email')!=''}">
-                                                <c:redirect url="comunidad.jsp?log_usuario=${param.reg_usuario}"/>
-                                            </c:if>
-                                        </c:if>
-                                    </c:if>
-                                </c:if>
-                            </c:if>    
+                           
 
                         </div>
                     </div>

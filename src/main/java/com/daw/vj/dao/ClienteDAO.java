@@ -21,9 +21,14 @@ public interface ClienteDAO {
     
     public boolean registrar(Cliente c); //Método para registrar un cliente
     
+    public boolean registrar(String nombre,String email, String pwd); //Metodo alternativo para registrar
+    
     public boolean modificar(Cliente c); //Método para modificar datos de un cliente
     
     public List<Cliente> buscaTodos(); //Método que devuelve todos los clientes
     
+    public boolean verificarCliente(String nombre, String pwd); //Método para autentificar a un cliente
+    
+    public int obtenerID(String nombre, String pwd);
     
 }
