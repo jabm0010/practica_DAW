@@ -22,11 +22,15 @@ public class ClientesDAOList implements ClienteDAO {
     public ClientesDAOList() {
         contador = 1;
 
+        amigos.add(new Cliente(5, "Jose", "d@gmail.com", "Hola!", "d", amigos, true));
+        amigos.add(new Cliente(5, "miguel", "f@gmail.com", "Hola!", "f", amigos, true));
+        amigos.add(new Cliente(5, "Luis", "e@gmail.com", "Hola!", "e", amigos, false));
+
         clientes = new ArrayList<>();
-        clientes.add(new Cliente(1, "AntonioR", "antonio99@gmail.com", "Hola!", "1234", amigos));
-        clientes.add(new Cliente(2, "Pepe1997", "pepepepe@gmail.com", "Hola!", "abcd", amigos));
-        clientes.add(new Cliente(3, "b", "b@gmail.com", "Hola!", "b", amigos));
-        clientes.add(new Cliente(4, "c", "c@gmail.com", "Hola!", "c", amigos));
+        clientes.add(new Cliente(1, "AntonioRe", "antonio99@gmail.com", "Hola!", "1234", amigos, false));
+        clientes.add(new Cliente(2, "Pepe1997", "pepepepe@gmail.com", "Hola!", "abcd", amigos, false));
+        clientes.add(new Cliente(3, "b", "b@gmail.com", "Hola!", "b", amigos, false));
+        clientes.add(new Cliente(4, "e", "c@gmail.com", "Hola!", "e", amigos, false));
 
     }
 
@@ -43,7 +47,7 @@ public class ClientesDAOList implements ClienteDAO {
     public List<Cliente> buscaNombre(String nombre) {
         List<Cliente> clientesCoinciden = new ArrayList<>();
         for (int i = 0; i < clientes.size(); i++) {
-            if (clientes.get(i).getNombre() == nombre) {
+            if (clientes.get(i).getNombre().contains(nombre) ) {
                 clientesCoinciden.add(clientes.get(i));
             }
         }
@@ -94,7 +98,7 @@ public class ClientesDAOList implements ClienteDAO {
 
     @Override
     public boolean registrar(String nombre, String email, String pwd) {
-        Cliente c = new Cliente(contador, nombre, email, "Escribe aquí tu biografía", pwd, amigos);
+        Cliente c = new Cliente(contador, nombre, email, "Escribe aquí tu biografía", pwd, amigos,true);
         clientes.add(c);
         return true;
     }

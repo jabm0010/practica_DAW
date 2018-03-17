@@ -5,6 +5,8 @@
  */
 package com.daw.vj.controller;
 
+import com.daw.vj.dao.ClienteDAO;
+import com.daw.vj.dao.ClientesDAOList;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Logger;
@@ -26,13 +28,13 @@ public class NavegaVistas extends HttpServlet {
     private final String srvViewPath = "/WEB-INF/app";
     private String srvUrl;
     private static final Logger Log = Logger.getLogger(NavegaVistas.class.getName());
-
+        private ClienteDAO clientes;  //Lista con los clientes
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
         super.init(servletConfig);
         Log.info("Iniciando NavegaVistasController");
         srvUrl = servletConfig.getServletContext().getContextPath() + "/app";
-
+        clientes = new ClientesDAOList();
     }
 
     /**
@@ -85,6 +87,10 @@ public class NavegaVistas extends HttpServlet {
                 rd = request.getRequestDispatcher(srvViewPath + "/index.jsp");
                 break;
             }
+            case "/busqueda": {
+                rd = request.getRequestDispatcher("/WEB-INF/app/busqueda.jsp");
+                break;
+            }
             default: {
                 rd = request.getRequestDispatcher(srvViewPath + "/comunidad.jsp");
                 break;
@@ -107,6 +113,12 @@ public class NavegaVistas extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
+        String busca_nombre = request.getParameter("busca_nombre"); //Valor introducido en la barra de busqueda
+        request.getSession().setAttribute("busca_nombre", busca_nombre);
+        request.getSession().setAttribute("usuarios", clientes.buscaNombre(busca_nombre));
+        
+        response.sendRedirect("busqueda");
     }
 
     /**

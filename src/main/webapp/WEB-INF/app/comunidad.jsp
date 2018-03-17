@@ -27,17 +27,10 @@
   </head>
 
 
+  <body>
+    
   <!--Barra de navegación -->
   <%@include file="/WEB-INF/layout/barra_navegacion.jspf" %>
-  <body>
-
-
-
-
-
-
-
-
 
     <div class="container-fluid">
       <div class="row fila-buffer">
@@ -57,7 +50,7 @@
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Número de juegos: </li>
-              <li class="list-group-item">Número de amigos: </li>
+              <li class="list-group-item">Número de amigos: ${numamigos} </li>
 
             </ul>
             <div class="card-body">
@@ -81,80 +74,37 @@
 
 
             <div class="card-deck">
-              <div class="card">
-                <img class="card-img-top" src="https://www.ocf.berkeley.edu/~dblab/blog/wp-content/uploads/2012/01/icon-profile.png" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                  <div class="btn-group mr-2" role="group" aria-label="First group">
+              <c:forEach var="c" items="${amigos}">
+                  <c:set var="qry" value="?id=${c.id}"/>
 
-                    <button type="button" class="btn btn-success">Enviar mensaje</button>
+                  <div class="card">
+                    <img class="card-img-top" src="https://www.ocf.berkeley.edu/~dblab/blog/wp-content/uploads/2012/01/icon-profile.png" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">${c.nombre}</h5>
+                      <p class="card-text">${c.biografia}</p>
+                      
+                      <div class="btn-group mr-2" role="group" aria-label="First group">
+
+                        <button type="button" class="btn btn-primary">Enviar mensaje</button>
 
 
 
+                      </div>
+
+                    </div>
+                    <div class="card-footer">
+                      <c:if test = "${c.online == false}" > 
+                          <span class="badge badge-danger">Offline</span>
+                      </c:if>
+                      <c:if test = "${c.online == true}" > 
+                          <span class="badge badge-success">Online</span>
+                      </c:if>
+                    </div>
                   </div>
 
-                </div>
-                <div class="card-footer">
-                  <span class="badge badge-danger">Offline</span>
-                </div>
-              </div>
-              <div class="card">
-                <img class="card-img-top" src="https://www.ocf.berkeley.edu/~dblab/blog/wp-content/uploads/2012/01/icon-profile.png" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                  <div class="btn-group mr-2" role="group" aria-label="First group">
-
-                    <button type="button" class="btn btn-success">Enviar mensaje</button>
+              </c:forEach>
 
 
-
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <span class="badge badge-danger">Offline</span>
-                </div>
-              </div>
-              <div class="card">
-                <img class="card-img-top" src="https://www.ocf.berkeley.edu/~dblab/blog/wp-content/uploads/2012/01/icon-profile.png" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                  <div class="btn-group mr-2" role="group" aria-label="First group">
-
-                    <button type="button" class="btn btn-success">Enviar mensaje</button>
-
-
-
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <span class="badge badge-danger">Offline</span>
-                </div>
-              </div>
-
-              <div class="card">
-                <img class="card-img-top" src="https://www.ocf.berkeley.edu/~dblab/blog/wp-content/uploads/2012/01/icon-profile.png" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                  <div class="btn-group mr-2" role="group" aria-label="First group">
-
-                    <button type="button" class="btn btn-success">Enviar mensaje</button>
-
-
-
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <span class="badge badge-danger">Offline</span>
-                </div>
-              </div>
 
             </div>
 

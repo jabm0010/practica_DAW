@@ -19,6 +19,7 @@ public class Cliente {
     private String correo;
     private String biografia;
     private String pwd;
+    private boolean online;
     private List<Cliente> amigos;
 
     //Constructor por defecto
@@ -29,15 +30,17 @@ public class Cliente {
         biografia = " ";
         pwd= " ";
         amigos=new ArrayList<>();
+        online=false;
     }
     
-    public Cliente(int id, String nombre, String correo, String biografia,String pwd, List<Cliente> amigos){
+    public Cliente(int id, String nombre, String correo, String biografia,String pwd, List<Cliente> amigos,boolean online){
         this.id=id;
         this.nombre=nombre;
         this.correo=correo;
         this.biografia=biografia;
         this.pwd=pwd;
         this.amigos=amigos;
+        this.online=online;
         
     }
 
@@ -49,6 +52,7 @@ public class Cliente {
         this.biografia = c.biografia;
         this.pwd=c.pwd;
         this.amigos=c.amigos;
+        this.online=c.online;
     }
 
     /**
@@ -133,6 +137,20 @@ public class Cliente {
      */
     public void setAmigos(List<Cliente> amigos) {
         this.amigos = amigos;
+    }
+
+    /**
+     * @return the online
+     */
+    public boolean isOnline() {
+        return online;
+    }
+
+    /**
+     * @param online the online to set
+     */
+    public void setOnline(boolean online) {
+        this.online = online;
     }
 
 }

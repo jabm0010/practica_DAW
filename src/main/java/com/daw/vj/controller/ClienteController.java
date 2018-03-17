@@ -96,7 +96,8 @@ public class ClienteController extends HttpServlet {
         if (resultado) {
             int id = clientes.obtenerID(log_usuario, log_pwd);
             request.getSession().setAttribute("biografia", clientes.buscaId(id).getBiografia());
-
+            request.getSession().setAttribute("amigos", clientes.buscaId(id).getAmigos());
+            request.getSession().setAttribute("numamigos", clientes.buscaId(id).getAmigos().size());
             request.getSession().setAttribute("log_usuario", log_usuario);
             request.getSession().setAttribute("log_pwd", log_pwd);
             response.sendRedirect("app");
