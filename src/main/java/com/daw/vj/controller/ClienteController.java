@@ -10,6 +10,7 @@ import com.daw.vj.dao.ClientesDAOList;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,19 +21,22 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Juan Béjar
  */
-@WebServlet(name = "ClienteController", urlPatterns = {"/"})
+@WebServlet(name = "ClienteController", urlPatterns = {"/cliente"})
 public class ClienteController extends HttpServlet {
 
+    private final String srvViewPath = "/WEB-INF/app";
     private ClienteDAO clientes;  //Lista con los clientes
+    private String srvUrl;
 
     //Iniciación
     @Override
-    public void init()
+    public void init(ServletConfig servletConfig)
             throws ServletException {
 
-        super.init();
+        super.init(servletConfig);
         //Select DAO implementation
         clientes = new ClientesDAOList();
+       // srvUrl = servletConfig.getServletContext().getContextPath() + "/cliente";
 
     }
 
@@ -48,7 +52,7 @@ public class ClienteController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        request.setAttribute("srvUrl", srvUrl);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -65,6 +69,10 @@ public class ClienteController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
+        RequestDispatcher rd;
+        rd = request.getRequestDispatcher("/WEB-INF/app/index.jsp");
+        rd.forward(request, response);
 
     }
 
@@ -86,23 +94,25 @@ public class ClienteController extends HttpServlet {
         boolean resultado = clientes.verificarCliente(log_usuario, log_pwd); //Llamada al método de comprobación de existencia del usuario
 
         if (resultado) {
-            int id=clientes.obtenerID(log_usuario, log_pwd);
+            int id = clientes.obtenerID(log_usuario, log_pwd);
             request.getSession().setAttribute("biografia", clientes.buscaId(id).getBiografia());
-            
+
             request.getSession().setAttribute("log_usuario", log_usuario);
             request.getSession().setAttribute("log_pwd", log_pwd);
-            response.sendRedirect("comunidad.jsp");
+            response.sendRedirect("app");
+            return;
+
+
         } else {
             request.setAttribute("log_usuario", log_usuario);
             request.setAttribute("log_pwd", log_pwd);
             request.setAttribute("error", "Los datos introducidos son incorrectos");
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/app/index.jsp");
             rd.forward(request, response);
         }
-        
-        
-      
-/*
+
+        /*
         String reg_usuario = request.getParameter("reg_usuario"); //Nombre introducido en el formulario log_usuario
         String reg_pwd = request.getParameter("reg_pwd"); //Contraseña introducida en el formulario log_pwd
         String reg_email=request.getParameter("reg_email");
@@ -120,7 +130,7 @@ public class ClienteController extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
-*/
+         */
     }
 
     /**

@@ -25,8 +25,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <%@include file="/WEB-INF/layout/head_links.jspf" %>
-        
-        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" type="text/css"  href="<c:url value='/css/bootstrap.css'/>">
+        <link rel="stylesheet" type="text/css"  href="<c:url value='/css/index.css'/>">
 
     </head>
 
@@ -41,7 +41,7 @@
                 </button>
 
                 <a class="navbar-brand">
-                    <img src="imgs/3.png" height="40" widht="30">
+                    <img src="${pageContext.request.contextPath}/imgs/3.png" height="40" widht="30">
                 </a>
 
                 <span class="navbar-text">
@@ -52,7 +52,7 @@
                 <div class="collapse navbar-collapse justify-content-end" id="collapse_target">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="tienda.jsp">Tienda</a>
+                            <a class="nav-link" href='app/tienda'>Tienda</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#footer">Contacto</a>
@@ -66,7 +66,7 @@
         </div>
 
 
-        <!--Login y registroo -->
+        <!--Login y registro -->
 
         <div class="row">
             <div class="col-xs-2 col-md-2"></div>
@@ -77,7 +77,7 @@
 
                             <h1 class="page-header">Identifícate</h1>
 
-                            <form class="form-horizontal" role="form" action="ClienteController" method="POST">
+                            <form class="form-horizontal" role="form" action="cliente" method="POST">
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="log_usuario">Usuario:</label>
                                     <div class="col-sm-10">
@@ -105,19 +105,10 @@
                                         <button type="submit" name="acceder" class="btn btn-default">Acceder</button>
                                     </div>
                                 </div>
-                              
-                              ${error}
+                                    
+                                     ${error}      
                             </form>
                             
-                           
-
-                            <!--Si el formulario se envía, mostrar posibles errores-->
-
-
-
-
-
-
 
 
                         </div>
@@ -131,24 +122,24 @@
                         <div class="columna-derecha">
                             <h1 class="page-header">Regístrate</h1>
 
-                            <form class="form-horizontal" role="form" action="ClienteController" method="POST">
+                            <form class="form-horizontal" role="form" action="index.jsp" method="POST">
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="reg_email">Email:</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" name="reg_email"  value="${reg_email}" placeholder="Introduce tu email">
+                                        <input type="email" class="form-control" name="reg_email" placeholder="Introduce tu email">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="reg_usuario">Usuario:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="reg_usuario" value="${reg_usuario}" placeholder="Introduce tu nombre">
+                                        <input type="text" class="form-control" name="reg_usuario" placeholder="Introduce tu nombre">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="reg_pwd">Contraseña:</label>
                                     <div class="col-sm-10">
                                         
-                                        <input type="password" class="form-control" name="reg_pwd" value="${reg_pwd}" placeholder="Introduce tu contraseña">
+                                        <input type="password" class="form-control" name="reg_pwd" placeholder="Introduce tu contraseña">
                                     </div>
                                 </div>
 
@@ -159,7 +150,41 @@
                                 </div>
                             </form>
 
-                           
+                            <c:if test="${pageContext.request.method=='POST'}">
+                                <c:if test="${pageContext.request.getParameter('registrarme')!=null}">
+                                    <c:if test="${pageContext.request.getParameter('reg_email')==''}">
+                                        Introduce tu email <br>
+                                    </c:if>
+                                </c:if>
+                            </c:if>
+
+                            <c:if test="${pageContext.request.method=='POST'}">
+                                <c:if test="${pageContext.request.getParameter('registrarme')!=null}">
+                                    <c:if test="${pageContext.request.getParameter('reg_usuario')==''}">
+                                        Introduce tu nombre de usuario <br>
+                                    </c:if>
+                                </c:if>
+                            </c:if>
+
+                            <c:if test="${pageContext.request.method=='POST'}">
+                                <c:if test="${pageContext.request.getParameter('registrarme')!=null}">
+                                    <c:if test="${pageContext.request.getParameter('reg_pwd')==''}">
+                                        Introduce tu contraseña
+                                    </c:if>
+                                </c:if>
+                            </c:if>
+
+                            <c:if test="${pageContext.request.method=='POST'}">
+                                <c:if test="${pageContext.request.getParameter('registrarme')!=null}">
+                                    <c:if test="${pageContext.request.getParameter('reg_pwd')!=''}">
+                                        <c:if test="${pageContext.request.getParameter('reg_usuario')!=''}">
+                                            <c:if test="${pageContext.request.getParameter('reg_email')!=''}">
+                                                <c:redirect url="comunidad.jsp?log_usuario=${param.reg_usuario}"/>
+                                            </c:if>
+                                        </c:if>
+                                    </c:if>
+                                </c:if>
+                            </c:if>    
 
                         </div>
                     </div>
@@ -196,19 +221,19 @@
 
 
             <div class="col-md-4 justify-content-around" id=borde-der>
-                <img src="imgs/2.png" width="250" height="250">
+                <img src="${pageContext.request.contextPath}/imgs/2.png" width="250" height="250">
 
                 <h1>Lore ipsum</h1>
                 <p>Sumo appellantur ius ad. Error vitae ridens ea q</p>
             </div>
 
             <div class="col-md-4 justify-content-around" id=borde-der>
-                <img src="imgs/4.jpg" width="250" height="250">
+                <img src="${pageContext.request.contextPath}/imgs/4.jpg" width="250" height="250">
                 <h1>Lore ipsum</h1>
                 <p>Sumo appellantur ius ad. Error vitae ridens ea q</p>
             </div>
             <div class="col-md-4 justify-content-around">
-                <img src="imgs/5.png" width="250" height="250">
+                <img src="${pageContext.request.contextPath}/imgs/5.png" width="250" height="250">
                 <h1>Lore ipsum</h1>
                 <p>Sumo appellantur ius ad. Error vitae ridens ea q</p>
             </div>

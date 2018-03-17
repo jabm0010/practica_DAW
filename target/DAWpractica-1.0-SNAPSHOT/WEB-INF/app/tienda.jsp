@@ -18,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%@include file="/WEB-INF/layout/head_links.jspf" %>
 
-    <link rel="stylesheet" href="css/tienda.css">
+           <link rel="stylesheet" type="text/css"  href="<c:url value='/css/tienda.css'/>">
 
   </head>
 
@@ -145,19 +145,19 @@
       <hr width="100%" style="background:rgb(72, 153, 219); border:0; height:7px" />
       <div class="row">
         <div class="col-lg-4">
-          <img class="rounded-circle" src="imgs/6.png" alt="Generic placeholder image" width="140" height="140">
+          <img class="rounded-circle" src="${pageContext.request.contextPath}/imgs/6.png" alt="Generic placeholder image" width="140" height="140">
           <h3 class="titulo-med">MEJOR PRECIO</h3>
 
 
         </div>
         <div class="col-lg-4">
-          <img class="rounded-circle" src="imgs/7.png" alt="Generic placeholder image" width="140" height="140">
+          <img class="rounded-circle" src="${pageContext.request.contextPath}/imgs/7.png" alt="Generic placeholder image" width="140" height="140">
           <h3 class="titulo-med">SIN DRM</h3>
 
 
         </div>
         <div class="col-lg-4">
-          <img class="rounded-circle" src="imgs/8.png" alt="Generic placeholder image" width="140" height="140">
+          <img class="rounded-circle" src="${pageContext.request.contextPath}/imgs/8.png" alt="Generic placeholder image" width="140" height="140">
           <h3 class="titulo-med">SEGURIDAD</h3>
 
 

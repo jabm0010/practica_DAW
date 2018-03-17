@@ -10,6 +10,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -19,8 +20,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <%@include file="/WEB-INF/layout/head_links.jspf" %>
+   <link rel="stylesheet" type="text/css"  href="<c:url value='/css/biblioteca.css'/>">
 
-    <link rel="stylesheet" href="css/biblioteca.css">
 
   </head>
 

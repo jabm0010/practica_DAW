@@ -22,15 +22,18 @@
 
 
     <%@include file="/WEB-INF/layout/head_links.jspf" %>
-    <link rel="stylesheet" href="css/comunidad.css">
+    <link rel="stylesheet" type="text/css"  href="<c:url value='/css/comunidad.css'/>">
 
   </head>
 
+
+  <!--Barra de navegación -->
+  <%@include file="/WEB-INF/layout/barra_navegacion.jspf" %>
   <body>
 
-    <!--Barra de navegación -->
 
-    <%@include file="/WEB-INF/layout/barra_navegacion.jspf" %>
+
+
 
 
 
@@ -50,7 +53,6 @@
                  alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title"> ${log_usuario}</h5>
-              ${bienvenida}
               <p class="card-text">${biografia}</p>
             </div>
             <ul class="list-group list-group-flush">

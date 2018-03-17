@@ -18,8 +18,8 @@
         <title>Búsqueda</title>
         <%@include file="/WEB-INF/layout/head_links.jspf" %>
 
-
-        <link rel="stylesheet" href="css/busqueda.css">
+   <link rel="stylesheet" type="text/css"  href="<c:url value='/css/busqueda.css'/>">
+   
     </head>
     <body>
        <!--Barra de navegación -->
