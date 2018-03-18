@@ -61,9 +61,23 @@ public class ClientesDAOList implements ClienteDAO {
         clientes.add(c);
         return true;
     }
+    
+    public void actualizarCliente(Cliente c, String nombre, String biografia, String pwd){
+        for(int i=0;i<clientes.size();i++){
+            if(clientes.get(i).getId()==c.getId()){
+                c.setNombre(nombre);
+                c.setBiografia(biografia);
+                c.setPwd(pwd);
+            }
+        }
+        
+    }
+    
 
     @Override
     public boolean modificar(Cliente c) {
+        
+        
         return true;
     }
 

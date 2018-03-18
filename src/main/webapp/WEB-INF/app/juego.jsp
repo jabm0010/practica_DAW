@@ -37,7 +37,7 @@
               <p class="card-text">Descripción:</p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Precio: </li>
+              <li class="list-group-item">Precio: ${videojuegoElegido.precio}</li>
               <li class="list-group-item">Géneros a los que pertenece: </li>
               <li class="list-group-item">Amigos que tienen este juego: </li>
 

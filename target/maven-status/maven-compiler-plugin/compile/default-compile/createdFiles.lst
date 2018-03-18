@@ -2,6 +2,7 @@ com\daw\vj\otros\Util.class
 com\daw\vj\dao\ClienteDAO.class
 com\daw\vj\dao\ClientesDAOList.class
 com\daw\vj\model\Cliente.class
+com\daw\vj\controller\ModificarPerfil.class
 com\daw\vj\model\Videojuego.class
 com\daw\vj\controller\NavegaVistas.class
 com\daw\vj\dao\VideojuegosDAOList.class

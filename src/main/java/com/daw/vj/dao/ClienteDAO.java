@@ -31,4 +31,6 @@ public interface ClienteDAO {
     
     public int obtenerID(String nombre, String pwd);
     
+      public void actualizarCliente(Cliente c, String nombre, String biografia, String pwd);
+    
 }

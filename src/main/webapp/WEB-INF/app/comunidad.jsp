@@ -28,9 +28,9 @@
 
 
   <body>
-    
-  <!--Barra de navegación -->
-  <%@include file="/WEB-INF/layout/barra_navegacion.jspf" %>
+
+    <!--Barra de navegación -->
+    <%@include file="/WEB-INF/layout/barra_navegacion.jspf" %>
 
     <div class="container-fluid">
       <div class="row fila-buffer">
@@ -82,7 +82,7 @@
                     <div class="card-body">
                       <h5 class="card-title">${c.nombre}</h5>
                       <p class="card-text">${c.biografia}</p>
-                      
+
                       <div class="btn-group mr-2" role="group" aria-label="First group">
 
                         <button type="button" class="btn btn-primary">Enviar mensaje</button>
@@ -133,32 +133,36 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              <form class="form-horizontal" role="form" action="comunidad.jsp" method="POST">
+            <form class="form-horizontal" role="form" action="modificarperfil" method="POST">
+
+              <div class="modal-body">
                 <div class="form-group">
-                  <label for="user">Nombre de usuario:</label>
-                  <input type="text" class="form-control" name="user">
+                  <label for="user">Nombre de usuario: </label>
+                  <input type="text" class="form-control" name="user" value='${log_usuario}'>
                 </div>
 
                 <div class="form-group">
                   <label for="old-pwd">Antigua contraseña:</label>
-                  <input type="text" class="form-control" name="old-pwd">
+                  <input type="password" class="form-control" name="old-pwd" value='${log_pwd}'>
                 </div>
 
                 <div class="form-group">
                   <label for="new-pwd">Nueva contraseña:</label>
-                  <input type="text" class="form-control" name="new-pwd">
+                  <input type="password" class="form-control" name="new-pwd">
                 </div>
 
                 <div class="form-group">
                   <label for="biografia">Biografía:</label>
-                  <input type="text" class="form-control" name="biografia">
+                  <input type="text" class="form-control" name="biografia" value='${biografia}'>
                 </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
-            </div>
+
+              </div>
+              <div class="modal-footer">
+                <div class="form-group">
+                  <button type="submit" class="btn btn-success" >Guardar</button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
