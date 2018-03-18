@@ -10,31 +10,39 @@ package com.daw.vj.model;
  * @author Juan Béjar
  */
 public class Videojuego {
-    
+
     private int videojuegoID;
     private String nombreVideojuego;
     private String desarrollador;
     private String publicador;
-    private float notaMedia;
-    
-    public Videojuego(){
-        videojuegoID=0;
-        desarrollador=" ";
-        nombreVideojuego=" ";
-        notaMedia=0;
-        publicador=" ";
-        
-        
-        
+    private float precio;
+
+    public Videojuego() {
+        videojuegoID = 0;
+        desarrollador = " ";
+        nombreVideojuego = " ";
+        publicador = " ";
+        precio = 0;
+
     }
-    
-    public Videojuego(Videojuego v){
-        
-        this.desarrollador=v.desarrollador;
-        this.nombreVideojuego=v.nombreVideojuego;
-        this.notaMedia=v.notaMedia;
-        this.publicador=v.publicador;
-        this.videojuegoID=v.videojuegoID;
+
+    public Videojuego(int videojuegoID, String nombreVideojuego, String desarrollador,
+            String publicador, float precio) {
+        this.videojuegoID = videojuegoID;
+        this.nombreVideojuego = nombreVideojuego;
+        this.desarrollador = desarrollador;
+        this.publicador = publicador;
+        this.precio = precio;
+
+    }
+
+    public Videojuego(Videojuego v) {
+
+        this.desarrollador = v.desarrollador;
+        this.nombreVideojuego = v.nombreVideojuego;
+        this.precio = v.precio;
+        this.publicador = v.publicador;
+        this.videojuegoID = v.videojuegoID;
     }
 
     /**
@@ -94,22 +102,17 @@ public class Videojuego {
     }
 
     /**
-     * @return the notaMedia
+     * @return the precio
      */
-    public float getNotaMedia() {
-        return notaMedia;
+    public float getPrecio() {
+        return precio;
     }
 
     /**
-     * @param notaMedia the notaMedia to set
+     * @param precio the precio to set
      */
-    public void setNotaMedia(float notaMedia) {
-        this.notaMedia = notaMedia;
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
-    
-        
-    
-    
-    
-    
+
 }

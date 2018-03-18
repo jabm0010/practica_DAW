@@ -1,3 +1,4 @@
+com\daw\vj\otros\Util.class
 com\daw\vj\dao\ClienteDAO.class
 com\daw\vj\dao\ClientesDAOList.class
 com\daw\vj\model\Cliente.class

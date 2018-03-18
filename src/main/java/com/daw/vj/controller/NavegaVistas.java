@@ -7,6 +7,10 @@ package com.daw.vj.controller;
 
 import com.daw.vj.dao.ClienteDAO;
 import com.daw.vj.dao.ClientesDAOList;
+import com.daw.vj.dao.VideojuegoDAO;
+import com.daw.vj.dao.VideojuegosDAOList;
+import com.daw.vj.model.Videojuego;
+import com.daw.vj.otros.Util;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Logger;
@@ -28,13 +32,16 @@ public class NavegaVistas extends HttpServlet {
     private final String srvViewPath = "/WEB-INF/app";
     private String srvUrl;
     private static final Logger Log = Logger.getLogger(NavegaVistas.class.getName());
-        private ClienteDAO clientes;  //Lista con los clientes
+    private ClienteDAO clientes;  //Lista con los clientes
+    private VideojuegoDAO videojuegos;
+
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
         super.init(servletConfig);
         Log.info("Iniciando NavegaVistasController");
         srvUrl = servletConfig.getServletContext().getContextPath() + "/app";
         clientes = new ClientesDAOList();
+        videojuegos = new VideojuegosDAOList();
     }
 
     /**
@@ -88,7 +95,15 @@ public class NavegaVistas extends HttpServlet {
                 break;
             }
             case "/busqueda": {
-                rd = request.getRequestDispatcher("/WEB-INF/app/busqueda.jsp");
+                rd = request.getRequestDispatcher(srvViewPath +"/busqueda.jsp");
+                break;
+            }
+            case "/juego": {
+                Videojuego v;
+                int id = Integer.parseInt(Util.getParam(request.getParameter("videojuegoID"), "0"));
+                v=videojuegos.buscaID(id);
+                request.setAttribute("videojuegoElegido", v);
+                rd = request.getRequestDispatcher(srvViewPath+"/juego.jsp");
                 break;
             }
             default: {
@@ -117,7 +132,8 @@ public class NavegaVistas extends HttpServlet {
         String busca_nombre = request.getParameter("busca_nombre"); //Valor introducido en la barra de busqueda
         request.getSession().setAttribute("busca_nombre", busca_nombre);
         request.getSession().setAttribute("usuarios", clientes.buscaNombre(busca_nombre));
-        
+        request.getSession().setAttribute("videojuegos", videojuegos.buscaNombre(busca_nombre));
+
         response.sendRedirect("busqueda");
     }
 

@@ -33,7 +33,7 @@
             <img class="round card-img-top" src="http://placehold.it/800x500"
                  alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title"> ${param.log_usuario}</h5>
+              <h5 class="card-title"> ${videojuegoElegido.nombreVideojuego}</h5>
               <p class="card-text">Descripción:</p>
             </div>
             <ul class="list-group list-group-flush">

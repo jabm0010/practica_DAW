@@ -8,6 +8,7 @@ package com.daw.vj.controller;
 import com.daw.vj.dao.ClienteDAO;
 import com.daw.vj.dao.ClientesDAOList;
 import com.daw.vj.dao.VideojuegoDAO;
+import com.daw.vj.dao.VideojuegosDAOList;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -42,6 +43,7 @@ public class BusquedaController extends HttpServlet {
     public void init() throws ServletException{
         super.init();
         clientes=new ClientesDAOList();
+     
         
     }
     

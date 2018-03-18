@@ -23,8 +23,8 @@ public class ClientesDAOList implements ClienteDAO {
         contador = 1;
 
         amigos.add(new Cliente(5, "Jose", "d@gmail.com", "Hola!", "d", amigos, true));
-        amigos.add(new Cliente(5, "miguel", "f@gmail.com", "Hola!", "f", amigos, true));
-        amigos.add(new Cliente(5, "Luis", "e@gmail.com", "Hola!", "e", amigos, false));
+        amigos.add(new Cliente(6, "miguel", "f@gmail.com", "Hola!", "f", amigos, true));
+        amigos.add(new Cliente(7, "Luis", "e@gmail.com", "Hola!", "e", amigos, false));
 
         clientes = new ArrayList<>();
         clientes.add(new Cliente(1, "AntonioRe", "antonio99@gmail.com", "Hola!", "1234", amigos, false));

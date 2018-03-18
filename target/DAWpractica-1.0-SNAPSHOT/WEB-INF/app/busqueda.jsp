@@ -50,10 +50,7 @@
         </div>
 
 
-        <!--Sección de juegos -->
-        <c:if test="${pageContext.request.method=='POST'}">
-            <c:redirect url="busqueda.jsp?busca=${param.busca}"/>
-        </c:if>
+
         <div class="col-md-5">
 
           </br>
@@ -61,53 +58,35 @@
           </br>
           </br>
 
-          <h1 class="titulo"> Juegos con "${busca}"</h1>
+          <h1 class="titulo"> Juegos con "${busca_nombre}"</h1>
           <hr width="60%" style="background:rgb(72, 153, 219); border:0; height:7px" />
-          <div class="card-deck">
-            <div class="card">
-              <img class="card-img-top" src="http://placehold.it/512x512" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-              <div class="card-footer">
-                <form action="juego.jsp" method="get">
-                  <button type="submit" class="btn btn-success">Ver</button>
-                </form>
 
-              </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="http://placehold.it/512x512" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-              <div class="card-footer">
-                <form action="juego.jsp" method="get">
-                  <button type="submit" class="btn btn-success">Ver</button>
-                </form>
-              </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="http://placehold.it/512x512" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-              <div class="card-footer">
-                <form action="juego.jsp" method="get">
-                  <button type="submit" class="btn btn-success">Ver</button>
-                </form>
 
-              </div>
-            </div>
+
+          <div class="card-columns">
+
+            <c:forEach var="v" items="${videojuegos}">
+                <c:set var="qry" value="?videojuegoID=${v.videojuegoID}"/>
+                <div class="card">
+                  <img class="card-img-top img-fluid" src="http://placehold.it/240x180" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">${v.nombreVideojuego}</h5>
+                    <p class="card-text">${v.desarrollador}</p>
+                    <p class="card-text">${v.publicador}</p>
+                    <p class="card-text"><small class="text-muted">${v.precio} €</small></p>
+                  </div>
+                  <div class="card-footer">
+                    <a class="btn btn-success" href='${srvUrl}/juego${qry}'>Ver</a>
+                    
+                  </div>
+                </div>
+
+
+            </c:forEach>
+
+
           </div>
-
-        </div>  
+        </div>
 
         <!--Sección de usuarios -->    
         <div class="col-md-5">
@@ -118,7 +97,7 @@
           </br>
           <h1 class="titulo">Usuarios con "${busca_nombre}"</h1>
           <hr width="60%" style="background:rgb(231, 214, 54); border:0; height:7px" />
-          <div class="card-deck">
+          <div class="card-columns">
             <c:forEach var="c" items="${usuarios}">
 
                 <div class="card">
