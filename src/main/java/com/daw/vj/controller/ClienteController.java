@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Juan Béjar
  */
-@WebServlet(name = "ClienteController", urlPatterns = {"/cliente"})
+@WebServlet(name = "ClienteController", urlPatterns = {"/cliente/*"})
 public class ClienteController extends HttpServlet {
 
     private final String srvViewPath = "/WEB-INF/app";
@@ -35,9 +35,9 @@ public class ClienteController extends HttpServlet {
             throws ServletException {
 
         super.init(servletConfig);
-        //Select DAO implementation
+
         clientes = new ClientesDAOList();
-       // srvUrl = servletConfig.getServletContext().getContextPath() + "/cliente";
+        srvUrl = servletConfig.getServletContext().getContextPath() + "/cliente";
 
     }
 
@@ -90,52 +90,76 @@ public class ClienteController extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
 
-        String log_usuario = request.getParameter("log_usuario"); //Nombre introducido en el formulario log_usuario
-        String log_pwd = request.getParameter("log_pwd"); //Contraseña introducida en el formulario log_pwd
-        boolean resultado = clientes.verificarCliente(log_usuario, log_pwd); //Llamada al método de comprobación de existencia del usuario
+        RequestDispatcher rd;
+        String action = (request.getPathInfo() != null ? request.getPathInfo() : "");
+        switch (action) {
+            
+            case "/registro": {
+                String reg_usuario = request.getParameter("reg_usuario"); //Nombre introducido en el formulario reg_usuario
+                String reg_pwd = request.getParameter("reg_pwd"); //Contraseña introducida en el formulario reg_pwd
+                String reg_email = request.getParameter("reg_email");//Contraseña introducida en el formulario reg_email
+                boolean datosCorrectos = validarDatosRegistro(reg_usuario, reg_email, reg_pwd);
+                boolean resultado_reg=false;
+                if (validarDatosRegistro(reg_usuario, reg_email, reg_pwd)) {
+                    resultado_reg = clientes.registrar(reg_usuario, reg_email, reg_pwd);
+                }
+                
+                if (resultado_reg) {
+                    int id = clientes.obtenerID(reg_email);
+                    Cliente c;
+                    c = clientes.buscaId(id);
+                    request.getSession().setAttribute("clienteLog", c);
+                    request.getSession().setAttribute("biografia", clientes.buscaId(id).getBiografia());
+                    request.getSession().setAttribute("amigos", clientes.buscaId(id).getAmigos());
+                    request.getSession().setAttribute("numamigos", clientes.buscaId(id).getAmigos().size());
+                    request.getSession().setAttribute("log_usuario", reg_usuario);
+                    request.getSession().setAttribute("log_pwd", reg_pwd);
+                    response.sendRedirect("../app");
+                    return;
+                } else {
+                    request.setAttribute("reg_usuario", reg_usuario);
+                    request.setAttribute("reg_email", reg_email);
+                    request.setAttribute("reg_pwd", reg_pwd);
+                    request.setAttribute("error_reg", "Los datos introducidos son incorrectos.El correo ya existe o la contraseña/nombre son muy cortos");
+                    rd = request.getRequestDispatcher("/WEB-INF/app/index.jsp");
+                    rd.forward(request, response);
+                    break;
 
-        if (resultado) {
-            int id = clientes.obtenerID(log_usuario, log_pwd);
-           Cliente c;
-            c=clientes.buscaId(id);
-            request.getSession().setAttribute("clienteLog",c);
-            request.getSession().setAttribute("biografia", clientes.buscaId(id).getBiografia());
-            request.getSession().setAttribute("amigos", clientes.buscaId(id).getAmigos());
-            request.getSession().setAttribute("numamigos", clientes.buscaId(id).getAmigos().size());
-            request.getSession().setAttribute("log_usuario", log_usuario);
-            request.getSession().setAttribute("log_pwd", log_pwd);
-            response.sendRedirect("app");
-            return;
+                }
 
+            }
+            
+            case "/login": {
+                String log_email = request.getParameter("log_email"); //Nombre introducido en el formulario log_usuario
+                String log_pwd = request.getParameter("log_pwd"); //Contraseña introducida en el formulario log_pwd
+                boolean resultado_log=false;
+                resultado_log = clientes.verificarCliente(log_email, log_pwd); //Llamada al método de comprobación de existencia del usuario
 
-        } else {
-            request.setAttribute("log_usuario", log_usuario);
-            request.setAttribute("log_pwd", log_pwd);
-            request.setAttribute("error", "Los datos introducidos son incorrectos");
+                if (resultado_log) {
+                    int id = clientes.obtenerID(log_email);
+                    Cliente c;
+                    c = clientes.buscaId(id);
+                    request.getSession().setAttribute("clienteLog", c);
+                    request.getSession().setAttribute("biografia", clientes.buscaId(id).getBiografia());
+                    request.getSession().setAttribute("amigos", clientes.buscaId(id).getAmigos());
+                    request.getSession().setAttribute("numamigos", clientes.buscaId(id).getAmigos().size());
+                    request.getSession().setAttribute("log_usuario", clientes.buscaId(id).getNombre());
+                    request.getSession().setAttribute("log_pwd", log_pwd);
+                    response.sendRedirect("../app");
+                    return;
 
-            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/app/index.jsp");
-            rd.forward(request, response);
+                } else {
+                    request.setAttribute("log_email", log_email);
+                    request.setAttribute("log_pwd", log_pwd);
+                    request.setAttribute("error", "Los datos introducidos son incorrectos.Prueba usuario@gmail.com - usuario");
+                    rd = request.getRequestDispatcher(srvViewPath+"/index.jsp");
+                    rd.forward(request, response);
+                    break;
+                }
+            }
+
         }
 
-        /*
-        String reg_usuario = request.getParameter("reg_usuario"); //Nombre introducido en el formulario log_usuario
-        String reg_pwd = request.getParameter("reg_pwd"); //Contraseña introducida en el formulario log_pwd
-        String reg_email=request.getParameter("reg_email");
-        clientes.registrar(reg_nombre, reg_email,reg_pwd);
-   
-
-        if (resultado) {
-            request.getSession().setAttribute("log_usuario", log_usuario);
-            request.getSession().setAttribute("log_pwd", log_pwd);
-            response.sendRedirect("comunidad.jsp");
-        } else {
-            request.setAttribute("log_usuario", log_usuario);
-            request.setAttribute("log_pwd", log_pwd);
-            request.setAttribute("error", "Los datos introducidos son incorrectos");
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-            rd.forward(request, response);
-        }
-         */
     }
 
     /**
@@ -147,5 +171,12 @@ public class ClienteController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    public boolean validarDatosRegistro(String nombre, String email, String pwd) {
+        if (nombre.trim().length() > 3 && nombre.trim().length() < 50 && pwd.trim().length() > 3 && pwd.trim().length() < 50) {
+            return true;
+        }
+        return false;
+    }
 
 }

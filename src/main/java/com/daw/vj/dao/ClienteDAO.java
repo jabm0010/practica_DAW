@@ -12,10 +12,10 @@ import java.util.List;
  *
  * @author Juan Béjar
  */
-public interface ClienteDAO {
+public interface ClienteDAO extends GenericDAO<Cliente,Integer>{
     
     
-    public Cliente buscaId(int id); //Método para buscar un cliente por su id
+
     
     public List<Cliente> buscaNombre(String nombre); //Método que devuelve una lista de todos los clientes con el mismo nickname
     
@@ -25,11 +25,12 @@ public interface ClienteDAO {
     
     public boolean modificar(Cliente c); //Método para modificar datos de un cliente
     
-    public List<Cliente> buscaTodos(); //Método que devuelve todos los clientes
+  
     
-    public boolean verificarCliente(String nombre, String pwd); //Método para autentificar a un cliente
+    public boolean verificarCliente(String email, String pwd); //Método para autentificar a un cliente
     
     public int obtenerID(String nombre, String pwd);
+    public int obtenerID(String email);
     
       public void actualizarCliente(Cliente c, String nombre, String biografia, String pwd);
     

@@ -77,11 +77,11 @@
 
                             <h1 class="page-header">Identifícate</h1>
 
-                            <form class="form-horizontal" role="form" action="cliente" method="POST">
+                            <form class="form-horizontal" role="form" action="<c:url value="/cliente/login"/>" method="POST">
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="log_usuario">Usuario:</label>
+                                    <label class="control-label col-sm-2" for="log_email">Email:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="log_usuario" value="${log_usuario}" placeholder="Introduce tu nombre">
+                                      <input type="email" class="form-control" name="log_email" value="${log_email}" placeholder="Introduce tu nombre">
                                     </div>
                                 </div>
 
@@ -122,24 +122,24 @@
                         <div class="columna-derecha">
                             <h1 class="page-header">Regístrate</h1>
 
-                            <form class="form-horizontal" role="form" action="index.jsp" method="POST">
+                            <form class="form-horizontal" role="form" action="<c:url value="/cliente/registro"/>" method="POST">
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="reg_email">Email:</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" name="reg_email" placeholder="Introduce tu email">
+                                        <input type="email" class="form-control" name="reg_email" value="${reg_email}" placeholder="Introduce tu email">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="reg_usuario">Usuario:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="reg_usuario" placeholder="Introduce tu nombre">
+                                        <input type="text" class="form-control" name="reg_usuario" value="${reg_usuario}" placeholder="Introduce tu nombre">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="reg_pwd">Contraseña:</label>
                                     <div class="col-sm-10">
                                         
-                                        <input type="password" class="form-control" name="reg_pwd" placeholder="Introduce tu contraseña">
+                                        <input type="password" class="form-control" name="reg_pwd" value="${reg_pwd}"  placeholder="Introduce tu contraseña">
                                     </div>
                                 </div>
 
@@ -148,6 +148,10 @@
                                         <button type="submit" name="registrarme" class="btn btn-default">Registrarme</button>
                                     </div>
                                 </div>
+                                    
+                                    
+                                    
+                                     ${error_reg}  
                             </form>
 
                           

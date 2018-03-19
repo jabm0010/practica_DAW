@@ -16,7 +16,7 @@ import java.util.List;
 public class ClientesDAOList implements ClienteDAO {
 
     private static List<Cliente> clientes; //clientes registrados en el sistema;
-    public static int contador; //Variable contador para clave primaria
+    public static int contador = 10; //Variable contador para clave primaria
     List<Cliente> amigos = new ArrayList<>();
 
     public ClientesDAOList() {
@@ -27,6 +27,7 @@ public class ClientesDAOList implements ClienteDAO {
         amigos.add(new Cliente(7, "Luis", "e@gmail.com", "Hola!", "e", amigos, false));
 
         clientes = new ArrayList<>();
+        clientes.add(new Cliente(0, "usuario", "usuario@gmail.com", "Esta es mi biografia", "usuario", amigos, true));
         clientes.add(new Cliente(1, "AntonioRe", "antonio99@gmail.com", "Hola!", "1234", amigos, false));
         clientes.add(new Cliente(2, "Pepe1997", "pepepepe@gmail.com", "Hola!", "abcd", amigos, false));
         clientes.add(new Cliente(3, "b", "b@gmail.com", "Hola!", "b", amigos, false));
@@ -35,7 +36,7 @@ public class ClientesDAOList implements ClienteDAO {
     }
 
     @Override
-    public Cliente buscaId(int id) {
+    public Cliente buscaId(Integer id) {
         for (int i = 0; i < clientes.size(); i++) {
             if (clientes.get(i).getId() == id);
             return clientes.get(i);
@@ -47,7 +48,7 @@ public class ClientesDAOList implements ClienteDAO {
     public List<Cliente> buscaNombre(String nombre) {
         List<Cliente> clientesCoinciden = new ArrayList<>();
         for (int i = 0; i < clientes.size(); i++) {
-            if (clientes.get(i).getNombre().contains(nombre) ) {
+            if (clientes.get(i).getNombre().toLowerCase().contains(nombre.toLowerCase())) {
                 clientesCoinciden.add(clientes.get(i));
             }
         }
@@ -57,27 +58,29 @@ public class ClientesDAOList implements ClienteDAO {
 
     @Override
     public boolean registrar(Cliente c) {
-
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getCorreo().equals(c.getCorreo())) {
+                return false;
+            }
+        }
         clientes.add(c);
         return true;
     }
-    
-    public void actualizarCliente(Cliente c, String nombre, String biografia, String pwd){
-        for(int i=0;i<clientes.size();i++){
-            if(clientes.get(i).getId()==c.getId()){
+
+    public void actualizarCliente(Cliente c, String nombre, String biografia, String pwd) {
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getId() == c.getId()) {
                 c.setNombre(nombre);
                 c.setBiografia(biografia);
                 c.setPwd(pwd);
             }
         }
-        
+
     }
-    
 
     @Override
     public boolean modificar(Cliente c) {
-        
-        
+
         return true;
     }
 
@@ -97,9 +100,9 @@ public class ClientesDAOList implements ClienteDAO {
      * @return
      */
     @Override
-    public boolean verificarCliente(String nombre, String pwd) {
+    public boolean verificarCliente(String email, String pwd) {
         for (int i = 0; i < clientes.size(); i++) {
-            if (clientes.get(i).getNombre().equals(nombre) && clientes.get(i).getPwd().equals(pwd)) {
+            if (clientes.get(i).getCorreo().equals(email) && clientes.get(i).getPwd().equals(pwd)) {
 
                 return true;
 
@@ -110,11 +113,27 @@ public class ClientesDAOList implements ClienteDAO {
         return false;
     }
 
+    /**
+     * Si el correo no existe, se admite el registro de usuario
+     *
+     * @param nombre
+     * @param email
+     * @param pwd
+     * @return
+     */
     @Override
     public boolean registrar(String nombre, String email, String pwd) {
-        Cliente c = new Cliente(contador, nombre, email, "Escribe aquí tu biografía", pwd, amigos,true);
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getCorreo().equals(email)) {
+                return false;
+            }
+        }
+
+        Cliente c = new Cliente(contador, nombre, email, "Escribe aquí tu biografía", pwd, amigos, true);
+        contador++;
         clientes.add(c);
         return true;
+
     }
 
     @Override
@@ -126,6 +145,16 @@ public class ClientesDAOList implements ClienteDAO {
 
             }
 
+        }
+
+        return -1;
+    }
+    @Override
+    public int obtenerID(String email) {
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getCorreo().equals(email)) {
+                return clientes.get(i).getId();
+            }
         }
 
         return -1;

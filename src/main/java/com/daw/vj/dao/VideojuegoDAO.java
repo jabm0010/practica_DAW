@@ -5,6 +5,7 @@
  */
 package com.daw.vj.dao;
 
+import com.daw.vj.model.Cliente;
 import com.daw.vj.model.Videojuego;
 import java.util.List;
 
@@ -12,13 +13,12 @@ import java.util.List;
  *
  * @author Juan Béjar
  */
-public interface VideojuegoDAO {
+public interface VideojuegoDAO extends GenericDAO<Videojuego,Integer> {
 
-    public Videojuego buscaID(int videojuegoID);
+
 
     public List<Videojuego> buscaNombre(String nombre);
 
-    public List<Videojuego> buscaTodos();
 
     public boolean comprar(Videojuego v);
 

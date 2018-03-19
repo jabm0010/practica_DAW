@@ -89,7 +89,7 @@
             <a href="#" class="list-group-item">
               <div class="media col-md-4">
 
-                <img class="media-object img-rounded img-responsive" src="http://placehold.it/370x200" alt="placehold.it/350x250" >
+                <img class="media-object img-rounded img-responsive" src="http://placehold.it/400x250" alt="placehold.it/350x250" >
 
 
 
@@ -100,7 +100,7 @@
             <a href="#" class="list-group-item">
               <div class="media col-md-4">
 
-                <img class="media-object img-rounded img-responsive " src="http://placehold.it/370x200" alt="placehold.it/350x250">
+                <img class="media-object img-rounded img-responsive " src="http://placehold.it/400x250" alt="placehold.it/350x250">
 
 
 
@@ -111,7 +111,7 @@
             <a href="#" class="list-group-item">
               <div class="media col-md-4 ">
 
-                <img class="media-object img-rounded img-responsive " src="http://placehold.it/370x200" alt="placehold.it/350x250">
+                <img class="media-object img-rounded img-responsive " src="http://placehold.it/400x250" alt="placehold.it/350x250">
 
 
 

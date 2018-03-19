@@ -165,7 +165,7 @@
             <!--Juego seleccionado de tu biblioteca -->
 
           <div class="card mb-3 border-primary">
-            <img class="card-img-top" src="http://placehold.it/800x500" alt="Card image cap">
+            <img class="card-img-top" src="http://placehold.it/800x450" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <div class="btn-group mr-2" role="group" aria-label="First group">

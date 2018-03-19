@@ -103,7 +103,7 @@ public class NavegaVistas extends HttpServlet {
             case "/juego": {
                 Videojuego v;
                 int id = Integer.parseInt(Util.getParam(request.getParameter("videojuegoID"), "0"));
-                v = videojuegos.buscaID(id);
+                v = videojuegos.buscaId(id);
                 request.setAttribute("videojuegoElegido", v);
                 rd = request.getRequestDispatcher(srvViewPath + "/juego.jsp");
                 break;

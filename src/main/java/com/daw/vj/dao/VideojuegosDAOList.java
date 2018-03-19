@@ -5,6 +5,7 @@
  */
 package com.daw.vj.dao;
 
+import com.daw.vj.model.Cliente;
 import com.daw.vj.model.Videojuego;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,7 @@ public class VideojuegosDAOList implements VideojuegoDAO {
         videojuegos.add(new Videojuego(23, "Half Life 2", "a", "b",50));
         videojuegos.add(new Videojuego(24, "Metro 2033", "a", "b",50));
         videojuegos.add(new Videojuego(25, "Metro 2034", "a", "b",50));
-        videojuegos.add(new Videojuego(26, "The Elder Scrolls: Skyrim", "a", "b",50));
+        videojuegos.add(new Videojuego(26, "TES: Skyrim", "a", "b",50));
         videojuegos.add(new Videojuego(27, "PUBG", "a", "b",50));
         videojuegos.add(new Videojuego(28, "Portal", "a", "b",50));
         videojuegos.add(new Videojuego(29, "Portal 2", "a", "b",50));
@@ -58,7 +59,7 @@ public class VideojuegosDAOList implements VideojuegoDAO {
     }
 
     @Override
-    public Videojuego buscaID(int videojuegoID) {
+    public Videojuego buscaId(Integer videojuegoID) {
         Videojuego encontrado=null;
         for (Videojuego v: videojuegos) {
                if (v.getVideojuegoID()==videojuegoID) encontrado=v;
@@ -74,7 +75,7 @@ public class VideojuegosDAOList implements VideojuegoDAO {
     public List<Videojuego> buscaNombre(String nombre) {
         List<Videojuego> vj = new ArrayList<>();
         for (int i = 0; i < videojuegos.size(); i++) {
-            if (videojuegos.get(i).getNombreVideojuego().contains(nombre)) {
+            if (videojuegos.get(i).getNombreVideojuego().toLowerCase().contains(nombre.toLowerCase())) {
                 vj.add(videojuegos.get(i));
             }
         }
@@ -97,5 +98,7 @@ public class VideojuegosDAOList implements VideojuegoDAO {
     public boolean instalar(Videojuego v) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
 
 }

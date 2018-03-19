@@ -86,7 +86,7 @@ public class ModificarPerfil extends HttpServlet {
         processRequest(request, response);
          String log_usuario = request.getParameter("log_usuario"); 
         String log_pwd = request.getParameter("log_pwd"); 
-        int id = clientes.obtenerID(log_usuario, log_pwd);
+        int id = clientes.obtenerID("log_email");
         Cliente c;
         c = clientes.buscaId(id);
 
