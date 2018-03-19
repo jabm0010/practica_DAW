@@ -91,23 +91,25 @@ public class NavegaVistas extends HttpServlet {
                 break;
             }
             case "/index": {
+
                 rd = request.getRequestDispatcher(srvViewPath + "/index.jsp");
                 break;
             }
             case "/busqueda": {
-                rd = request.getRequestDispatcher(srvViewPath +"/busqueda.jsp");
+
+                rd = request.getRequestDispatcher(srvViewPath + "/busqueda.jsp");
                 break;
             }
             case "/juego": {
                 Videojuego v;
                 int id = Integer.parseInt(Util.getParam(request.getParameter("videojuegoID"), "0"));
-                v=videojuegos.buscaID(id);
+                v = videojuegos.buscaID(id);
                 request.setAttribute("videojuegoElegido", v);
-                rd = request.getRequestDispatcher(srvViewPath+"/juego.jsp");
+                rd = request.getRequestDispatcher(srvViewPath + "/juego.jsp");
                 break;
             }
             default: {
-                rd = request.getRequestDispatcher(srvViewPath + "/comunidad.jsp");
+                rd = request.getRequestDispatcher(srvViewPath + "/tienda.jsp");
                 break;
             }
         }

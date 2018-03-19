@@ -27,10 +27,10 @@
   </head>
 
 
+  <!--Barra de navegación -->
+  <%@include file="/WEB-INF/layout/barra_navegacion.jspf" %>
   <body>
 
-    <!--Barra de navegación -->
-    <%@include file="/WEB-INF/layout/barra_navegacion.jspf" %>
 
     <div class="container-fluid">
       <div class="row fila-buffer">
@@ -133,7 +133,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form class="form-horizontal" role="form" action="modificarperfil" method="POST">
+            <form class="form-horizontal" role="form" action="<c:url value="/modificarperfil"/>" method="POST">
 
               <div class="modal-body">
                 <div class="form-group">

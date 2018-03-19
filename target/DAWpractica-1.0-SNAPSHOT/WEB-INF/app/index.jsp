@@ -150,41 +150,7 @@
                                 </div>
                             </form>
 
-                            <c:if test="${pageContext.request.method=='POST'}">
-                                <c:if test="${pageContext.request.getParameter('registrarme')!=null}">
-                                    <c:if test="${pageContext.request.getParameter('reg_email')==''}">
-                                        Introduce tu email <br>
-                                    </c:if>
-                                </c:if>
-                            </c:if>
-
-                            <c:if test="${pageContext.request.method=='POST'}">
-                                <c:if test="${pageContext.request.getParameter('registrarme')!=null}">
-                                    <c:if test="${pageContext.request.getParameter('reg_usuario')==''}">
-                                        Introduce tu nombre de usuario <br>
-                                    </c:if>
-                                </c:if>
-                            </c:if>
-
-                            <c:if test="${pageContext.request.method=='POST'}">
-                                <c:if test="${pageContext.request.getParameter('registrarme')!=null}">
-                                    <c:if test="${pageContext.request.getParameter('reg_pwd')==''}">
-                                        Introduce tu contraseña
-                                    </c:if>
-                                </c:if>
-                            </c:if>
-
-                            <c:if test="${pageContext.request.method=='POST'}">
-                                <c:if test="${pageContext.request.getParameter('registrarme')!=null}">
-                                    <c:if test="${pageContext.request.getParameter('reg_pwd')!=''}">
-                                        <c:if test="${pageContext.request.getParameter('reg_usuario')!=''}">
-                                            <c:if test="${pageContext.request.getParameter('reg_email')!=''}">
-                                                <c:redirect url="comunidad.jsp?log_usuario=${param.reg_usuario}"/>
-                                            </c:if>
-                                        </c:if>
-                                    </c:if>
-                                </c:if>
-                            </c:if>    
+                          
 
                         </div>
                     </div>

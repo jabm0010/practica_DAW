@@ -7,6 +7,7 @@ package com.daw.vj.controller;
 
 import com.daw.vj.dao.ClienteDAO;
 import com.daw.vj.dao.ClientesDAOList;
+import com.daw.vj.model.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -95,6 +96,9 @@ public class ClienteController extends HttpServlet {
 
         if (resultado) {
             int id = clientes.obtenerID(log_usuario, log_pwd);
+           Cliente c;
+            c=clientes.buscaId(id);
+            request.getSession().setAttribute("clienteLog",c);
             request.getSession().setAttribute("biografia", clientes.buscaId(id).getBiografia());
             request.getSession().setAttribute("amigos", clientes.buscaId(id).getAmigos());
             request.getSession().setAttribute("numamigos", clientes.buscaId(id).getAmigos().size());

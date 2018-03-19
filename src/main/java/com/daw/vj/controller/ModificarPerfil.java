@@ -5,8 +5,13 @@
  */
 package com.daw.vj.controller;
 
+import com.daw.vj.dao.ClienteDAO;
+import com.daw.vj.dao.ClientesDAOList;
+import com.daw.vj.model.Cliente;
+import com.daw.vj.otros.Util;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +25,20 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ModificarPerfil", urlPatterns = {"/modificarperfil"})
 public class ModificarPerfil extends HttpServlet {
 
+    private ClienteDAO clientes;  //Lista con los clientes
+       private String srvUrl;
+
+    @Override
+    public void init(ServletConfig servletConfig)
+            throws ServletException {
+
+        super.init(servletConfig);
+        //Select DAO implementation
+        clientes = new ClientesDAOList();
+        srvUrl = servletConfig.getServletContext().getContextPath() + "/modificarperfil";
+
+    }
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,7 +51,10 @@ public class ModificarPerfil extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        request.setAttribute("srvUrl", srvUrl);
+                
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -62,6 +84,11 @@ public class ModificarPerfil extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+         String log_usuario = request.getParameter("log_usuario"); 
+        String log_pwd = request.getParameter("log_pwd"); 
+        int id = clientes.obtenerID(log_usuario, log_pwd);
+        Cliente c;
+        c = clientes.buscaId(id);
 
         String user = request.getParameter("user");
         String new_pwd = request.getParameter("new-pwd");
@@ -69,7 +96,9 @@ public class ModificarPerfil extends HttpServlet {
         request.getSession().setAttribute("log_usuario", user);
         request.getSession().setAttribute("log_pwd", new_pwd);
         request.getSession().setAttribute("biografia", biografia);
-        response.sendRedirect("app");
+
+        clientes.actualizarCliente(c, user, biografia, new_pwd);
+        response.sendRedirect("app/comunidad");
         return;
     }
 

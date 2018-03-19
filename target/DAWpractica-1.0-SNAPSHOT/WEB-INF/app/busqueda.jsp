@@ -76,6 +76,7 @@
                     <p class="card-text"><small class="text-muted">${v.precio} €</small></p>
                   </div>
                   <div class="card-footer">
+
                     <a class="btn btn-success" href='${srvUrl}/juego${qry}'>Ver</a>
                     
                   </div>

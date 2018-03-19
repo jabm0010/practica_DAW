@@ -1,12 +1,16 @@
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bienvenido</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <link rel="stylesheet" href="css/indice.css">
+    <title>Bienvenida</title>
+    <link rel="stylesheet" type="text/css"  href="<c:url value='/css/indice.css'/>">
   </head>
   <body>
+   <body>
     <section class="intro">
       <div class="inner">
         <div class="content">
@@ -19,5 +23,6 @@
 
     </section>
 
+  </body>
   </body>
 </html>
