@@ -28,31 +28,42 @@ public class Cliente {
         nombre = " ";
         correo = " ";
         biografia = " ";
-        pwd= " ";
-        amigos=new ArrayList<>();
-        online=false;
-    }
-    
-    public Cliente(int id, String nombre, String correo, String biografia,String pwd, List<Cliente> amigos,boolean online){
-        this.id=id;
-        this.nombre=nombre;
-        this.correo=correo;
-        this.biografia=biografia;
-        this.pwd=pwd;
-        this.amigos=amigos;
-        this.online=online;
-        
+        pwd = " ";
+        amigos = new ArrayList<>();
+        online = false;
     }
 
-    //Constructorr de copia
+    public Cliente(int id, String nombre, String correo, String biografia, String pwd, List<Cliente> amigos, boolean online) {
+        this.id = id;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.biografia = biografia;
+        this.pwd = pwd;
+        this.amigos = amigos;
+        this.online = online;
+
+    }
+
+    public Cliente(int id, String nombre, String correo, String biografia, String pwd, boolean online) {
+        this.id = id;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.biografia = biografia;
+        this.pwd = pwd;
+        this.online = online;
+
+        amigos = new ArrayList<>();
+    }
+
+    //Constructor de copia
     public Cliente(Cliente c) {
         this.id = c.id;
         this.nombre = c.nombre;
         this.correo = c.correo;
         this.biografia = c.biografia;
-        this.pwd=c.pwd;
-        this.amigos=c.amigos;
-        this.online=c.online;
+        this.pwd = c.pwd;
+        this.amigos = c.amigos;
+        this.online = c.online;
     }
 
     /**

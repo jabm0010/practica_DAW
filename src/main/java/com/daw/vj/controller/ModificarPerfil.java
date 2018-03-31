@@ -6,6 +6,7 @@
 package com.daw.vj.controller;
 
 import com.daw.vj.dao.ClienteDAO;
+import com.daw.vj.dao.ClientesDAOJDBC;
 import com.daw.vj.dao.ClientesDAOList;
 import com.daw.vj.model.Cliente;
 import com.daw.vj.otros.Util;
@@ -35,6 +36,8 @@ public class ModificarPerfil extends HttpServlet {
         super.init(servletConfig);
         //Select DAO implementation
         clientes = new ClientesDAOList();
+        clientes = new ClientesDAOJDBC();
+        
         srvUrl = servletConfig.getServletContext().getContextPath() + "/modificarperfil";
 
     }

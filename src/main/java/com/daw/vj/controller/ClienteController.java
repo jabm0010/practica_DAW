@@ -6,6 +6,7 @@
 package com.daw.vj.controller;
 
 import com.daw.vj.dao.ClienteDAO;
+import com.daw.vj.dao.ClientesDAOJDBC;
 import com.daw.vj.dao.ClientesDAOList;
 import com.daw.vj.model.Cliente;
 import java.io.IOException;
@@ -36,7 +37,8 @@ public class ClienteController extends HttpServlet {
 
         super.init(servletConfig);
 
-        clientes = new ClientesDAOList();
+      //  clientes = new ClientesDAOList();
+        clientes=new ClientesDAOJDBC();
         srvUrl = servletConfig.getServletContext().getContextPath() + "/cliente";
 
     }
@@ -79,6 +81,8 @@ public class ClienteController extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
+     * Manejo del logeo y registro de usuarios
+     * 
      *
      * @param request servlet request
      * @param response servlet response

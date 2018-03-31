@@ -6,8 +6,10 @@
 package com.daw.vj.controller;
 
 import com.daw.vj.dao.ClienteDAO;
+import com.daw.vj.dao.ClientesDAOJDBC;
 import com.daw.vj.dao.ClientesDAOList;
 import com.daw.vj.dao.VideojuegoDAO;
+import com.daw.vj.dao.VideojuegosDAOJDBC;
 import com.daw.vj.dao.VideojuegosDAOList;
 import com.daw.vj.model.Videojuego;
 import com.daw.vj.otros.Util;
@@ -40,8 +42,14 @@ public class NavegaVistas extends HttpServlet {
         super.init(servletConfig);
         Log.info("Iniciando NavegaVistasController");
         srvUrl = servletConfig.getServletContext().getContextPath() + "/app";
-        clientes = new ClientesDAOList();
-        videojuegos = new VideojuegosDAOList();
+       
+        
+        //clientes = new ClientesDAOList();
+        clientes=new ClientesDAOJDBC();
+        
+        
+        //videojuegos = new VideojuegosDAOList();
+        videojuegos = new VideojuegosDAOJDBC();
     }
 
     /**
@@ -63,7 +71,8 @@ public class NavegaVistas extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP <code>GET</code> method. Acceso a las diferentes vistas
+     * de la aplicación
      *
      * @param request servlet request
      * @param response servlet response
@@ -91,7 +100,7 @@ public class NavegaVistas extends HttpServlet {
                 break;
             }
             case "/index": {
-
+                
                 rd = request.getRequestDispatcher(srvViewPath + "/index.jsp");
                 break;
             }
@@ -119,7 +128,9 @@ public class NavegaVistas extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP <code>POST</code> method. 
+     * Formulario de búsqueda, tanto
+     * para videojuegos como usuarios
      *
      * @param request servlet request
      * @param response servlet response
@@ -132,10 +143,18 @@ public class NavegaVistas extends HttpServlet {
         processRequest(request, response);
 
         String busca_nombre = request.getParameter("busca_nombre"); //Valor introducido en la barra de busqueda
-        request.getSession().setAttribute("busca_nombre", busca_nombre);
-        request.getSession().setAttribute("usuarios", clientes.buscaNombre(busca_nombre));
-        request.getSession().setAttribute("videojuegos", videojuegos.buscaNombre(busca_nombre));
 
+        //En caso de que no se introduzca nada, se mostrarán todo el contenido
+        if (busca_nombre.trim().isEmpty()) {
+            request.getSession().setAttribute("busca_nombre", "Todos");
+            request.getSession().setAttribute("usuarios", clientes.buscaTodos());
+            request.getSession().setAttribute("videojuegos", videojuegos.buscaTodos());
+        } else {
+
+            request.getSession().setAttribute("busca_nombre", busca_nombre);
+            request.getSession().setAttribute("usuarios", clientes.buscaNombre(busca_nombre));
+            request.getSession().setAttribute("videojuegos", videojuegos.buscaNombre(busca_nombre));
+        }
         response.sendRedirect("busqueda");
     }
 

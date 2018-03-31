@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/DAWpractica"/>
+<Context path="/DAWpractica">
+    <Resource auth="Container" driverClassName="org.apache.derby.jdbc.ClientDriver" 
+              maxActive="25" 
+              name="jdbc/practicaDAW" 
+              password="practicaDAW" 
+              type="javax.sql.DataSource" 
+              url="jdbc:derby://localhost:1527/practicaDAW" 
+              username="practicaDAW"/>
+</Context>
+

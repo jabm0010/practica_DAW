@@ -1,12 +1,13 @@
-C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\version final iteracion 0\src\main\java\com\daw\vj\model\Cliente.java
-C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\version final iteracion 0\src\main\java\com\daw\vj\dao\GenericDAO.java
-C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\version final iteracion 0\src\main\java\com\daw\vj\controller\BusquedaController.java
-C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\version final iteracion 0\src\main\java\com\daw\vj\controller\ClienteController.java
-C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\version final iteracion 0\src\main\java\com\daw\vj\dao\ClienteDAO.java
-C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\version final iteracion 0\src\main\java\com\daw\vj\dao\ClientesDAOList.java
-C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\version final iteracion 0\src\main\java\com\daw\vj\dao\VideojuegosDAOList.java
-C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\version final iteracion 0\src\main\java\com\daw\vj\controller\ModificarPerfil.java
-C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\version final iteracion 0\src\main\java\com\daw\vj\controller\NavegaVistas.java
-C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\version final iteracion 0\src\main\java\com\daw\vj\model\Videojuego.java
-C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\version final iteracion 0\src\main\java\com\daw\vj\otros\Util.java
-C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\version final iteracion 0\src\main\java\com\daw\vj\dao\VideojuegoDAO.java
+C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\Iteracion3\it3\src\main\java\com\daw\vj\dao\ClienteDAO.java
+C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\Iteracion3\it3\src\main\java\com\daw\vj\controller\ClienteController.java
+C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\Iteracion3\it3\src\main\java\com\daw\vj\dao\ClientesDAOJDBC.java
+C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\Iteracion3\it3\src\main\java\com\daw\vj\otros\Util.java
+C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\Iteracion3\it3\src\main\java\com\daw\vj\dao\VideojuegoDAO.java
+C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\Iteracion3\it3\src\main\java\com\daw\vj\model\Cliente.java
+C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\Iteracion3\it3\src\main\java\com\daw\vj\controller\ModificarPerfil.java
+C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\Iteracion3\it3\src\main\java\com\daw\vj\dao\GenericDAO.java
+C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\Iteracion3\it3\src\main\java\com\daw\vj\dao\VideojuegosDAOJDBC.java
+C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\Iteracion3\it3\src\main\java\com\daw\vj\dao\ClientesDAOList.java
+C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\Iteracion3\it3\src\main\java\com\daw\vj\controller\NavegaVistas.java
+C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\Iteracion3\it3\src\main\java\com\daw\vj\dao\VideojuegosDAOList.java
+C:\Users\Juan Béjar\Desktop\workspace practicas de DAW\Iteracion3\it3\src\main\java\com\daw\vj\model\Videojuego.java
