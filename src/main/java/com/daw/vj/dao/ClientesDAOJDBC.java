@@ -6,7 +6,9 @@
 package com.daw.vj.dao;
 
 import com.daw.vj.model.Cliente;
+
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,6 +28,7 @@ import javax.sql.DataSource;
 public class ClientesDAOJDBC implements ClienteDAO {
 
     private static final String SQL_BUSCATODOS = "SELECT * FROM Cliente";
+      private static final String SQL_BUSCANOMBRE = "SELECT * FROM Cliente WHERE nombre LIKE ?";
 
     private static final String connPoolName = "java:comp/env/jdbc/practicaDAW";
     private DataSource ds = null;
@@ -59,17 +62,22 @@ public class ClientesDAOJDBC implements ClienteDAO {
     @Override
     public List<Cliente> buscaNombre(String nombre) {
 
-        List<Cliente> l = new ArrayList<Cliente>();
+        List<Cliente> clientes = new ArrayList<Cliente>();
+        Cliente c=null;
         try (Connection conn = ds.getConnection();
-                Statement stmn = conn.createStatement();
-                ResultSet rs = stmn.executeQuery(SQL_BUSCATODOS);) {
-            while (rs.next()) {
-                l.add(clienteMapper(rs));
+                PreparedStatement stmn = conn.prepareStatement(SQL_BUSCANOMBRE)) {
+            stmn.setString(1, "%" + nombre + "%");
+            try (ResultSet rs = stmn.executeQuery()) {
+                while (rs.next()) {
+                    clientes.add(clienteMapper(rs));
+                }
             }
-        } catch (Exception ex) {
-            Logger.getLogger(ClientesDAOJDBC.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(VideojuegosDAOJDBC.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
         }
-        return l;
+
+        return clientes;
+
     }
 
     @Override
