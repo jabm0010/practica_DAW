@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ModificarPerfil extends HttpServlet {
 
     private ClienteDAO clientes;  //Lista con los clientes
-       private String srvUrl;
+    private String srvUrl;
 
     @Override
     public void init(ServletConfig servletConfig)
@@ -37,7 +37,7 @@ public class ModificarPerfil extends HttpServlet {
         //Select DAO implementation
         clientes = new ClientesDAOList();
         clientes = new ClientesDAOJDBC();
-        
+
         srvUrl = servletConfig.getServletContext().getContextPath() + "/modificarperfil";
 
     }
@@ -55,9 +55,7 @@ public class ModificarPerfil extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setAttribute("srvUrl", srvUrl);
-                
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -73,6 +71,10 @@ public class ModificarPerfil extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
+        response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-8");
+        response.setHeader("Expires", "0"); //Avoid browser caching response
     }
 
     /**
@@ -86,21 +88,32 @@ public class ModificarPerfil extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-         String log_usuario = request.getParameter("log_usuario"); 
-        String log_pwd = request.getParameter("log_pwd"); 
-        int id = clientes.obtenerID("log_email");
-        Cliente c;
-        c = clientes.buscaId(id);
-
+//        processRequest(request, response);
+//        String log_usuario = request.getParameter("log_usuario");
+//        String log_pwd = request.getParameter("log_pwd");
+//        String email = request.getParameter("correo");
+//        int id = clientes.obtenerID(request.getParameter("correo"));
+//        Cliente c;
+//        c = clientes.buscaId(id);
+        Cliente cli;
+        
+        int id=Integer.parseInt(request.getParameter("id_clientes"));
+        cli=clientes.buscaId(id);
+        
+        
+        // Cliente cl = (Cliente) request.getAttribute("clienteLog");
         String user = request.getParameter("user");
         String new_pwd = request.getParameter("new-pwd");
         String biografia = request.getParameter("biografia");
         request.getSession().setAttribute("log_usuario", user);
         request.getSession().setAttribute("log_pwd", new_pwd);
         request.getSession().setAttribute("biografia", biografia);
+        cli.setBiografia(biografia);
+        cli.setNombre(user);
+        cli.setPwd(new_pwd);
+        clientes.guardaCliente(cli);
 
-        clientes.actualizarCliente(c, user, biografia, new_pwd);
+      //  clientes.actualizarCliente((Cliente) request.getAttribute("clienteLog"), user, biografia, new_pwd);
         response.sendRedirect("app/comunidad");
         return;
     }

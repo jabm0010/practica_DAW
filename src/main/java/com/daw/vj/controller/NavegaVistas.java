@@ -42,12 +42,10 @@ public class NavegaVistas extends HttpServlet {
         super.init(servletConfig);
         Log.info("Iniciando NavegaVistasController");
         srvUrl = servletConfig.getServletContext().getContextPath() + "/app";
-       
-        
+
         //clientes = new ClientesDAOList();
-        clientes=new ClientesDAOJDBC();
-        
-        
+        clientes = new ClientesDAOJDBC();
+
         //videojuegos = new VideojuegosDAOList();
         videojuegos = new VideojuegosDAOJDBC();
     }
@@ -66,6 +64,10 @@ public class NavegaVistas extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         request.setAttribute("srvUrl", srvUrl);
+
+        response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-8");
+        response.setHeader("Expires", "0"); //Avoid browser caching response
 
     }
 
@@ -100,7 +102,7 @@ public class NavegaVistas extends HttpServlet {
                 break;
             }
             case "/index": {
-                
+
                 rd = request.getRequestDispatcher(srvViewPath + "/index.jsp");
                 break;
             }
@@ -128,8 +130,7 @@ public class NavegaVistas extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method. 
-     * Formulario de búsqueda, tanto
+     * Handles the HTTP <code>POST</code> method. Formulario de búsqueda, tanto
      * para videojuegos como usuarios
      *
      * @param request servlet request

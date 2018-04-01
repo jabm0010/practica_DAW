@@ -56,6 +56,10 @@ public class ClienteController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setAttribute("srvUrl", srvUrl);
+        
+          response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-8");
+        response.setHeader("Expires","0"); //Avoid browser caching response
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -105,7 +109,11 @@ public class ClienteController extends HttpServlet {
                 boolean datosCorrectos = validarDatosRegistro(reg_usuario, reg_email, reg_pwd);
                 boolean resultado_reg=false;
                 if (validarDatosRegistro(reg_usuario, reg_email, reg_pwd)) {
-                    resultado_reg = clientes.registrar(reg_usuario, reg_email, reg_pwd);
+                    Cliente c=new Cliente(0,reg_usuario,reg_email,"Aún no has modificado tu biografía",reg_pwd,true);
+                    
+                    resultado_reg=clientes.registrar(c);
+                    
+                    //resultado_reg = clientes.registrar(reg_usuario, reg_email, reg_pwd);
                 }
                 
                 if (resultado_reg) {
@@ -143,7 +151,9 @@ public class ClienteController extends HttpServlet {
                     int id = clientes.obtenerID(log_email);
                     Cliente c;
                     c = clientes.buscaId(id);
+                    request.getSession().setAttribute("id_cliente",clientes.buscaId(id).getId());
                     request.getSession().setAttribute("clienteLog", c);
+                    request.getSession().setAttribute("correo", log_email);
                     request.getSession().setAttribute("biografia", clientes.buscaId(id).getBiografia());
                     request.getSession().setAttribute("amigos", clientes.buscaId(id).getAmigos());
                     request.getSession().setAttribute("numamigos", clientes.buscaId(id).getAmigos().size());

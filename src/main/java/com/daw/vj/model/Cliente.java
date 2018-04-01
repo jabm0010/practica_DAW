@@ -5,6 +5,7 @@
  */
 package com.daw.vj.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author Juan Béjar
  */
-public class Cliente {
+public class Cliente implements Serializable{
 
     private int id;
     private String nombre;
