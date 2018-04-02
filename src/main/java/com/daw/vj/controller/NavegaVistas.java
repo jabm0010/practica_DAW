@@ -94,6 +94,8 @@ public class NavegaVistas extends HttpServlet {
                 break;
             }
             case "/comunidad": {
+                
+              
                 rd = request.getRequestDispatcher(srvViewPath + "/comunidad.jsp");
                 break;
             }
@@ -102,7 +104,7 @@ public class NavegaVistas extends HttpServlet {
                 break;
             }
             case "/index": {
-
+                
                 rd = request.getRequestDispatcher(srvViewPath + "/index.jsp");
                 break;
             }

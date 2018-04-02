@@ -2,10 +2,10 @@
 <Context path="/DAWpractica">
     <Resource auth="Container" driverClassName="org.apache.derby.jdbc.ClientDriver" 
               maxActive="25" 
-              name="jdbc/practicaDAW" 
-              password="practicaDAW" 
+              name="jdbc/DAWpractica" 
+              password="DAWpractica" 
               type="javax.sql.DataSource" 
-              url="jdbc:derby://localhost:1527/practicaDAW" 
-              username="practicaDAW"/>
+              url="jdbc:derby://localhost:1527/DAWpractica" 
+              username="DAWpractica"/>
 </Context>
 

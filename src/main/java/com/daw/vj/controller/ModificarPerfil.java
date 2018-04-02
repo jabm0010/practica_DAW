@@ -88,32 +88,31 @@ public class ModificarPerfil extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
-//        String log_usuario = request.getParameter("log_usuario");
-//        String log_pwd = request.getParameter("log_pwd");
-//        String email = request.getParameter("correo");
-//        int id = clientes.obtenerID(request.getParameter("correo"));
-//        Cliente c;
-//        c = clientes.buscaId(id);
-        Cliente cli;
-        
-        int id=Integer.parseInt(request.getParameter("id_clientes"));
-        cli=clientes.buscaId(id);
-        
-        
-        // Cliente cl = (Cliente) request.getAttribute("clienteLog");
+
+        //Cliente cli = new Cliente();
+
+        String correo=request.getParameter("clienteLog");
+        int id = clientes.obtenerID(correo);
+        Cliente c;
+        c = clientes.buscaId(id);
+
         String user = request.getParameter("user");
         String new_pwd = request.getParameter("new-pwd");
         String biografia = request.getParameter("biografia");
+  
         request.getSession().setAttribute("log_usuario", user);
         request.getSession().setAttribute("log_pwd", new_pwd);
-        request.getSession().setAttribute("biografia", biografia);
-        cli.setBiografia(biografia);
-        cli.setNombre(user);
-        cli.setPwd(new_pwd);
-        clientes.guardaCliente(cli);
+        request.getSession().setAttribute("biografia", id);
 
-      //  clientes.actualizarCliente((Cliente) request.getAttribute("clienteLog"), user, biografia, new_pwd);
+        c.setBiografia(biografia);
+        c.setNombre(user);
+        c.setPwd(new_pwd);
+
+        clientes.guardaCliente(c);
+
+        // int id = clientes.obtenerID(request.getParameter("log_email"));
+        //cli.setId(id);
+        //  clientes.actualizarCliente((Cliente) request.getAttribute("clienteLog"), user, biografia, new_pwd);
         response.sendRedirect("app/comunidad");
         return;
     }

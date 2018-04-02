@@ -151,9 +151,9 @@ public class ClienteController extends HttpServlet {
                     int id = clientes.obtenerID(log_email);
                     Cliente c;
                     c = clientes.buscaId(id);
-                    request.getSession().setAttribute("id_cliente",clientes.buscaId(id).getId());
-                    request.getSession().setAttribute("clienteLog", c);
-                    request.getSession().setAttribute("correo", log_email);
+                    
+                    request.getSession().setAttribute("clienteLog", clientes.buscaId(id).getCorreo());
+                    request.getSession().setAttribute("log_email",log_email);
                     request.getSession().setAttribute("biografia", clientes.buscaId(id).getBiografia());
                     request.getSession().setAttribute("amigos", clientes.buscaId(id).getAmigos());
                     request.getSession().setAttribute("numamigos", clientes.buscaId(id).getAmigos().size());
