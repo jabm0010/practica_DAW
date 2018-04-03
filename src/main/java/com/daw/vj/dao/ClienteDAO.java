@@ -32,5 +32,6 @@ public interface ClienteDAO extends GenericDAO<Cliente, Integer> {
 
     public boolean guardaCliente(Cliente c);
 
+    public List<Cliente> buscaAmigos(int id);
 
 }

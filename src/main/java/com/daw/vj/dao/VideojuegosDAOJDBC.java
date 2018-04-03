@@ -36,7 +36,7 @@ public class VideojuegosDAOJDBC implements VideojuegoDAO {
 
         try {
             context = new InitialContext(); //Accedemos al contenedor de Servlets
-            ds = (DataSource) context.lookup("java:comp/env/jdbc/practicaDAW"); //Localizamos el pool
+            ds = (DataSource) context.lookup("java:comp/env/jdbc/DAWpractica"); //Localizamos el pool
         } catch (NamingException ex) {
             Logger.getLogger(VideojuegosDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }

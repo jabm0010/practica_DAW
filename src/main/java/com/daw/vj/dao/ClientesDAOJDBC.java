@@ -35,8 +35,9 @@ public class ClientesDAOJDBC implements ClienteDAO {
     private static final String SQL_BUSCATODOS = "SELECT * FROM Cliente";
     private static final String SQL_BUSCANOMBRE = "SELECT * FROM Cliente WHERE nombre LIKE ?";
     private static final String SQL_ACTUALIZA = "UPDATE Cliente set nombre=?, biografia=?, pwd=? WHERE id=?";
+    private static final String SQL_BUSCAAMIGOS = "SELECT cli_id2 FROM cliente,cliente_cliente WHERE id=? AND id=cli_id1";
 
-    private static final String connPoolName = "java:comp/env/jdbc/practicaDAW";
+    private static final String connPoolName = "java:comp/env/jdbc/DAWpractica";
     private DataSource ds = null;
 
     public ClientesDAOJDBC() {
@@ -161,11 +162,12 @@ public class ClientesDAOJDBC implements ClienteDAO {
                 c = clienteMapper(rs);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(VideojuegosDAOJDBC.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
+            Logger.getLogger(ClientesDAOJDBC.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
         }
 
         if (c.getPwd().equals(pwd)) {
             return true;
+
         } else {
             return false;
         }
@@ -204,10 +206,10 @@ public class ClientesDAOJDBC implements ClienteDAO {
 
         try (Connection conn = ds.getConnection();
                 PreparedStatement stmn = conn.prepareStatement(SQL_ACTUALIZA);) {
-            stmn.setString(1, nombre);
-            stmn.setString(2, biografia);
-            stmn.setString(3, pwd);
-            stmn.setInt(4, c.getId());
+//            stmn.setString(1, "usuario");
+//            stmn.setString(2, "Hola!");
+//            stmn.setString(3, "usuario");
+//            stmn.setInt(4, 1);
             stmn.executeUpdate();
 
         } catch (Exception ex) {
@@ -224,9 +226,10 @@ public class ClientesDAOJDBC implements ClienteDAO {
             stmn.setString(1, c.getNombre());
             stmn.setString(2, c.getBiografia());
             stmn.setString(3, c.getPwd());
-            stmn.setInt(4,c.getId());
 
+            stmn.setInt(4, 1);
             result = (stmn.executeUpdate() == 1);
+
         } catch (Exception ex) {
             Logger.getLogger(ClientesDAOJDBC.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
         }
@@ -248,6 +251,7 @@ public class ClientesDAOJDBC implements ClienteDAO {
             Logger.getLogger(VideojuegosDAOJDBC.class
                     .getName()).log(Level.SEVERE, ex.getMessage(), ex);
         }
+
         return c;
 
     }
@@ -268,6 +272,38 @@ public class ClientesDAOJDBC implements ClienteDAO {
                     .getName()).log(Level.SEVERE, ex.getMessage(), ex);
         }
         return l;
+
+    }
+
+    @Override
+    public List<Cliente> buscaAmigos(int id) {
+
+        List<Integer> l = new ArrayList<>();
+        try (Connection conn = ds.getConnection();
+                PreparedStatement stmn = conn.prepareStatement(SQL_BUSCAAMIGOS)) {
+            stmn.setInt(1, id);
+            ResultSet rs = stmn.executeQuery();
+            while (rs.next()) {
+                l.add(rs.getInt("cli_id2"));
+
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ClientesDAOJDBC.class
+                    .getName()).log(Level.SEVERE, ex.getMessage(), ex);
+        }
+        
+        
+        List<Cliente> amigos=new ArrayList<>();
+        for(int i=0;i<l.size();i++){
+           Cliente c=new Cliente();
+           c=buscaId(l.get(i));
+           amigos.add(c);
+            
+        }
+        
+        
+        
+        return amigos;
 
     }
 

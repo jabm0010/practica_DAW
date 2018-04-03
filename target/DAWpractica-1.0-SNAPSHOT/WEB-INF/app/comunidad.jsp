@@ -143,12 +143,12 @@
 
                 <div class="form-group">
                   <label for="old-pwd">Antigua contraseña:</label>
-                  <input type="password" class="form-control" name="old-pwd" value='${log_pwd}'>
+                  <input type="text" class="form-control" name="old-pwd" value='${log_pwd}'>
                 </div>
 
                 <div class="form-group">
                   <label for="new-pwd">Nueva contraseña:</label>
-                  <input type="password" class="form-control" name="new-pwd">
+                  <input type="text" class="form-control" name="new-pwd" value='${log_pwd}'>
                 </div>
 
                 <div class="form-group">

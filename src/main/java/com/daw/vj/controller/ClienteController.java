@@ -11,6 +11,8 @@ import com.daw.vj.dao.ClientesDAOList;
 import com.daw.vj.model.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -151,11 +153,16 @@ public class ClienteController extends HttpServlet {
                     int id = clientes.obtenerID(log_email);
                     Cliente c;
                     c = clientes.buscaId(id);
-                    request.getSession().setAttribute("id_cliente",clientes.buscaId(id).getId());
-                    request.getSession().setAttribute("clienteLog", c);
-                    request.getSession().setAttribute("correo", log_email);
+                    
+                    request.getSession().setAttribute("clienteLog", clientes.buscaId(id).getCorreo());
+                    request.getSession().setAttribute("log_email",log_email);
                     request.getSession().setAttribute("biografia", clientes.buscaId(id).getBiografia());
-                    request.getSession().setAttribute("amigos", clientes.buscaId(id).getAmigos());
+                    
+                    List<Cliente> amigos=clientes.buscaAmigos(id);
+                   
+                    c.setAmigos(amigos);
+                    
+                    request.getSession().setAttribute("amigos", amigos);
                     request.getSession().setAttribute("numamigos", clientes.buscaId(id).getAmigos().size());
                     request.getSession().setAttribute("log_usuario", clientes.buscaId(id).getNombre());
                     request.getSession().setAttribute("log_pwd", log_pwd);

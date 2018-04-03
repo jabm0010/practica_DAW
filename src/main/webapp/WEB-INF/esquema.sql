@@ -68,6 +68,13 @@ insert into cliente_cliente(cli_id1,cli_id2) VALUES (1,5);
 insert into cliente_cliente(cli_id1,cli_id2) VALUES (1,6);
 insert into cliente_cliente(cli_id1,cli_id2) VALUES (1,7);
 
+insert into cliente_cliente(cli_id1,cli_id2) VALUES (4,5);
+insert into cliente_cliente(cli_id1,cli_id2) VALUES (4,6);
+insert into cliente_cliente(cli_id1,cli_id2) VALUES (4,7);
+
+
+
+
 
 
 
@@ -106,4 +113,6 @@ insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUE
 insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('The Witcher', 'a', 'b',49.99);
 insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('The Witcher 2', 'a', 'b',49.99);
 insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('The Witcher 3', 'a', 'b',49.99);
+
+
 
