@@ -18,17 +18,11 @@ public interface ClienteDAO extends GenericDAO<Cliente, Integer> {
 
     public boolean registrar(Cliente c); //Método para registrar un cliente
 
-    public boolean registrar(String nombre, String email, String pwd); //Metodo alternativo para registrar
-
     public boolean modificar(Cliente c); //Método para modificar datos de un cliente
 
     public boolean verificarCliente(String email, String pwd); //Método para autentificar a un cliente
 
-    public int obtenerID(String nombre, String pwd);
-
     public int obtenerID(String email);
-
-    public void actualizarCliente(Cliente c, String nombre, String biografia, String pwd);
 
     public boolean guardaCliente(Cliente c);
 

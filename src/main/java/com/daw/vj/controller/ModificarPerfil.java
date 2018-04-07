@@ -94,31 +94,22 @@ public class ModificarPerfil extends HttpServlet {
             throws ServletException, IOException {
 
         request.setCharacterEncoding("UTF-8");
-        //Cliente cli = new Cliente();
+
         
         
-        String log_email = request.getRemoteUser();
-
-        int id = clientes.obtenerID(log_email);
-        Cliente c;
-        c = clientes.buscaId(id);
-
+        Cliente cl= (Cliente)request.getSession().getAttribute("cliente");
         
         
         String user = request.getParameter("user");
         String new_pwd = request.getParameter("new-pwd");
         String biografia = request.getParameter("biografia");
   
-        request.getSession().setAttribute("log_usuario", user);
-        request.getSession().setAttribute("log_pwd", new_pwd);
-        request.getSession().setAttribute("biografia", biografia);
-        
-        c.setId(id);
-        c.setBiografia(biografia);
-        c.setNombre(user);
-        c.setPwd(new_pwd);
 
-        clientes.guardaCliente(c);
+        cl.setBiografia(biografia);
+        cl.setNombre(user);
+        cl.setPwd(new_pwd);
+
+        clientes.guardaCliente(cl);
 
         response.sendRedirect("app/comunidad");
         return;

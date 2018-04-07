@@ -34,7 +34,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "NavegaVistas", urlPatterns = {"/app/*"})
 @ServletSecurity(
-        @HttpConstraint(rolesAllowed = {"USUARIOS"}))
+ @HttpConstraint(rolesAllowed = {"USUARIOS"}))
 public class NavegaVistas extends HttpServlet {
 
     private final String srvViewPath = "/WEB-INF/app";
@@ -96,11 +96,12 @@ public class NavegaVistas extends HttpServlet {
         String action = (request.getPathInfo() != null ? request.getPathInfo() : "");
         switch (action) {
             case "/biblioteca": {
+                
                 rd = request.getRequestDispatcher(srvViewPath + "/biblioteca.jsp");
                 break;
             }
             case "/comunidad": {
-              datosSesion(request);
+                datosSesion(request);
                 rd = request.getRequestDispatcher(srvViewPath + "/comunidad.jsp");
                 break;
             }
@@ -113,11 +114,9 @@ public class NavegaVistas extends HttpServlet {
             case "/index": {
 
                 request.logout();
-               
+
                 request.getSession().invalidate();
-                
- 
-                
+
                 rd = request.getRequestDispatcher("/bienvenida.jsp");
                 break;
             }
@@ -185,29 +184,19 @@ public class NavegaVistas extends HttpServlet {
     }// </editor-fold>
 
     public void datosSesion(HttpServletRequest request) {
-        
+
+        //Obtener los datos del cliente logeado desde la BD
         request.getSession();
         String log_email = request.getRemoteUser();
-        
 
         int id = clientes.obtenerID(log_email);
         Cliente c;
         c = clientes.buscaId(id);
-        
-        
-        request.getSession().setAttribute("clienteLog", clientes.buscaId(id).getCorreo());
-        request.getSession().setAttribute("log_email", log_email);
-        request.getSession().setAttribute("biografia", clientes.buscaId(id).getBiografia());
 
         List<Cliente> amigos = clientes.buscaAmigos(id);
 
         c.setAmigos(amigos);
-        int tama=amigos.size();
-
-        request.getSession().setAttribute("amigos", amigos);
-        request.getSession().setAttribute("numamigos", tama);
-        request.getSession().setAttribute("log_usuario", clientes.buscaId(id).getNombre());
-        request.getSession().setAttribute("log_pwd", clientes.buscaId(id).getPwd());
+        request.getSession().setAttribute("cliente", c);
 
     }
 

@@ -81,7 +81,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="j_username">Email:</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" name="j_username" value="${pageContext.request.userPrincipal.name}"
+                                        <input type="email" class="form-control" name="j_username" 
                                                placeholder="Introduce tu nombre">
                                     </div>
                                 </div>

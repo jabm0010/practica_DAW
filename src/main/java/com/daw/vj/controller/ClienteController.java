@@ -108,8 +108,13 @@ public class ClienteController extends HttpServlet {
                 String reg_usuario = request.getParameter("reg_usuario"); //Nombre introducido en el formulario reg_usuario
                 String reg_pwd = request.getParameter("reg_pwd"); //Contraseña introducida en el formulario reg_pwd
                 String reg_email = request.getParameter("reg_email");//Contraseña introducida en el formulario reg_email
+                
+                request.setAttribute("reg_usuario", reg_usuario);
+                request.setAttribute("reg_pwd", reg_pwd);
+                request.setAttribute("reg_email", reg_email);
                 Cliente c = new Cliente(0, reg_usuario, reg_email, "Aún no has modificado tu biografía", reg_pwd, true);
                 if (clientes.registrar(c)) {
+                    
                     request.setAttribute("inf_reg", "Se ha registrado de forma correcta. Pruebe a introducir sus datos en el formulario de login. ");
 
                 } else {

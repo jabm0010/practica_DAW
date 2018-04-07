@@ -34,7 +34,7 @@ public class ClientesDAOJDBC implements ClienteDAO {
     private static final String SQL_REGISTRAROL = "INSERT INTO Roles (correo,rol) VALUES (?,?)";
     private static final String SQL_BUSCAEMAIL = "SELECT * FROM Cliente where correo=?";
     private static final String SQL_BUSCATODOS = "SELECT * FROM Cliente";
-    private static final String SQL_BUSCANOMBRE = "SELECT * FROM Cliente WHERE nombre LIKE ?";
+    private static final String SQL_BUSCANOMBRE = "SELECT * FROM Cliente WHERE UPPER(nombre) LIKE ?";
     private static final String SQL_ACTUALIZA = "UPDATE Cliente set nombre=?, biografia=?, pwd=? WHERE id=?";
     private static final String SQL_BUSCAAMIGOS = "SELECT cli_id2 FROM cliente,cliente_cliente WHERE id=? AND id=cli_id1";
 
@@ -74,7 +74,7 @@ public class ClientesDAOJDBC implements ClienteDAO {
         Cliente c = null;
         try (Connection conn = ds.getConnection();
                 PreparedStatement stmn = conn.prepareStatement(SQL_BUSCANOMBRE)) {
-            stmn.setString(1, "%" + nombre + "%");
+            stmn.setString(1, ("%" + nombre + "%").toUpperCase());
             try (ResultSet rs = stmn.executeQuery()) {
                 while (rs.next()) {
                     clientes.add(clienteMapper(rs));
@@ -116,6 +116,8 @@ public class ClientesDAOJDBC implements ClienteDAO {
         }
 
         if (result) {
+            //Si se ha podido introducir de forma correcta, introducir también en la tabla de roles con el rol usuario
+            
             try (Connection conn = ds.getConnection();
                     PreparedStatement stmn = conn.prepareStatement(SQL_REGISTRAROL);) {
                 stmn.setString(1, c.getCorreo());
@@ -133,11 +135,6 @@ public class ClientesDAOJDBC implements ClienteDAO {
 
     }
 
-    @Override
-    public boolean registrar(String nombre, String email, String pwd) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
-    }
 
     @Override
     public boolean modificar(Cliente c) {
@@ -167,10 +164,7 @@ public class ClientesDAOJDBC implements ClienteDAO {
 
     }
 
-    @Override
-    public int obtenerID(String nombre, String pwd) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 
     @Override
     public int obtenerID(String email) {
@@ -194,22 +188,7 @@ public class ClientesDAOJDBC implements ClienteDAO {
 
     }
 
-    @Override
-    public void actualizarCliente(Cliente c, String nombre, String biografia, String pwd) {
 
-        try (Connection conn = ds.getConnection();
-                PreparedStatement stmn = conn.prepareStatement(SQL_ACTUALIZA);) {
-            stmn.setString(1, nombre);
-            stmn.setString(2, biografia);
-            stmn.setString(3, pwd);
-            stmn.setInt(4, c.getId());
-            stmn.executeUpdate();
-
-        } catch (Exception ex) {
-            Logger.getLogger(ClientesDAOJDBC.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
-        }
-
-    }
 
     @Override
     public boolean guardaCliente(Cliente c) {

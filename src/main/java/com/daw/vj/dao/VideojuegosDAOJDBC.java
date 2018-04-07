@@ -27,7 +27,7 @@ import javax.sql.DataSource;
 public class VideojuegosDAOJDBC implements VideojuegoDAO {
 
     private static final String SQL_BUSCAID = "SELECT * FROM Videojuegos where videojuegoID=?";
-    private static final String SQL_BUSCANOMBRE = "SELECT * FROM Videojuegos WHERE nombreVideojuego LIKE ?";
+    private static final String SQL_BUSCANOMBRE = "SELECT * FROM Videojuegos WHERE UPPER(nombreVideojuego) LIKE ?";
     private static final String SQL_BUSCATODOS = "SELECT * FROM Videojuegos";
     private DataSource ds;
 
@@ -60,7 +60,7 @@ public class VideojuegosDAOJDBC implements VideojuegoDAO {
         Videojuego v = null;
         try (Connection conn = ds.getConnection();
                 PreparedStatement stmn = conn.prepareStatement(SQL_BUSCANOMBRE)) {
-            stmn.setString(1, "%" + nombre + "%");
+            stmn.setString(1, ("%" + nombre + "%").toUpperCase());
             try (ResultSet rs = stmn.executeQuery()) {
                 while (rs.next()) {
                     videojuegos.add(videojuegoMapper(rs));

@@ -113,42 +113,6 @@ public class ClientesDAOList implements ClienteDAO {
         return false;
     }
 
-    /**
-     * Si el correo no existe, se admite el registro de usuario
-     *
-     * @param nombre
-     * @param email
-     * @param pwd
-     * @return
-     */
-    @Override
-    public boolean registrar(String nombre, String email, String pwd) {
-        for (int i = 0; i < clientes.size(); i++) {
-            if (clientes.get(i).getCorreo().equals(email)) {
-                return false;
-            }
-        }
-
-        Cliente c = new Cliente(contador, nombre, email, "Escribe aquí tu biografía", pwd, amigos, true);
-        contador++;
-        clientes.add(c);
-        return true;
-
-    }
-
-    @Override
-    public int obtenerID(String nombre, String pwd) {
-        for (int i = 0; i < clientes.size(); i++) {
-            if (clientes.get(i).getNombre().equals(nombre) && clientes.get(i).getPwd().equals(pwd)) {
-
-                return clientes.get(i).getId();
-
-            }
-
-        }
-
-        return -1;
-    }
     @Override
     public int obtenerID(String email) {
         for (int i = 0; i < clientes.size(); i++) {
@@ -162,7 +126,15 @@ public class ClientesDAOList implements ClienteDAO {
 
     @Override
     public boolean guardaCliente(Cliente c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getId() == c.getId()) {
+                c.setNombre(c.getNombre());
+                c.setBiografia(c.getBiografia());
+                c.setPwd(c.getBiografia());
+            }
+        }
+        
+        return true;
     }
 
     @Override
