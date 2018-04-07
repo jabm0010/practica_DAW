@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.HttpConstraint;
+import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Juan Béjar
  */
 @WebServlet(name = "ModificarPerfil", urlPatterns = {"/modificarperfil"})
+@ServletSecurity(@HttpConstraint(rolesAllowed={"USUARIOS"}))
 public class ModificarPerfil extends HttpServlet {
 
     private ClienteDAO clientes;  //Lista con los clientes
@@ -92,11 +95,15 @@ public class ModificarPerfil extends HttpServlet {
 
         request.setCharacterEncoding("UTF-8");
         //Cliente cli = new Cliente();
+        
+        
+        String log_email = request.getRemoteUser();
 
-        String correo=(String) request.getSession(false).getAttribute("log_email");
-        int id = clientes.obtenerID(correo);
+        int id = clientes.obtenerID(log_email);
+        Cliente c;
+        c = clientes.buscaId(id);
 
-        Cliente c=new Cliente();
+        
         
         String user = request.getParameter("user");
         String new_pwd = request.getParameter("new-pwd");
@@ -113,9 +120,6 @@ public class ModificarPerfil extends HttpServlet {
 
         clientes.guardaCliente(c);
 
-        // int id = clientes.obtenerID(request.getParameter("log_email"));
-        //cli.setId(id);
-        //  clientes.actualizarCliente((Cliente) request.getAttribute("clienteLog"), user, biografia, new_pwd);
         response.sendRedirect("app/comunidad");
         return;
     }

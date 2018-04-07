@@ -11,14 +11,18 @@ import com.daw.vj.dao.ClientesDAOList;
 import com.daw.vj.dao.VideojuegoDAO;
 import com.daw.vj.dao.VideojuegosDAOJDBC;
 import com.daw.vj.dao.VideojuegosDAOList;
+import com.daw.vj.model.Cliente;
 import com.daw.vj.model.Videojuego;
 import com.daw.vj.otros.Util;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.HttpConstraint;
+import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +33,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author Juan Béjar
  */
 @WebServlet(name = "NavegaVistas", urlPatterns = {"/app/*"})
+@ServletSecurity(
+        @HttpConstraint(rolesAllowed = {"USUARIOS"}))
 public class NavegaVistas extends HttpServlet {
 
     private final String srvViewPath = "/WEB-INF/app";
@@ -94,18 +100,25 @@ public class NavegaVistas extends HttpServlet {
                 break;
             }
             case "/comunidad": {
-                
-              
+              datosSesion(request);
                 rd = request.getRequestDispatcher(srvViewPath + "/comunidad.jsp");
                 break;
             }
             case "/tienda": {
+
+                datosSesion(request);
                 rd = request.getRequestDispatcher(srvViewPath + "/tienda.jsp");
                 break;
             }
             case "/index": {
+
+                request.logout();
+               
+                request.getSession().invalidate();
                 
-                rd = request.getRequestDispatcher(srvViewPath + "/index.jsp");
+ 
+                
+                rd = request.getRequestDispatcher("/bienvenida.jsp");
                 break;
             }
             case "/busqueda": {
@@ -170,5 +183,32 @@ public class NavegaVistas extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    public void datosSesion(HttpServletRequest request) {
+        
+        request.getSession();
+        String log_email = request.getRemoteUser();
+        
+
+        int id = clientes.obtenerID(log_email);
+        Cliente c;
+        c = clientes.buscaId(id);
+        
+        
+        request.getSession().setAttribute("clienteLog", clientes.buscaId(id).getCorreo());
+        request.getSession().setAttribute("log_email", log_email);
+        request.getSession().setAttribute("biografia", clientes.buscaId(id).getBiografia());
+
+        List<Cliente> amigos = clientes.buscaAmigos(id);
+
+        c.setAmigos(amigos);
+        int tama=amigos.size();
+
+        request.getSession().setAttribute("amigos", amigos);
+        request.getSession().setAttribute("numamigos", tama);
+        request.getSession().setAttribute("log_usuario", clientes.buscaId(id).getNombre());
+        request.getSession().setAttribute("log_pwd", clientes.buscaId(id).getPwd());
+
+    }
 
 }

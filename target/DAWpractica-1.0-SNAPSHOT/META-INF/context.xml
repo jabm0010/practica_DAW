@@ -7,5 +7,19 @@
               type="javax.sql.DataSource" 
               url="jdbc:derby://localhost:1527/DAWpractica" 
               username="DAWpractica"/>
+    
+    <!--
+    <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+    resourceName="UserDatabase"/>-->
+   
+
+             <Realm className="org.apache.catalina.realm.DataSourceRealm" 
+                dataSourceName="jdbc/DAWpractica" 
+                localDataSource="true"
+                roleNameCol="rol" 
+                userCredCol="pwd" 
+                userNameCol="correo" 
+                userRoleTable="roles" 
+                userTable="Cliente"/>
 </Context>
 

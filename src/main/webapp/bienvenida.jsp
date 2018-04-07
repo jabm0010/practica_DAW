@@ -16,7 +16,7 @@
         <div class="content">
           <h1> Bienvenido</h1>
           <br>
-          <a class="btn" href="cliente">Acceder a la página</a>
+          <a class="btn" href="app/tienda">Acceder a la página</a>
         </div>
       </div>
 

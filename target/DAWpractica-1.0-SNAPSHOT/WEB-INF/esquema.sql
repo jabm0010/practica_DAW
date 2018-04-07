@@ -14,6 +14,7 @@ DROP TABLE cliente_cliente;
 DROP TABLE cliente_videojuego;
 DROP TABLE Videojuegos;
 DROP TABLE Cliente;
+DROP TABLE Roles;
 
 CREATE TABLE Cliente (
 id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
@@ -25,6 +26,12 @@ online BOOLEAN,
 CONSTRAINT cliente_pk PRIMARY KEY (id)
 
 );
+
+create table Roles (
+   correo VARCHAR(100) not null UNIQUE,
+   rol VARCHAR(50) not null
+ );
+
 
 CREATE TABLE Videojuegos (
 videojuegoID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
@@ -61,6 +68,12 @@ insert into Cliente (nombre,correo,biografia,pwd,online) VALUES ('e', 'c@gmail.c
 insert into Cliente (nombre,correo,biografia,pwd,online) VALUES ('Jose', 'd@gmail.com', 'Hola!', 'd',true);
 insert into Cliente (nombre,correo,biografia,pwd,online) VALUES ('miguel', 'f@gmail.com', 'Hola!', 'f',true);
 insert into Cliente (nombre,correo,biografia,pwd,online) VALUES ('luis', 'e@gmail.com', 'Hola!', 'e',true);
+
+--Inserción roles
+insert into Roles values ('usuario@gmail.com','USUARIOS');
+insert into Roles values ('antonio99@gmail.com','USUARIOS');
+insert into Roles values('b@gmail.com','USUARIOS');
+
 
 -- Inserción amigos
 

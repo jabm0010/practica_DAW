@@ -32,7 +32,7 @@
 
     <body>
 
-       <!--Barra de navegación -->
+        <!--Barra de navegación -->
         <div class="barra-navegacion">
             <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 
@@ -77,18 +77,20 @@
 
                             <h1 class="page-header">Identifícate</h1>
 
-                            <form class="form-horizontal" role="form" action="<c:url value="/cliente/login"/>" method="POST">
+                            <form class="form-horizontal" role="form" action="j_security_check"method="POST">
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="log_email">Email:</label>
+                                    <label class="control-label col-sm-2" for="j_username">Email:</label>
                                     <div class="col-sm-10">
-                                      <input type="email" class="form-control" name="log_email" value="${log_email}" placeholder="Introduce tu nombre">
+                                        <input type="email" class="form-control" name="j_username" value="${pageContext.request.userPrincipal.name}"
+                                               placeholder="Introduce tu nombre">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="log_pwd">Contraseña:</label>
+                                    <label class="control-label col-sm-2" for="j_password">Contraseña:</label>
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" name="log_pwd" value="${log_pwd}" placeholder="Introduce tu contraseña">
+                                        <input type="password" class="form-control" name="j_password"
+                                               placeholder="Introduce tu contraseña">
                                     </div>
                                 </div>
 
@@ -105,10 +107,12 @@
                                         <button type="submit" name="acceder" class="btn btn-default">Acceder</button>
                                     </div>
                                 </div>
-                                    
-                                     ${error}      
+
+                                <c:if test="${param.error!=null}">
+                                    Credenciales incorrectas
+                                </c:if>    
                             </form>
-                            
+
 
 
                         </div>
@@ -138,7 +142,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="reg_pwd">Contraseña:</label>
                                     <div class="col-sm-10">
-                                        
+
                                         <input type="password" class="form-control" name="reg_pwd" value="${reg_pwd}"  placeholder="Introduce tu contraseña">
                                     </div>
                                 </div>
@@ -148,13 +152,13 @@
                                         <button type="submit" name="registrarme" class="btn btn-default">Registrarme</button>
                                     </div>
                                 </div>
-                                    
-                                    
-                                    
-                                     ${error_reg}  
+
+
+
+                                ${inf_reg}  
                             </form>
 
-                          
+
 
                         </div>
                     </div>
@@ -185,7 +189,7 @@
 
 
 
-         <!--Sección de información -->
+        <!--Sección de información -->
 
         <div class="row ">
 
@@ -215,15 +219,15 @@
 
 
 
-          <!--Footer -->
+        <!--Footer -->
 
 
 
     </body>
 
-    
-    
-        <%@include file="/WEB-INF/layout/footer.jspf" %>
+
+
+    <%@include file="/WEB-INF/layout/footer.jspf" %>
 
 
 </html>
