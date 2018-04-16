@@ -1,12 +1,15 @@
 com\daw\vj\otros\Util.class
+com\daw\vj\TiendaWebApplicationInitializer.class
 com\daw\vj\dao\ClienteDAO.class
 com\daw\vj\dao\ClientesDAOList.class
 com\daw\vj\dao\ClientesDAOJDBC.class
+com\daw\vj\SpringMvcConfig.class
 com\daw\vj\model\Videojuego.class
 com\daw\vj\controller\NavegaVistas.class
 com\daw\vj\dao\GenericDAO.class
 com\daw\vj\dao\VideojuegosDAOJDBC.class
 com\daw\vj\model\Cliente.class
+com\daw\vj\controller\ClienteSpringController.class
 com\daw\vj\controller\ModificarPerfil.class
 com\daw\vj\dao\VideojuegosDAOList.class
 com\daw\vj\controller\ClienteController.class
