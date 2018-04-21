@@ -33,8 +33,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Juan Béjar
  */
 @WebServlet(name = "NavegaVistas", urlPatterns = {"/app/*"})
-@ServletSecurity(
- @HttpConstraint(rolesAllowed = {"USUARIOS"}))
+//@ServletSecurity(@HttpConstraint(rolesAllowed = {"USUARIOS"}))
 public class NavegaVistas extends HttpServlet {
 
     private final String srvViewPath = "/WEB-INF/app";
