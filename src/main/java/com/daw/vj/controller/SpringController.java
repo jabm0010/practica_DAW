@@ -7,6 +7,7 @@ package com.daw.vj.controller;
 
 import com.daw.vj.dao.ClienteDAO;
 import com.daw.vj.dao.VideojuegoDAO;
+import com.daw.vj.model.Cliente;
 import com.daw.vj.model.Videojuego;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -41,6 +42,8 @@ public class SpringController {
     public SpringController() {
 
     }
+    
+    
 
     @ModelAttribute
     private void configView(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
@@ -72,16 +75,31 @@ public class SpringController {
 
         return "app/tienda";
     }
-//
-//    @RequestMapping(value = "/busqueda", method = RequestMethod.GET)
-//    public String busqueda(ModelMap model) {
-//        List<Videojuego> vjuegos=this.videojuegos.buscaTodos();
-//        model.addAttribute("vjuegos", vjuegos);
-//
-//        
-//        
-//        return "app/busqueda";
-//    }
+
+    @RequestMapping(value = "/busqueda", method = RequestMethod.GET)
+    public String busqueda(ModelMap model) {
+        List<Videojuego> videojuegos=this.videojuegos.buscaTodos();
+        model.addAttribute("videojuegos", videojuegos);
+
+        List<Cliente> usuarios=this.clientes.buscaTodos();
+        model.addAttribute("usuarios",usuarios);
+        
+        
+        return "app/busqueda";
+    }
+    
+    
+    @RequestMapping(value = "/juego", method = RequestMethod.GET)
+    public String accederJuego(@RequestParam(value="id",defaultValue = "0")Integer id, ModelMap model) {
+        model.addAttribute("videojuegoElegido",videojuegos.buscaId(id));
+        return "app/juego";
+    }
+    
+    
+    
+    
+    
+    
 //
 ////
 //    @RequestMapping(value = "/identificador", method = RequestMethod.POST)
