@@ -52,7 +52,7 @@
                 <div class="collapse navbar-collapse justify-content-end" id="collapse_target">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href='${srvUrl}/tienda'>Tienda</a>
+                            <a class="nav-link" href='main/app/tienda'>Tienda</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#footer">Contacto</a>

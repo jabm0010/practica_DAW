@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="card-footer">
 
-                                    <a class="btn btn-success" href='${srvUrl}/juego?id=${v.videojuegoID}'>Ver</a>
+                                    <a class="btn btn-success" href='${srvUrl}/juego${qry}'>Ver</a>
 
                                 </div>
                             </div>

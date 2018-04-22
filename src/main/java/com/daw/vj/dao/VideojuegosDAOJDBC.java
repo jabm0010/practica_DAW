@@ -19,33 +19,27 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Juan Béjar
  */
-@Repository("VideojuegosDAOJDBC")
 public class VideojuegosDAOJDBC implements VideojuegoDAO {
 
     private static final String SQL_BUSCAID = "SELECT * FROM Videojuegos where videojuegoID=?";
     private static final String SQL_BUSCANOMBRE = "SELECT * FROM Videojuegos WHERE UPPER(nombreVideojuego) LIKE ?";
     private static final String SQL_BUSCATODOS = "SELECT * FROM Videojuegos";
-  
-    
-    @Autowired(required=false)
     private DataSource ds;
 
     public VideojuegosDAOJDBC() {
-//        Context context;
-//
-//        try {
-//            context = new InitialContext(); //Accedemos al contenedor de Servlets
-//            ds = (DataSource) context.lookup("java:comp/env/jdbc/DAWpractica"); //Localizamos el pool
-//        } catch (NamingException ex) {
-//            Logger.getLogger(VideojuegosDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        Context context;
+
+        try {
+            context = new InitialContext(); //Accedemos al contenedor de Servlets
+            ds = (DataSource) context.lookup("java:comp/env/jdbc/DAWpractica"); //Localizamos el pool
+        } catch (NamingException ex) {
+            Logger.getLogger(VideojuegosDAOJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
