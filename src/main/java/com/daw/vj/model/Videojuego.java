@@ -16,6 +16,11 @@ public class Videojuego {
     private String desarrollador;
     private String publicador;
     private float precio;
+    private String estado;
+    private boolean promocionado;
+    private boolean enOferta;
+    private int descuento;
+    private int numVentas;
 
     public Videojuego() {
         videojuegoID = 0;
@@ -23,6 +28,22 @@ public class Videojuego {
         nombreVideojuego = " ";
         publicador = " ";
         precio = 0;
+        estado = " ";
+
+    }
+
+    public Videojuego(int videojuegoID, String nombreVideojuego, String desarrollador,
+            String publicador, float precio, String estado, boolean promocionado, boolean enOferta, int descuento, int numVentas) {
+        this.videojuegoID = videojuegoID;
+        this.nombreVideojuego = nombreVideojuego;
+        this.desarrollador = desarrollador;
+        this.publicador = publicador;
+        this.precio = precio;
+        this.estado = estado;
+        this.promocionado=promocionado;
+        this.enOferta=enOferta;
+        this.descuento=descuento;
+        this.numVentas=numVentas;
 
     }
 
@@ -33,6 +54,7 @@ public class Videojuego {
         this.desarrollador = desarrollador;
         this.publicador = publicador;
         this.precio = precio;
+        estado="";
 
     }
 
@@ -43,6 +65,11 @@ public class Videojuego {
         this.precio = v.precio;
         this.publicador = v.publicador;
         this.videojuegoID = v.videojuegoID;
+        this.estado = v.estado;
+        this.promocionado=v.promocionado;
+        this.enOferta=v.enOferta;
+        this.descuento=v.descuento;
+        this.numVentas=v.numVentas;
     }
 
     /**
@@ -113,6 +140,76 @@ public class Videojuego {
      */
     public void setPrecio(float precio) {
         this.precio = precio;
+    }
+
+    /**
+     * @return the estado
+     */
+    public String getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    /**
+     * @return the promocionado
+     */
+    public boolean isPromocionado() {
+        return promocionado;
+    }
+
+    /**
+     * @param promocionado the promocionado to set
+     */
+    public void setPromocionado(boolean promocionado) {
+        this.promocionado = promocionado;
+    }
+
+    /**
+     * @return the enOferta
+     */
+    public boolean isEnOferta() {
+        return enOferta;
+    }
+
+    /**
+     * @param enOferta the enOferta to set
+     */
+    public void setEnOferta(boolean enOferta) {
+        this.enOferta = enOferta;
+    }
+
+    /**
+     * @return the descuento
+     */
+    public int getDescuento() {
+        return descuento;
+    }
+
+    /**
+     * @param descuento the descuento to set
+     */
+    public void setDescuento(int descuento) {
+        this.descuento = descuento;
+    }
+
+    /**
+     * @return the numVentas
+     */
+    public int getNumVentas() {
+        return numVentas;
+    }
+
+    /**
+     * @param numVentas the numVentas to set
+     */
+    public void setNumVentas(int numVentas) {
+        this.numVentas = numVentas;
     }
 
 }

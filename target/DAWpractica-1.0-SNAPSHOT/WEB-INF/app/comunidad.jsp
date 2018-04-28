@@ -10,6 +10,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
@@ -38,7 +39,7 @@
                 <div class="col-md-4">
                     <!--Sección de perfil personal -->
                     <h2 class="titulo">
-                        <center>MI PERFIL</center>
+                        MI PERFIL
                     </h2>
                     <hr width="80%" style="background:rgb(72, 153, 219); border:0; height:7px" />
                     <div class="card  mi-perfil " style="width: 25rem;">
@@ -96,10 +97,13 @@
 
                                         <div class="btn-group mr-2" role="group" aria-label="First group">
 
-                                            <button type="button" class="btn btn-primary">Enviar mensaje</button>
-
-
-
+                                            <button type="button" class="btn btn-info">Enviar mensaje</button>
+                                            
+                                            <div class="boton-der">
+                                            <form role="form" action='${srvUrl}/borraramigo?id=${c.id}' method="POST">
+                                                <button type="submit" class="btn btn-danger" >Borrar amigo</button>
+                                            </form>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -110,6 +114,8 @@
                                         <c:if test = "${c.online == true}" > 
                                             <span class="badge badge-success">Online</span>
                                         </c:if>
+
+
                                     </div>
                                 </div>
 
@@ -144,27 +150,26 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form class="form-horizontal" role="form" action="<c:url value="/modificarperfil"/>" method="POST">
+                        <form:form class="form-horizontal" modelAttribute="cliente" role="form" action="${srvUrl}/modificarperfil" method="POST" >
 
                             <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="user">Nombre de usuario: </label>
-                                    <input type="text" class="form-control" name="user" value='${cliente.nombre}'>
-                                </div>
 
                                 <div class="form-group">
-                                    <label for="old-pwd">Antigua contraseña:</label>
-                                    <input type="text" class="form-control" name="old-pwd" value='${cliente.pwd}'>
+                                    <label for="user">Nombre de usuario: </label>
+                                    <form:input path="nombre" type="text" class="form-control" name="user" value='${cliente.nombre}'/>
+                                    <p><form:errors path="nombre" cssStyle="color: red;"/></p>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="new-pwd">Nueva contraseña:</label>
-                                    <input type="text" class="form-control" name="new-pwd" value='${cliente.pwd}'>
+                                    <form:input path="pwd" type="text" class="form-control" name="new-pwd" />
+                                    <p><form:errors path="pwd" cssStyle="color: red;"/></p>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="biografia">Biografía:</label>
-                                    <input type="text" class="form-control" name="biografia" value='${cliente.biografia}'>
+                                    <form:input path="biografia" type="text" class="form-control" name="biografia" value='${cliente.biografia}'/>
+                                    <p><form:errors path="biografia" cssStyle="color: red;"/></p>
                                 </div>
 
                             </div>
@@ -173,7 +178,7 @@
                                     <button type="submit" class="btn btn-success" >Guardar</button>
                                 </div>
                             </div>
-                        </form>
+                        </form:form>
                     </div>
                 </div>
             </div>
@@ -181,15 +186,15 @@
         </div>
 
 
-    </div>
 
 
 
 
 
-</body>
 
-<!--Foooter -->
-<%@include file="/WEB-INF/layout/footer.jspf" %>
+    </body>
+
+    <!--Foooter -->
+    <%@include file="/WEB-INF/layout/footer.jspf" %>
 
 </html>

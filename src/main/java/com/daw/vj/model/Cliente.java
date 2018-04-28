@@ -8,20 +8,30 @@ package com.daw.vj.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.constraints.Size;
 
 /**
  *
  * @author Juan Béjar
  */
-public class Cliente implements Serializable{
+public class Cliente implements Serializable {
 
     private int id;
+
+    @Size(min = 3, max = 20, message = "La longitud del nombre no es válida")
     private String nombre;
+    
+     @Size(min = 3, max = 20, message = "El correo no es válido")
     private String correo;
+
+    @Size(min = 1, max = 240, message = "La longitud de la biografía no es válida")
     private String biografia;
+
+    @Size(min = 5, max = 30, message = "La longitud de la contraseña no es válida")
     private String pwd;
     private boolean online;
     private List<Cliente> amigos;
+    private List<Videojuego> videojuegos;
 
     //Constructor por defecto
     public Cliente() {
@@ -32,9 +42,10 @@ public class Cliente implements Serializable{
         pwd = " ";
         amigos = new ArrayList<>();
         online = false;
+        videojuegos=new ArrayList<>();
     }
 
-    public Cliente(int id, String nombre, String correo, String biografia, String pwd, List<Cliente> amigos, boolean online) {
+    public Cliente(int id, String nombre, String correo, String biografia, String pwd, List<Cliente> amigos, boolean online,List<Videojuego> videojuegos) {
         this.id = id;
         this.nombre = nombre;
         this.correo = correo;
@@ -42,6 +53,7 @@ public class Cliente implements Serializable{
         this.pwd = pwd;
         this.amigos = amigos;
         this.online = online;
+        this.videojuegos=videojuegos;
 
     }
 
@@ -54,6 +66,8 @@ public class Cliente implements Serializable{
         this.online = online;
 
         amigos = new ArrayList<>();
+        videojuegos = new ArrayList<>();
+        
     }
 
     //Constructor de copia
@@ -65,6 +79,7 @@ public class Cliente implements Serializable{
         this.pwd = c.pwd;
         this.amigos = c.amigos;
         this.online = c.online;
+        this.videojuegos=c.videojuegos;
     }
 
     /**
@@ -163,6 +178,20 @@ public class Cliente implements Serializable{
      */
     public void setOnline(boolean online) {
         this.online = online;
+    }
+
+    /**
+     * @return the videojuegos
+     */
+    public List<Videojuego> getVideojuegos() {
+        return videojuegos;
+    }
+
+    /**
+     * @param videojuegos the videojuegos to set
+     */
+    public void setVideojuegos(List<Videojuego> videojuegos) {
+        this.videojuegos = videojuegos;
     }
 
 }

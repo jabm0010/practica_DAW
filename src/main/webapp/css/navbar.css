@@ -18,7 +18,7 @@ and open the template in the editor.
 }
 
 .margen-der {
-  margin-right: 2em;
+  margin-right: 1em;
 }
 .margen-izq {
   margin-left: 2em;
@@ -48,7 +48,10 @@ and open the template in the editor.
 }
 
 .form-inline {
-    margin-right:25%;
+    margin-right:16%;
+    display: inline-block;
+    float: right;
+    white-space:nowrap;
     
 }
 

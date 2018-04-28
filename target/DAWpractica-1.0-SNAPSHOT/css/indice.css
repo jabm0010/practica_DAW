@@ -28,7 +28,7 @@ html,body{
 }
 
 .content {
-    max-width:500px;
+    max-width:700px;
     margin: 0 auto;
     text-align:center;
 }
@@ -55,4 +55,9 @@ html,body{
     color: #fff;
     border: solid #fff 3px;
     
+}
+
+.bienvenida{
+    margin-right: 0.5em;
+    margin-left: 0.5em;
 }

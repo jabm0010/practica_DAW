@@ -70,7 +70,7 @@
 
                             <c:set var="qry" value="?videojuegoID=${v.videojuegoID}"/>
                             <div class="card">
-                                <img class="card-img-top img-fluid" src="http://placehold.it/240x180" alt="Card image cap">
+                                <img class="card-img-top img-fluid" src="${pageContext.request.contextPath}/imgs/juego${v.videojuegoID}.png" alt="juego" width="240" height="200">
                                 <div class="card-body">
                                     <h5 class="card-title">${v.nombreVideojuego}</h5>
                                     <p class="card-text">${v.desarrollador}</p>
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="card-footer">
 
-                                    <a class="btn btn-success" href='${srvUrl}/juego${qry}'>Ver</a>
+                                    <a class="btn btn-success" href='${srvUrl}/juego?id=${v.videojuegoID}'>Ver</a>
 
                                 </div>
                             </div>
@@ -98,7 +98,7 @@
                     <h1 class="titulo">Usuarios con "${busca_nombre}"</h1>
                     <hr width="60%" style="background:rgb(231, 214, 54); border:0; height:7px" />
 
-                    <c:if test="${fn:length(videojuegos) < 1}">
+                    <c:if test="${fn:length(usuarios) < 1}">
 
                         <h3>No hay usuarios con que contengan la secuencia de caracteres introducida</h3>
 
@@ -117,8 +117,12 @@
 
                                 </div>
                                 <div class="card-footer">
-                                    <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#notificacion-amistad">Añadir amigo</button>
-
+                                    <form role="form" action='${srvUrl}/agregaramigo?id=${c.id}' method="POST">
+                                         <button type="submit" class="btn btn-primary" >Añadir amigo</button>
+                                    </form>
+                                    <%--
+                                      <button type="submit" class="btn btn-primary"  href='${srvUrl}/agregaramigo?id=${c.id}' data-toggle="modal" data-target="#notificacion-amistad">Añadir amigo</button>
+                                    --%>
                                 </div>
                             </div>
 

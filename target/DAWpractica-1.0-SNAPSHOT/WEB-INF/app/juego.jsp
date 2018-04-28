@@ -30,14 +30,14 @@
           <h1 class="titulo">Juego</h1>
           <hr width="60%" style="background:rgb(72, 153, 219); border:0; height:7px" />
           <div class="card  juego-compra " style="width: 25rem;">
-            <img class="round card-img-top" src="http://placehold.it/800x500"
-                 alt="Card image cap">
+            <img class="round card-img-top" src="${pageContext.request.contextPath}/imgs/juego${videojuegoElegido.videojuegoID}.png"
+                 alt="imagen videojuego"  height="500" width="500">
             <div class="card-body">
               <h5 class="card-title"> ${videojuegoElegido.nombreVideojuego}</h5>
               <p class="card-text">Descripción:</p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Precio: ${videojuegoElegido.precio}</li>
+              <li class="list-group-item">Precio: <span class="badge badge-secondary">${videojuegoElegido.precio} €</span></li>
               <li class="list-group-item">Géneros a los que pertenece: </li>
               <li class="list-group-item">Amigos que tienen este juego: </li>
 
@@ -55,8 +55,7 @@
 
 
 
-
-          <form class="formulario-pago">
+          <form class="formulario-pago"  role="form" action="${srvUrl}/comprar?id=${videojuegoElegido.videojuegoID}" method="POST">
             <div class="form-row">
               <div class="form-group col-md-3"></div>
               <div class="form-group col-md-6">
@@ -96,7 +95,7 @@
 
             <div class="form-row">
               <div class="form-group col-md-3"></div>
-              <button type="button" data-toggle="modal" data-target="#notificacion-compra" class="btn btn-success">Comprar</button>
+              <button type="submit" data-toggle="modal" data-target="#notificacion-compra" class="btn btn-success">Comprar</button>
             </div>
           </form>
 

@@ -15,6 +15,8 @@
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -52,7 +54,7 @@
                 <div class="collapse navbar-collapse justify-content-end" id="collapse_target">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href='main/app/tienda'>Tienda</a>
+                            <a class="nav-link" href='${srvUrl}/tienda'>Tienda</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#footer">Contacto</a>
@@ -77,7 +79,7 @@
 
                             <h1 class="page-header">Identifícate</h1>
 
-                            <form class="form-horizontal" role="form" action="j_security_check"method="POST">
+                            <form class="form-horizontal" role="form" action="j_security_check" method="POST">
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="j_username">Email:</label>
                                     <div class="col-sm-10">
@@ -124,41 +126,8 @@
                     <div class="col-xs-4 col-md-6 ">
 
                         <div class="columna-derecha">
+
                             <h1 class="page-header">Regístrate</h1>
-
-                            <form class="form-horizontal" role="form" action="<c:url value="/cliente/registro"/>" method="POST">
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2" for="reg_email">Email:</label>
-                                    <div class="col-sm-10">
-                                        <input type="email" class="form-control" name="reg_email" value="${reg_email}" placeholder="Introduce tu email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2" for="reg_usuario">Usuario:</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="reg_usuario" value="${reg_usuario}" placeholder="Introduce tu nombre">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2" for="reg_pwd">Contraseña:</label>
-                                    <div class="col-sm-10">
-
-                                        <input type="password" class="form-control" name="reg_pwd" value="${reg_pwd}"  placeholder="Introduce tu contraseña">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" name="registrarme" class="btn btn-default">Registrarme</button>
-                                    </div>
-                                </div>
-
-
-
-                                ${inf_reg}  
-                            </form>
-
-
 
                         </div>
                     </div>

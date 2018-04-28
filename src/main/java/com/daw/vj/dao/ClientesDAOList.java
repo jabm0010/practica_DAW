@@ -6,6 +6,7 @@
 package com.daw.vj.dao;
 
 import com.daw.vj.model.Cliente;
+import com.daw.vj.model.Videojuego;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,20 +19,21 @@ public class ClientesDAOList implements ClienteDAO {
     private static List<Cliente> clientes; //clientes registrados en el sistema;
     public static int contador = 10; //Variable contador para clave primaria
     List<Cliente> amigos = new ArrayList<>();
+    List<Videojuego> videojuegos=new ArrayList<>();
 
     public ClientesDAOList() {
         contador = 1;
 
-        amigos.add(new Cliente(5, "Jose", "d@gmail.com", "Hola!", "d", amigos, true));
-        amigos.add(new Cliente(6, "miguel", "f@gmail.com", "Hola!", "f", amigos, true));
-        amigos.add(new Cliente(7, "Luis", "e@gmail.com", "Hola!", "e", amigos, false));
+        amigos.add(new Cliente(5, "Jose", "d@gmail.com", "Hola!", "d", amigos, true,videojuegos));
+        amigos.add(new Cliente(6, "miguel", "f@gmail.com", "Hola!", "f", amigos, true,videojuegos));
+        amigos.add(new Cliente(7, "Luis", "e@gmail.com", "Hola!", "e", amigos, false,videojuegos));
 
         clientes = new ArrayList<>();
-        clientes.add(new Cliente(0, "usuario", "usuario@gmail.com", "Esta es mi biografia", "usuario", amigos, true));
-        clientes.add(new Cliente(1, "AntonioRe", "antonio99@gmail.com", "Hola!", "1234", amigos, false));
-        clientes.add(new Cliente(2, "Pepe1997", "pepepepe@gmail.com", "Hola!", "abcd", amigos, false));
-        clientes.add(new Cliente(3, "b", "b@gmail.com", "Hola!", "b", amigos, false));
-        clientes.add(new Cliente(4, "e", "c@gmail.com", "Hola!", "e", amigos, false));
+        clientes.add(new Cliente(0, "usuario", "usuario@gmail.com", "Esta es mi biografia", "usuario", amigos, true,videojuegos));
+        clientes.add(new Cliente(1, "AntonioRe", "antonio99@gmail.com", "Hola!", "1234", amigos, false,videojuegos));
+        clientes.add(new Cliente(2, "Pepe1997", "pepepepe@gmail.com", "Hola!", "abcd", amigos, false,videojuegos));
+        clientes.add(new Cliente(3, "b", "b@gmail.com", "Hola!", "b", amigos, false,videojuegos));
+        clientes.add(new Cliente(4, "e", "c@gmail.com", "Hola!", "e", amigos, false,videojuegos));
 
     }
 
@@ -141,5 +143,17 @@ public class ClientesDAOList implements ClienteDAO {
     public List<Cliente> buscaAmigos(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public boolean agregarAmigo(int id1, int id2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean borrarAmigo(int id1, int id2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 
 }

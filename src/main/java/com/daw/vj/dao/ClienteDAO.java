@@ -6,6 +6,7 @@
 package com.daw.vj.dao;
 
 import com.daw.vj.model.Cliente;
+import com.daw.vj.model.Videojuego;
 import java.util.List;
 
 /**
@@ -27,5 +28,10 @@ public interface ClienteDAO extends GenericDAO<Cliente, Integer> {
     public boolean guardaCliente(Cliente c);
 
     public List<Cliente> buscaAmigos(int id);
+    
+    public boolean agregarAmigo(int id1,int id2);
+    
+    public boolean borrarAmigo(int id1,int id2);
+
 
 }

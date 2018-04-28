@@ -39,6 +39,10 @@ nombreVideojuego VARCHAR(50) NOT NULL,
 desarrollador VARCHAR(50),
 publicador VARCHAR(50),
 precio FLOAT(5),
+promocionado BOOLEAN,
+enOferta BOOLEAN,
+descuento INTEGER,
+numVentas INTEGER,
 CONSTRAINT videojuegos_pk PRIMARY KEY (videojuegoID)
 );
 
@@ -47,14 +51,17 @@ CREATE TABLE cliente_cliente (
 cli_id1 INTEGER NOT NULL,
 cli_id2 INTEGER NOT NULL,
 CONSTRAINT cliente1_fk  FOREIGN KEY (cli_id1) REFERENCES cliente,
-CONSTRAINT cliente2_fk  FOREIGN KEY (cli_id2) REFERENCES cliente
+CONSTRAINT cliente2_fk  FOREIGN KEY (cli_id2) REFERENCES cliente,
+CONSTRAINT cc_pk PRIMARY KEY(cli_id1,cli_id2)
 );
 
 CREATE TABLE cliente_videojuego (
 cli_id INTEGER NOT NULL,
 cli_vjid INTEGER NOT NULL,
+estado VARCHAR(40),
 CONSTRAINT cliente_fk FOREIGN KEY(cli_id) REFERENCES cliente,
-CONSTRAINT videojuego_fk FOREIGN KEY(cli_vjid) REFERENCES videojuegos
+CONSTRAINT videojuego_fk FOREIGN KEY(cli_vjid) REFERENCES videojuegos,
+CONSTRAINT cv_pk PRIMARY KEY(cli_id,cli_vjid)
 
 );
 
@@ -75,6 +82,10 @@ insert into Roles values ('antonio99@gmail.com','USUARIOS');
 insert into Roles values('b@gmail.com','USUARIOS');
 
 
+
+
+
+
 -- Inserción amigos
 
 insert into cliente_cliente(cli_id1,cli_id2) VALUES (1,5);
@@ -89,43 +100,23 @@ insert into cliente_cliente(cli_id1,cli_id2) VALUES (4,7);
 
 
 
-
-
 --Inserción de videojuegos
 
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Age of Empires II', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Assassin´s Creed I', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Assassin´s Creed II', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Assassin´s Creed III', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Bioshock', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Bioshock 2', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Bioshock Infinite', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Borderlands', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Borderlands 2', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Dark Souls', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Dark Souls II', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Dark Souls III', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('DOOM', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Fallout 1', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Fallout 2', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Fallout 3', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Fallout 4', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Fallout: New Vegas', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Far Cry 1', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Far Cry 2', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Far Cry 3', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Far Cry 4', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Half Life', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Half Life 2', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Metro 2033', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Metro 2034', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('TES: Skyrim', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Portal', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Portal 2', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('Tomb Raider', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('The Witcher', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('The Witcher 2', 'a', 'b',49.99);
-insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio) VALUES ('The Witcher 3', 'a', 'b',49.99);
+insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio,PROMOCIONADO,ENOFERTA,DESCUENTO,NUMVENTAS) VALUES ('Overwatch', 'Blizzard', 'Blizzard',39.99,true,false,0,1300);
+insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio,PROMOCIONADO,ENOFERTA,DESCUENTO,NUMVENTAS) VALUES ('Bioshock Infinite', '2K', 'Irrational Games',19.99,true,false,0,300);
+insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio,PROMOCIONADO,ENOFERTA,DESCUENTO,NUMVENTAS) VALUES ('Dark Souls III', 'Bandai Namco', 'From Software',49.99,true,false,0,500);
+insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio,PROMOCIONADO,ENOFERTA,DESCUENTO,NUMVENTAS) VALUES ('Sid Meier Civilization VI', 'Firaxis', 'Firaxis',39.99,false,true,20,200);
+insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio,PROMOCIONADO,ENOFERTA,DESCUENTO,NUMVENTAS) VALUES ('Doom', 'Bethesda', 'id Software',49.99,false,false,0,400);
+insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio,PROMOCIONADO,ENOFERTA,DESCUENTO,NUMVENTAS) VALUES ('Hollow Knight', 'Team Cherry', 'Team Cherry',14.99,false,true,30,200);
+insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio,PROMOCIONADO,ENOFERTA,DESCUENTO,NUMVENTAS) VALUES ('PUBG', 'PUBG Corporation', 'Bluehole',19.99,false,true,30,2000);
+insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio,PROMOCIONADO,ENOFERTA,DESCUENTO,NUMVENTAS) VALUES ('NieR Automata', 'Square Enix', 'Platinum Games',39.99,false,false,0,250);
+insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio,PROMOCIONADO,ENOFERTA,DESCUENTO,NUMVENTAS) VALUES ('The Witcher 3', 'Bandai Namco', 'CD Projekt',39.99,false,true,20,800);
+insert into Videojuegos (nombreVideojuego,desarrollador,publicador,precio,PROMOCIONADO,ENOFERTA,DESCUENTO,NUMVENTAS) VALUES ('Cuphead', 'Microsoft', 'Studio MDHR',19.99,false,false,0,400);
 
 
 
+
+--Insercion valores relacion cliente-videojuego
+insert into CLIENTE_VIDEOJUEGO(cli_id,cli_vjid,estado) VALUES (1,3,'Desinstalado');
+insert into CLIENTE_VIDEOJUEGO(cli_id,cli_vjid,estado) VALUES (1,4,'Pendiente de actualización');
+insert into CLIENTE_VIDEOJUEGO(cli_id,cli_vjid,estado) VALUES (1,7,'Instalado');

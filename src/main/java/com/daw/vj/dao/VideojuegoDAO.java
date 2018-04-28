@@ -13,15 +13,20 @@ import java.util.List;
  *
  * @author Juan Béjar
  */
-public interface VideojuegoDAO extends GenericDAO<Videojuego,Integer> {
-
-
+public interface VideojuegoDAO extends GenericDAO<Videojuego, Integer> {
 
     public List<Videojuego> buscaNombre(String nombre);
 
-
-    public boolean comprar(Videojuego v);
+    public boolean comprar(int cli_id, int cli_vjid);
 
     public boolean instalar(Videojuego v);
+
+    public List<Videojuego> buscaJuegos(int id);
+
+    public List<Videojuego> buscaJuegosPromocionados();
+
+    public List<Videojuego> buscaJuegosOferta();
+
+    public List<Videojuego> buscaJuegosMasVendidos();
 
 }
