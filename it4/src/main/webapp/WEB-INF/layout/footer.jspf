@@ -1,0 +1,33 @@
+<%--
+Footer de las páginas
+--%>
+<%@ page pageEncoding="UTF-8" %>
+
+<footer class="container-fluid text-center footer-a ">
+    <div class="row">
+        <a name="footer"></a>
+        <div class="col-md-4 col-foot">
+
+            <h3>Contacta con nosotros</h3>
+            <br>
+            <h4>Universidad de Jaén</h4>
+        </div>
+        <div class="col-md-4 col-foot">
+            <h3>Nuestras redes sociales</h3>
+
+            <i class="fab fa-twitter"></i> &nbsp;&nbsp;
+            <i class="fab fa-facebook"></i> &nbsp;&nbsp;
+            <i class="fab fa-google"></i> &nbsp;&nbsp;
+
+
+        </div>
+        <div class="col-md-4">
+            <img src="${pageContext.request.contextPath}/imgs/3.png" width="200" height="250" class="icon">
+
+
+        </div>
+    </div>
+
+
+
+</footer>
