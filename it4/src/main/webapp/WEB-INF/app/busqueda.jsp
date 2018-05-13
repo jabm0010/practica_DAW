@@ -29,24 +29,8 @@
 
         <div class="container-fluid">
             <div class="row fila-buffer">
-              
-                <!--
-                <div class="col-xl-2">
 
-                    <h4 class="titulo sec">
-                        <center>Géneros</center>
-                    </h4>
-                    </br>
-                    </br>
 
-                    <form>
-
-                        <input type="checkbox" class="col-md-2" id="genero1" value="genero1"><label> Género 1</label><br>
-
-                        <input type="checkbox" class="col-md-2" id="genero2" value="genero2"><label for="cbox2">Género 2</label>
-                    </form>
-                </div>
-                    -->
 
 
                 <div class="col-xl-6">
@@ -65,48 +49,48 @@
                         </div>
 
                     </c:if>
-                    
 
-                        <div class="album py-5 bg-light">
-                            <div class="container">
-                                <div class="row">
 
-                                    <c:forEach var="v" items="${videojuegos}">
+                    <div class="album py-5 bg-light">
+                        <div class="container">
+                            <div class="row">
 
-                                        <c:set var="qry" value="?videojuegoID=${v.videojuegoID}"/>
+                                <c:forEach var="v" items="${videojuegos}">
 
-                                        <div class="col-md-4">
-                                            <div class="card mb-4 box-shadow">
-                                                <img class="card-img-top img-fluid" src="${pageContext.request.contextPath}/imgs/juego${v.videojuegoID}.png" alt="juego" width="240" height="200">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">${v.nombreVideojuego}</h5>
-                                                    <p class="card-text">${v.desarrollador}</p>
-                                                    <p class="card-text">${v.publicador}</p>
-                                                    <p class="card-text"><small class="text-muted">${v.precio} €</small></p>
-                                                </div>
-                                                <div class="card-footer">
+                                    <c:set var="qry" value="?videojuegoID=${v.videojuegoID}"/>
 
-                                                    <a class="btn btn-success" href='${srvUrl}/juego?id=${v.videojuegoID}'>Ver</a>
+                                    <div class="col-md-4">
+                                        <div class="card mb-4 box-shadow">
+                                            <img class="card-img-top img-fluid" src="${pageContext.request.contextPath}/imgs/juego${v.videojuegoID}.png" alt="juego" width="240" height="200">
+                                            <div class="card-body">
+                                                <h5 class="card-title">${v.nombreVideojuego}</h5>
+                                                <p class="card-text">${v.desarrollador}</p>
+                                                <p class="card-text">${v.publicador}</p>
+                                                <p class="card-text"><small class="text-muted">${v.precio} €</small></p>
+                                            </div>
+                                            <div class="card-footer">
 
-                                                </div>
+                                                <a class="btn btn-success" href='${srvUrl}/juego?id=${v.videojuegoID}'>Ver</a>
+
                                             </div>
                                         </div>
+                                    </div>
 
 
 
 
-                                    </c:forEach>
+                                </c:forEach>
 
 
 
-
-                                </div>
 
                             </div>
 
-
                         </div>
-                  
+
+
+                    </div>
+
 
 
                 </div>
@@ -205,6 +189,8 @@
     </div>
 </div>
 
+<div class="footer-busq">
+    <%@include file="/WEB-INF/layout/footer.jspf" %>       
 </div>
 </body>
 
@@ -212,13 +198,4 @@
 
 
 
-
-
-
-
-
-<!--Footer -->
-<div class="footer-busq">
-    <%@include file="/WEB-INF/layout/footer.jspf" %>       
-</div>
 </html>

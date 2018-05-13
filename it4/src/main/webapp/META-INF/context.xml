@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/DAWpractica">
-  <Resource auth="Container" driverClassName="org.apache.derby.jdbc.ClientDriver" maxActive="25" name="jdbc/DAWpractica" password="DAWpractica1" type="javax.sql.DataSource" url="jdbc:derby://localhost:1527/DAWpractica1" username="DAWpractica1"/>
+  <Resource auth="Container" driverClassName="org.apache.derby.jdbc.ClientDriver" maxActive="25" name="jdbc/DAWpractica" password="DAWpr" type="javax.sql.DataSource" url="jdbc:derby://localhost:1527/DAWpr" username="DAWpr"/>
   <!--
     <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
     resourceName="UserDatabase"/>-->

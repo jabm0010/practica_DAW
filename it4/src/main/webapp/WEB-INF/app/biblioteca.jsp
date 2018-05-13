@@ -37,14 +37,6 @@
 
         <div class="container-fluid">
             <div class="row">
-                <!--Barra para buscar entre los juegos de tu biblioteca -->
-                <div class="col-sm-5 busqueda-juegos">
-                    <input type="search" class="form-control ds-input btn-outline-primary" id="search-input" placeholder="Busca en tu biblioteca" autocomplete="off"
-                           spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0"
-                           dir="auto" style="position: relative; vertical-align: top;">
-                </div>
-
-
 
             </div>
         </div>
@@ -63,27 +55,8 @@
                             <c:forEach var="c" varStatus="i" items="${cliente.videojuegos}">
 
                                 <c:choose>
-                                    <c:when test="${i.index == 0}">
-                                        <li class="list-group-item active d-flex  justify-content-between align-items-center">
-                                            ${c.nombreVideojuego}
-                                            <c:if test = "${c.estado == 'Desinstalado'}" > 
-                                                <span class="badge badge-warning badge-pill">${c.estado}</span>
-                                            </c:if>
-                                            <c:if test = "${c.estado == 'Pendiente de actualización'}" > 
-
-                                                <span class="badge badge-info badge-pill">${c.estado}</span>
-                                            </c:if>
-                                            <c:if test = "${c.estado == 'Instalado'}" > 
-                                                <span class="badge badge-dark badge-pill">${c.estado}</span>
-                                            </c:if>
-                                            <c:if test = "${c.estado == 'Jugando'}" > 
-                                                <span class="badge badge-success badge-pill">${c.estado}</span>
-                                            </c:if>
-                                        </li>
-                                    </c:when>
-                                    <c:when test="${i.index != 0}">
-
-                                        <li class="list-group-item d-flex  justify-content-between align-items-center">
+                                    <c:when test="${primerJuego.videojuegoID == c.videojuegoID}">
+                                        <li id="elemLista"  class="list-group-item active d-flex  justify-content-between align-items-center">
                                             ${c.nombreVideojuego}
                                             <c:if test = "${c.estado == 'Desinstalado'}" > 
                                                 <span class="badge badge-warning badge-pill">${c.estado}</span>
@@ -99,10 +72,33 @@
                                                 <span class="badge badge-success badge-pill">${c.estado}</span>
                                             </c:if>
 
+
+
                                         </li>
                                     </c:when>
+                                    <c:otherwise>
+                                        <li id="elemLista"  class="list-group-item  d-flex  justify-content-between align-items-center">
+                                            ${c.nombreVideojuego}
+                                            <c:if test = "${c.estado == 'Desinstalado'}" > 
+                                                <span class="badge badge-warning badge-pill">${c.estado}</span>
+                                            </c:if>
+                                            <c:if test = "${c.estado == 'Pendiente de actualización'}" > 
+
+                                                <span class="badge badge-info badge-pill">${c.estado}</span>
+                                            </c:if>
+                                            <c:if test = "${c.estado == 'Instalado'}" > 
+                                                <span class="badge badge-dark badge-pill">${c.estado}</span>
+                                            </c:if>
+                                            <c:if test = "${c.estado == 'Jugando'}" > 
+                                                <span class="badge badge-success badge-pill">${c.estado}</span>
+                                            </c:if>
+
+                                        </li>
+                                    </c:otherwise>
 
                                 </c:choose>
+
+                                <a class="btn btn-outline-info" href='${srvUrl}/seleccionarJuego?id=${c.videojuegoID}'>Seleccionar</a>
 
 
 

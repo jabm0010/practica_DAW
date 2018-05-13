@@ -19,6 +19,7 @@
         <%@include file="/WEB-INF/layout/head_links.jspf" %>
         <link rel="stylesheet" type="text/css"  href="<c:url value='/css/bootstrap.css'/>">
         <link rel="stylesheet" type="text/css"  href="<c:url value='/css/index.css'/>">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     </head>
     <body>
@@ -62,13 +63,14 @@
 
                 <div class="columna registro">
                     <h1 class="page-header">Regístrate</h1>
-                    <form:form  modelAttribute="cliente" class="form-horizontal" role="form" action="${srvUrl}/registrar" method="POST">
+                    <form:form id="formUsuarios" modelAttribute="cliente" class="form-horizontal" role="form" action="${srvUrl}/registrar" validate="true" method="POST">
                         <div class="form-group">
                             <i class="fas fa-envelope-square"></i>
                             <form:label path="correo" class="control-label col-sm-2" >Email:</form:label>
                                 <div class="col-sm-10">
                                 <form:input path="correo" type="email" class="form-control" name="reg_email" placeholder="Introduce tu email"/>
                                 <form:errors path="correo" cssStyle="color: rgb(18, 119, 9);"/>
+                                <span id="errCorreo">${errCorreo}</span>
                             </div>
 
                         </div>
@@ -78,7 +80,7 @@
                                 <div class="col-sm-10">
                                 <form:input path="nombre" type="text" class="form-control" name="reg_usuario"  placeholder="Introduce tu nombre"/>
                                 <form:errors path="nombre" cssStyle="color: rgb(18, 119, 9);"/>
-     
+                                <span id="errNombre">${errNombre}</span>
                             </div>
 
                         </div>
@@ -88,7 +90,7 @@
                                 <div class="col-sm-10">
                                 <form:input path="pwd" type="password" class="form-control" name="reg_pwd" placeholder="Introduce tu contraseña"/>
                                 <form:errors path="pwd" cssStyle="color: rgb(18, 119, 9);"/>
-
+                                <span id="errPwd">${errPwd}</span>
                             </div>
                         </div>
 
@@ -121,8 +123,6 @@
 
 
         <hr width="85%" style="background: rgb(18, 119, 9); border:0; height:7px" />
-
-
 
         <!--Sección de información -->
 
@@ -163,11 +163,41 @@
 
 
 
+        <div class="modal fade" id="confirmar" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </body>
 
 
 
     <%@include file="/WEB-INF/layout/footer.jspf" %>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="<c:url value='/js/ValidarRegistro.js'/>"></script>
+
+
+
 
 
 

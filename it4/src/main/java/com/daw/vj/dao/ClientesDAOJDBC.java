@@ -42,6 +42,8 @@ public class ClientesDAOJDBC implements ClienteDAO {
     private static final String SQL_BUSCAAMIGOS = "SELECT cli_id2 FROM cliente,cliente_cliente WHERE id=? AND id=cli_id1";
     private static final String SQL_AGREGAAMIGOS = "INSERT INTO cliente_cliente (cli_id1,cli_id2) VALUES (?,?)";
     private static final String SQL_BORRAAMIGOS = "DELETE FROM cliente_cliente WHERE cli_id1=? AND cli_id2=?";
+    private static final String SQL_MOSTRARONLINE = "UPDATE Cliente set online=TRUE WHERE id=?";
+    private static final String SQL_MOSTRAROFFLINE = "UPDATE Cliente set online=FALSE WHERE id=?";
 
     private static final String connPoolName = "java:comp/env/jdbc/DAWpractica";
 
@@ -314,7 +316,7 @@ public class ClientesDAOJDBC implements ClienteDAO {
     public boolean agregarAmigo(int id1, int id2) {
 
         boolean result = false;
-        
+
         //Hacer la operación si id1 diferente de id2 (evitar agregarse a uno mismo como amigo)
         if (id1 != id2) {
             try (Connection conn = ds.getConnection();
@@ -346,6 +348,34 @@ public class ClientesDAOJDBC implements ClienteDAO {
 
         return result;
 
+    }
+
+    @Override
+    public boolean mostrarOnline(int id) {
+        boolean result = false;
+        try (Connection conn = ds.getConnection();
+                PreparedStatement stmn = conn.prepareStatement(SQL_MOSTRARONLINE);) {
+            stmn.setInt(1, id);
+            result = (stmn.executeUpdate() == 1);
+
+        } catch (Exception ex) {
+            Logger.getLogger(ClientesDAOJDBC.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
+        }
+        return result;
+    }
+
+    @Override
+    public boolean mostrarOffline(int id) {
+        boolean result = false;
+        try (Connection conn = ds.getConnection();
+                PreparedStatement stmn = conn.prepareStatement(SQL_MOSTRAROFFLINE);) {
+            stmn.setInt(1, id);
+            result = (stmn.executeUpdate() == 1);
+
+        } catch (Exception ex) {
+            Logger.getLogger(ClientesDAOJDBC.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
+        }
+        return result;
     }
 
 }

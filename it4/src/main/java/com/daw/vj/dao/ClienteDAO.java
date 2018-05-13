@@ -32,6 +32,10 @@ public interface ClienteDAO extends GenericDAO<Cliente, Integer> {
     public boolean agregarAmigo(int id1,int id2);
     
     public boolean borrarAmigo(int id1,int id2);
+    
+    public boolean mostrarOnline(int id);
+    
+    public boolean mostrarOffline(int id);
 
 
 }

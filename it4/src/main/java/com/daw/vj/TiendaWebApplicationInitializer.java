@@ -43,5 +43,8 @@ public class TiendaWebApplicationInitializer implements WebApplicationInitialize
         fr.setInitParameter("encoding", "UTF-8");
         fr.setInitParameter("forceEncoding", "true");
         fr.addMappingForUrlPatterns(null, true, "/*");
+        
+        
+        container.setInitParameter("contextConfigLocation", "<NONE>");
     }
 }

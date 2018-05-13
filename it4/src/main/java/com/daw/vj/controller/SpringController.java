@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  */
 @Controller
 @RequestMapping("/app")
-@SessionAttributes(value = {"cliente", "tarjeta"})
+@SessionAttributes(value = {"cliente", "tarjeta", "primerJuego"})
 public class SpringController {
 
     //DAO de clientes
@@ -79,11 +79,6 @@ public class SpringController {
     @RequestMapping(value = "/biblioteca", method = RequestMethod.GET)
     public String accederBiblioteca(ModelMap model) {
 
-        Cliente c = (Cliente) model.get("cliente");
-        if (!c.getVideojuegos().isEmpty()) {
-            //Si tiene videojuegos, coger el primero para mostrarlo en grande
-            model.addAttribute("primerJuego", c.getVideojuegos().get(0));
-        }
 
         return "app/biblioteca";
     }
@@ -136,6 +131,11 @@ public class SpringController {
         List<Videojuego> masVendidos = this.videojuegos.buscaJuegosMasVendidos();
         model.addAttribute("masVendidos", masVendidos);
 
+        if (!c.getVideojuegos().isEmpty()) {
+            //Si tiene videojuegos, coger el primero para mostrarlo en grande
+            model.addAttribute("primerJuego", c.getVideojuegos().get(0));
+        }
+
         //Creación de una tarjeta por defecto para temas de validación posteriores
         Tarjeta t = new Tarjeta();
         model.addAttribute("tarjeta", t);
@@ -181,7 +181,7 @@ public class SpringController {
                 c.setVideojuegos(videojuegos.buscaJuegos(c.getId()));
                 model.addAttribute("cliente", c);
 
-                return "redirect:biblioteca";
+                return "redirect:tienda";
 
             } else {
                 //En caso de que ya tenga comprado el juego.
@@ -330,6 +330,20 @@ public class SpringController {
     public String accederJuegoId(@RequestParam(value = "id", defaultValue = "0") Integer id, ModelMap model) {
         model.addAttribute("videojuegoElegido", videojuegos.buscaId(id));
         return "app/juego";
+    }
+
+    /**
+     * Método para seleccionar un juego de tu biblioteca y poder interactuar con
+     * él
+     *
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/seleccionarJuego", method = RequestMethod.GET)
+    public String seleccionarJuego(@RequestParam(value = "id", defaultValue = "0") Integer id, ModelMap model) {
+        model.addAttribute("primerJuego", this.videojuegos.buscaId(id));
+        return "app/biblioteca";
     }
 
     /**

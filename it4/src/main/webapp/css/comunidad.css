@@ -35,3 +35,15 @@ and open the template in the editor.
 .boton-der{
     margin-left: 1.5rem;
 }
+
+
+.image-upload > input
+{
+    display: none;
+}
+.image-upload img
+{
+    width: 40px;
+    cursor: pointer;
+    style:"float:right";
+}

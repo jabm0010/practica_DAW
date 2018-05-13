@@ -63,7 +63,8 @@ and open the template in the editor.
     border-radius: 9px; 
     float: bottom;
     margin-top: 150px;
-    margin-left: 12rem;
+    margin-left: 10rem;
+    margin-right:3rem;
     background: rgb(65, 23, 122);
     color: #fff;
     display:inline-block
